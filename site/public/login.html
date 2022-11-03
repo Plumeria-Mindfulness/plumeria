@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plumeria</title>
+
+    <script src="./js/functions.js"></script>
+    <script src="./js/login.js"></script>
+
+    <link rel="icon" href="./assets/plumeria-icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <!-- Cabeçalho + Navbar -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/plumeria-icon.png" alt="icone de uma plumeria">
+                    <span class="nome-logo">Plumeria</span>
+                </a> 
+                
+            </div>
+
+            <nav class="navbar">
+                <ul class="list-item">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre-nos.html">Sobre nós</a></li>
+                    <li><a href="sobre-nos.html">Sobre mindfulness</a></li>
+                    <li><a href="cadastro.html">Contato</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+
+            </nav>
+
+            <a id="btn-login" href="login.html"><button class="btn">Login</button></a>
+        </div>
+    </header>
+
+    <!-- 1ª sessão -->
+    <section class="banner">
+        <div class="background-img">
+            <img id="img-flor" src="assets/flor-plumeria.svg" alt="flor de plumeria">
+            
+            <img id="img-flor-folha" src="assets/flor-folha-plumeria.png" alt="flor de plumeria com folhas">
+        </div>
+
+        <div class="illustrations">
+            <img id="regando-cabeca" src="assets/regando-cabeca.svg" alt="cientistas regando a cabeça de uma pessoa">
+
+            <img id="mente-fluida" src="assets/mente-fluida.svg" alt="pessoa meditando com mente fluida">
+        </div>
+
+        <div class="container-login">
+          <div class="caixa-formulario">
+                <h1>Seja bem-vindo!</h1>
+
+                <p class="legenda-titulo">
+                    Entre e encontre o espaço de equilíbrio feito para você, por você!
+                </p>
+
+                <div class="campo">
+                    <div class="campo-email">
+                        <label for="in_email">E-mail</label>
+                        <input placeholder="Digite seu e-mail" type="email" id="in_email">
+                        <p id="msg_email"></p>
+                    </div>
+        
+                    <div class="campo-senha">
+                        <label for="in_senha">Senha</label>
+                        <input placeholder="Digite sua senha" type="password" id="in_senha">
+                        <p id="msg_senha"></p>
+                    </div>
+                </div>
+    
+                <button class="btn" onclick="entrar()">Entrar</button>
+    
+                <div class="text-login">
+                    <p>
+                        Esqueci minha <a href="#">senha.</a>
+                    </p>
+                    <p>
+                        Não possui conta? <a href="cadastro.html">Cadastre-se!</a>
+                    </p>
+                </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+    <footer>
+        <div class="content-footer">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/plumeria-icon.png" alt="icone de uma plumeria">
+                    <span class="nome-logo-footer">Plumeria</span>
+                </a> 
+            </div>
+            
+            <div class="links">
+                <h2>Links</h2>
+                <ul class="lista-links-footer">
+                    <li><a href="sobre-nos.html">Sobre Nós</a></li>
+                    <li><a href="sobre-mindfulness.html">Sobre Mindfulness</a></li>
+                    <li><a href="termos.html">Termos de Serviço</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="social-media">
+                <h2>Redes Sociais</h2>
+                <div class="social-img">
+                    <a href="https://www.instagram.com/plumeria_app/"><img src="assets/instagram-logo.svg" alt=""></a>
+                    <a href="#"><img src="assets/facebook-logo.svg" alt=""></a>
+                    <a href="#"><img src="assets/whatsapp-logo.svg" alt=""></a>
+                    <a href="#"><img src="assets/twitter-logo.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>Copyright &copy; 2022 Plumeria - Todos os direitors reservados. Desenvolvido por Luiz Nison Filler.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script>
+function entrar() {
+    aguardar();
+
+    var emailVar = in_email.value;
+    var senhaVar = in_senha.value;
+
+    if (emailVar == "" || senhaVar == "") {
+        cardErro.style.display = "block"
+        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        finalizarAguardar();
+        return false;
+    }
+    else {
+        setInterval(sumirMensagem, 5000)
+    }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+
+                setTimeout(function () {
+                    window.location = "./dashboard/grafico.html";
+                }, 1000); // apenas para exibir o loading
+
+            });
+
+        } else {
+
+            console.log("Houve um erro ao tentar realizar o login!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+                finalizarAguardar(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
+function sumirMensagem() {
+    cardErro.style.display = "none"
+}
+</script>
