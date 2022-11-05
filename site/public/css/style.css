@@ -126,12 +126,12 @@ body {
     justify-content: center;
     color: #AA9F00;
     font-weight: 700;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     background-color: #142F38;
     border-radius: 17px;
     padding: 0.85em 1.3em;
+    cursor: pointer;
 }
-
 
 /* 1ª sessão */
 section {
@@ -155,7 +155,7 @@ section {
     position: absolute;
     width: 18%;
     left: -5%;
-    top: 78%;
+    top: 71%;
     transform: rotate(-9.42deg);
 }
 
