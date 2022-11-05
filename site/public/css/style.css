@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400&display=swap');
+
+/* Scrollbar */
+    /* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #2e3192 #010005;
+}
+  
+    /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+}
+  
+*::-webkit-scrollbar-track {
+    background: #FADD9C;
+}
+  
+*::-webkit-scrollbar-thumb {
+    background: #f8b82dae;
+    border-radius: 10px;
+    border: 3px solid #FADD9C;
+}
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+/* Corpo da página */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(85.38deg, #EDEDE4 -23.38%, #F8F2EB 97.65%);
+}
+
+
+/* Cabeçalho */
+.header {
+    width: 100%;
+    padding-bottom: 3.3em;
+    background: #fbeaea33;
+}
+
+.header .container {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2em;
+}
+
+    /* Logo */
+.container .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 63px;
+}
+
+.logo span {
+    padding-left: 0.5em;
+    font-size: 26px;
+    font-weight: 700;
+    color: #142E38;
+}
+
+    /* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .list-item {
+    display: flex;
+    list-style: none;
+}
+
+.navbar .list-item li {
+    padding: 1em;
+}
+
+.navbar .list-item li a {
+    font-size: 1.2rem;
+    color: #142F38;
+}
+
+.a-destaque {
+    font-weight: 800;
+}
+
+.navbar .list-item li::after {
+    content: '';
+    width: 0;
+    height: 1.2px;
+    display: block;
+    background-color: #142F38;
+    transition: 0.7s;
+}
+
+.navbar .list-item li:hover::after {
+    width: 100%;
+}
+
+    /* Botão de login */
+.container .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #AA9F00;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background-color: #142F38;
+    border-radius: 17px;
+    padding: 0.85em 1.3em;
+    cursor: pointer;
+}
+
+/* 1ª sessão */
+section {
+    padding-left: 4em;
+}
+
+.background-img {
+    opacity: 35%; 
+    overflow: hidden;
+}
+
+    /* Imagens de flores no background */
+.background-img #img-flor {
+    position: absolute;
+    width: 13%;
+    left: 87%;
+    top: 7%;
+}
+
+.background-img #img-flor-folha {
+    position: absolute;
+    width: 18%;
+    left: -5%;
+    top: 71%;
+    transform: rotate(-9.42deg);
+}
+
+    /* Conteúdo de texto */
+.container .span-tag {
+    width: max-content;
+    background-color: #D5EEC6;
+    padding: 0.4em 1em;
+    border-radius: 50px;
+    color: #142E38;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.banner .container h1 {
+    width: 48%;
+    color: #142E38;
+    font-weight: 700;
+    font-size: 2.8em;
+    margin: 30px 0 15px 0;
+    line-height: 120%;
+}
+
+.container p {
+    width: 45%;
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+.container p strong {
+    color: #142E38;
+}
+
+.content-text #btn-bisbilhotar {
+    margin-top: 1.75rem;
+    font-size: 1.2em;
+}
+
+.banner .container .content-img {
+    position: absolute;
+    left: 56.9%;
+    top: 11%;
+}
+
+.content-img #mulher-meditando {
+    max-width: 93%;
+    max-height: 93%;
+    width: auto;
+    height: auto;
+    transition: 1.5s;
+}
+
+.content-img img:hover {
+    transform: translate(0, -8px);
+    transition: 1.2s; 
+}
+  
+/* 2ª Sessão */
+.quem-somos {
+    width: 100%;
+    margin-bottom: 5%;
+    padding-top: 16.5em;
+}
+
+    /* Background de Flores */
+.background-img #img-trio-flor {
+    position: absolute;
+    width: 22%;
+    left: 78%;
+    top: 91%;
+} 
+
+.background-img #img-flor-menor {
+    position: absolute;
+    width: 10%;
+    right: 90%;
+    top: 170%;
+    transform: rotate(180.42deg);
+}
+
+    /* Conteúdo de texto - Sobre nós */
+.quem-somos .container .content-text {
+    max-width: 65%;
+    width: 980px;
+    flex-wrap: wrap;
+    height: 891px;
+    position: relative;
+    left: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quem-somos .content-text h1 {
+    font-size: 2em;
+    color: #142E38;
+}
+
+.explicacao p, .porque-fazemos p {
+    text-align: justify;
+    width: 75%;
+    font-size: 1em;
+}
+
+.quem-somos .content-text, .explicacao, .valores, .porque-fazemos {
+    width: 88%;
+    padding-top: 2.2em;
+}
+
+.quem-somos .valores {
+    position: relative;
+    left: 10%;
+}
+
+.valores .lista-valores {
+    width: 45%;
+    columns: 2;
+    padding: 0 0 0 1.2em;
+    color: #142E38;
+    font-size: 1rem;
+}
+
+.quem-somos .porque-fazemos {
+    position: relative;
+    left: 20%;
+}
+
+.quem-somos #btn-sobre-nos {
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quem-somos .container .content-img {
+    position: absolute;
+    width: auto;
+    left: -2%;
+    top: 120%;
+}
+
+.quem-somos .content-img #garoto-meditando {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    transition: 1.5s;
+}
+
+
+/* Footer */
+footer {
+    background-color: #FADD9C;
+}
+
+.content-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    width: 60%;
+    height: 250px;
+    color: #142E38;
+}
+
+.content-footer img {
+    width: 100px;
+}
+
+.links .social-media, h2 {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.lista-links-footer {
+    list-style: none;
+    color: #142E38;
+    margin-bottom: 8px;
+    font-size: 0.90em;
+}
+
+.lista-links-footer li, a {
+    padding-bottom: 0.6em;
+    font-weight: 400;
+    color: #142E38;
+}
+
+.social-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.social-img img {
+    width: 30px;
+}
+
+.copyright p {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #142E38;
+    padding-bottom: 0.8em;
+}
