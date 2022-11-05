@@ -126,9 +126,13 @@ select max(duracao) as 'Duração máxima (em minutos)',
 		s.dtSessao as 'Data da sessão',
         concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do usuário',
         u.email
-			from usuario as u
-				join sessao as s on s.fkUsuario = u.idUsuario 
-					where idUsuario = 1;
+			from sessao as s
+				join usuario as u on s.fkUsuario = u.idUsuario;
+			
+            -- from usuario as u
+				-- join sessao as s on s.fkUsuario = u.idUsuario 
+					-- where idUsuario = 1
+                    ;
 	
 -- A MELHORAR | MUDAR PARA TODOS OS CLIENTES
 -- Somar a duração de todas as sessões realizadas por todos os clientes
@@ -137,8 +141,12 @@ select sum(duracao) as 'Soma da duração das sessões (em minutos)',
         concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do usuário',
         u.email
 			from usuario as u
-				join sessao as s on s.fkUsuario = u.idUsuario 
-					where idUsuario = 1;
+				left join sessao as s on s.fkUsuario = u.idUsuario and idSessao 
+					;
+                    -- where idUsuario = 1
+                    desc sessao;
+                    select * from sessao;
+                    select * from usuario;
                     
 -- Fazer a média da duração de todas as sessões realizadas por todos os clientes
 select round(avg(duracao), 2) as 'Média da duração das sessões (em minutos)',
