@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400&display=swap');
 
-/* Scrollbar */
-    /* Firefox */
-* {
-    scrollbar-width: auto;
-    scrollbar-color: #2e3192 #010005;
-}
-  
+/* Scrollbar */  
     /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: 16px;
@@ -41,14 +35,147 @@ body {
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(85.38deg, #EDEDE4 -23.38%, #F8F2EB 97.65%);
+    color: #142E38;
 }
 
+
+/* Ellipses do background */
+    /* Ellipse 1 */
+.div_backgroundBalls .div_Balls1 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: -80.66px;
+    top: -120.47px;
+    
+    background: rgb(250, 220, 156);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 2 */
+.div_backgroundBalls .div_Balls2 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 597px;
+    top: 310.38px;
+
+    background: rgb(247, 197, 189);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 3 */
+.div_backgroundBalls .div_Balls3 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 1153px;
+    top: 428.38px;
+
+    background: rgb(161, 177, 130);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 4 */
+.div_backgroundBalls .div_Balls4 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 145px;
+    top: 1048.38px;
+
+    background: rgb(161, 177, 130);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 5 */
+.div_backgroundBalls .div_Balls5 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 609px;
+    top: 1395.38px;
+
+    background: rgb(250, 220, 156);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 6 */
+.div_backgroundBalls .div_Balls6 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 1190px;
+    top: 1093.38px;
+
+    background: rgb(247, 197, 189);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 7 */
+.div_backgroundBalls .div_Balls7 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 0px;
+    top: 2116.38px;
+
+    background: rgb(247, 197, 189);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 8 */
+.div_backgroundBalls .div_Balls8 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 1163px;
+    top: 1886.38px;
+    
+    background: rgb(161, 177, 130);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+.div_allAbove {
+    z-index: 6;
+}
 
 /* Cabeçalho */
 .header {
     width: 100%;
-    padding-bottom: 3.3em;
-    background: #fbeaea33;
+    background: #fbeaea71;
+    z-index: 6; 
+}
+
+    /* Propriedade para deixar header fixo  */
+.sticky {
+    position: fixed;
+    /* top: 0; */
+    width: 100%;
+}
+
+.stickyBtn {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0;
 }
 
 .header .container {
@@ -73,6 +200,7 @@ body {
 
 .logo img {
     width: 63px;
+
 }
 
 .logo span {
@@ -139,12 +267,14 @@ section {
 }
 
 .background-img {
+    z-index: -1;
     opacity: 35%; 
     overflow: hidden;
 }
 
     /* Imagens de flores no background */
 .background-img #img-flor {
+    z-index: -1;
     position: absolute;
     width: 13%;
     left: 87%;
@@ -152,11 +282,19 @@ section {
 }
 
 .background-img #img-flor-folha {
+    z-index: -1;
     position: absolute;
     width: 18%;
     left: -5%;
     top: 71%;
     transform: rotate(-9.42deg);
+}
+
+.banner {
+    margin-top: 6.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
     /* Conteúdo de texto */
@@ -216,12 +354,12 @@ section {
 /* 2ª Sessão */
 .quem-somos {
     width: 100%;
-    margin-bottom: 5%;
-    padding-top: 16.5em;
+    padding-top: 16.7em;
 }
 
     /* Background de Flores */
 .background-img #img-trio-flor {
+    z-index: -1;
     position: absolute;
     width: 22%;
     left: 78%;
@@ -229,6 +367,7 @@ section {
 } 
 
 .background-img #img-flor-menor {
+    z-index: -1;
     position: absolute;
     width: 10%;
     right: 90%;
@@ -243,7 +382,7 @@ section {
     flex-wrap: wrap;
     height: 891px;
     position: relative;
-    left: 25%;
+    left: 27%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -256,13 +395,14 @@ section {
 
 .explicacao p, .porque-fazemos p {
     text-align: justify;
-    width: 75%;
-    font-size: 1em;
+    width: 80%;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 .quem-somos .content-text, .explicacao, .valores, .porque-fazemos {
-    width: 88%;
-    padding-top: 2.2em;
+    width: 83%;
+    padding-top: 3.2em;
 }
 
 .quem-somos .valores {
@@ -274,7 +414,6 @@ section {
     width: 45%;
     columns: 2;
     padding: 0 0 0 1.2em;
-    color: #142E38;
     font-size: 1rem;
 }
 
@@ -284,7 +423,7 @@ section {
 }
 
 .quem-somos #btn-sobre-nos {
-    margin-top: 2em;
+    margin-top: 2.2em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -306,8 +445,122 @@ section {
 }
 
 
+/* 3ª sessão - Funcionalidade */
+.funcionalidades {
+    z-index: 6;
+    width: 1520px;
+    height: 600px;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.funcionalidades .titulo {
+    display: flex;
+    justify-content: center;
+    color: #142E38;
+    font-weight: 700;
+    font-size: 1.8em;
+}
+
+
+    /* Conteúdo de Funcionalidades e Descrições  */
+.div_conteudo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 8em;
+    margin-top: 2em;
+}
+
+        /* Lista de Funcionalidades */
+.lista-funcionalidades {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-titulo h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #142E38;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.5em;
+}
+
+.lista-funcionalidades .func-lista-apoio,
+.func-player-musica,
+.func-temporizador,
+.func-dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-funcionalidades img {
+    width: 45%;
+}
+
+.lista-funcionalidades .func-lista-apoio img,
+.func-temporizador img {
+    padding-right: 5%;
+}
+
+.lista-funcionalidades .func-player-musica img,
+.func-dashboard img {
+    padding-left: 5%;
+}
+
+.lista-funcionalidades h3 {
+    font-size: 1.2em;
+    font-weight: 420;
+    color: #142E38;
+    display: flex;
+    text-align: center;
+}
+
+        /* Descrições das Funcionalidades */
+.descricoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.descricoes .desc-lista-apoio, 
+.desc-player-musica,
+.desc-temporizador,
+.desc-dashboard {
+    width: 62%;
+    padding: 1.2em 1.5em;
+    border-radius: 20px;
+    margin-top: 1em;
+    background: #F4E8CFCC;
+}
+
+.descricoes .desc-player-musica {
+    position: relative;
+    left: 10%;
+    background: #F7C5BD;
+}
+
+.descricoes .desc-temporizador {
+    background: #F4E8CFCC;
+}
+
+.descricoes .desc-dashboard {
+    position: relative;
+    left: 10%;
+    background: #A1B182CC;
+}
+
+
 /* Footer */
 footer {
+    margin-top: 4%;
     background-color: #FADD9C;
 }
 
