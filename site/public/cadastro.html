@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plumeria</title>
+
+    <script src="./js/functions.js"></script>
+    <script src="./js/cadastro.js"></script>
+
+    <link rel="icon" href="./assets/plumeria-icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+    <div class="div_backgroundBalls">
+        <div class="div_Balls1"></div>
+        <div class="div_Balls2"></div>
+    </div>
+
+    <div class="div_allAbove">
+        <!-- Cabeçalho + Navbar -->
+        <header class="header" id="header">
+            <div class="container">
+                <div class="logo" id="logo">
+                    <a href="index.html">
+                        <img src="assets/plumeria-icon.png" alt="icone de uma plumeria">
+                        <span class="nome-logo">Plumeria</span>
+                    </a> 
+                </div>
+    
+                <nav class="navbar">
+                    <ul class="list-item">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre-nos.html">Sobre nós</a></li>
+                        <li><a href="sobre-nos.html">Sobre mindfulness</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a class="a-destaque" href="cadastro.html">Cadastro</a></li>
+                    </ul>
+                </nav>
+    
+                <a id="btn-login" href="login.html"><button class="btn">Login</button></a>
+            </div>
+        </header>
+
+        <!-- 1ª sessão - Caixa formulário -->
+        <div class="banner ">
+            <div class="background-img">
+                <img id="img-flor" src="assets/flor-plumeria.svg" alt="flor de plumeria">
+                <img id="img-flor-folha" src="assets/flor-folha-plumeria.png" alt="flor de plumeria com folhas">
+            </div>
+
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+
+            <div class="container-formulario">
+                <div class="caixa-formulario">
+                    <h1>Cadastre-se!</h1>
+                    
+                    <p class="legenda-titulo">
+                        Crie uma conta gratuitamente
+                    </p>
+
+                    <div class="campo">
+                        <div class="campo-nome">
+                            <label class="tipo_campo" for="in_nome">Nome completo</label>
+                            
+                            <input id="in_nome" type="text" placeholder="Seu nome">
+                            
+                            <p id="msg_nome">Insira seu nome completo.</p>
+                        </div>
+
+                        <div class="campo-email">
+                            <label class="tipo_campo" for="in_email">E-mail</label>
+                            
+                            <input id="in_email" type="text" placeholder="meuemail@email.com">
+                            
+                            <p id="msg_email">Insira seu e-mail corretamente.</p>
+                        </div>
+
+                        <div class="campo-senha">
+                            <label class="tipo_campo" for="in_senha">Senha</label>
+                            
+                            <input id="in_senha" type="password" placeholder="******">
+                            
+                            <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" id="img_olho" alt="olho para ver senha"></button>
+                            
+                            <p id="msg_senha">Insira sua senha corretamente.</p>
+                        </div>
+                        
+                        <div class="campo-senhaConfirm">
+                            <label class="tipo_campo" 
+                            for="in_confrimacaoSenha">Confirmação da Senha</label>
+                            
+                            <input id="in_confirmacaoSenha" type="password" placeholder="******">
+                            
+                            <button class="btn-olho" onclick="verificarSenhaConfirmacao()"><img src="assets/hidden.png" id="img_olhoConfirm" alt="olho para ver senha"></button>
+                            
+                            <p id="msg_confirmacaoSenha">Insira sua confirmação de senha corretamente.</p>
+                        </div>
+
+                    </div>
+                    
+                    <button id="btn_entrar" class="btn" onclick="cadastrar()">Cadastrar</button>
+                    
+                    <div class="text-login">
+                        <p>
+                            Já possui conta? <a href="login.html">Entrar.</a>
+                        </p>
+                    </div>
+
+                    <!-- <div id="div_aguardar" class="loading-div">
+                        <img src="./assets/circle-loading.gif" id="loading-gif">
+                    </div> -->
+    
+                    <div id="div_erros_login">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="content-footer">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/plumeria-icon.png" alt="icone de uma plumeria">
+                    <span class="nome-logo-footer">Plumeria</span>
+                </a> 
+            </div>
+            
+            <div class="links">
+                <h2>Links</h2>
+                <ul class="lista-links-footer">
+                    <li><a href="sobre-nos.html">Sobre Nós</a></li>
+                    <li><a href="sobre-mindfulness.html">Sobre Mindfulness</a></li>
+                    <li><a href="termos.html">Termos de Serviço</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="social-media">
+                <h2>Redes Sociais</h2>
+                <div class="social-img">
+                    <a href="https://www.instagram.com/plumeria_app/"><img src="assets/instagram-logo.svg" alt=""></a>
+                    <a href="#"><img src="assets/facebook-logo.svg" alt=""></a>
+                    <a href="#"><img src="assets/whatsapp-logo.svg" alt=""></a>
+                    <a href="#"><img src="assets/twitter-logo.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>Copyright &copy; 2022 Plumeria - Todos os direitors reservados. Desenvolvido por Luiz Nison Filler.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

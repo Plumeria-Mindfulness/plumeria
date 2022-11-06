@@ -1,0 +1,142 @@
+/* Ellipses do background */
+    /* Ellipse 1 */
+.div_backgroundBalls .div_Balls1 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 50.66px;
+    top: 115.47px;
+    
+    background: rgb(250, 220, 156);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 2 */
+.div_backgroundBalls .div_Balls2 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 1143px;
+    top: 428.38px;
+
+    background: rgb(161, 177, 130);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+.alerta_erro{
+    display: flex;
+    justify-content: flex-end;
+}
+  
+.card_erro #mensagem_erro{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.div_allAbove {
+    z-index: 6;
+}
+
+/* 1ª sessão - Caixa formulário */
+.banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5.8em;
+    margin-top: 3.3em;
+}
+
+.legenda-titulo {
+    width: 100%;
+}
+
+.tipo_campo {
+    display: flex;
+    align-items: flex-start;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 1.5em;
+    padding: 0 0 20px 0;
+}
+
+.campo .campo-email {
+    padding: 0;
+}
+
+.campo-nome,
+.campo-email,
+.campo-senha,
+.campo-senhaConfirm {
+    padding-bottom: 2% !important;
+}
+
+.campo input {
+    padding: 0.7em 0;
+    padding-left: 1.2em;
+    font-size: 0.9em;
+    font-weight: 300;
+    width: 360px;
+    border-radius: 10px;
+    color: #0a181d;
+    background-color: #d9d9d9a6;
+}
+
+#img_olho {
+    position: absolute;
+    left: 908px;
+    top: 490px;
+    cursor: pointer;
+    background-color: #b4b4b4b4;
+    border-radius: 5px;
+    z-index: 6;
+    height: 16px;
+    width: 16px;
+} 
+
+#img_olhoConfirm {
+    position: absolute;
+    left: 908px;
+    top: 567px;
+    cursor: pointer;
+    background-color: #b4b4b4b4;
+    border-radius: 5px;
+    z-index: 6;
+    height: 16px;
+    width: 16px;
+}
+
+/* RETIRAR O DISPLAY NONE - UTILIZADO PARA TESTE DE VALIDAÇÃO */
+.campo p {
+    display: none;
+    text-align: start;
+    font-size: 12px;
+    color: red;
+    padding-top: 0.3em;
+}
+
+.text-login {
+    text-align: center;
+    padding: 1em 0;
+} 
+
+.text-login p {
+    color: #0B0333;
+    padding: 2px 0;
+    font-size: 0.7rem;
+}
+
+.text-login p a { 
+    color: #0B0333;
+    text-decoration: underline;
+    font-size: 0.7rem;
+}
