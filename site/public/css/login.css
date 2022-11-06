@@ -1,3 +1,33 @@
+/* Ellipses do background */
+    /* Ellipse 1 */
+.div_backgroundBalls .div_Balls1 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 50.66px;
+    top: 115.47px;
+    
+    background: rgb(250, 220, 156);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 2 */
+.div_backgroundBalls .div_Balls2 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    left: 1143px;
+    top: 428.38px;
+
+    background: rgb(161, 177, 130);
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+/* 1ª Sessão */
 .banner {
     width: 100%;
     display: flex;
@@ -40,7 +70,6 @@
 .caixa-formulario .campo-email, .campo-senha {
     display: flex;
     flex-direction: column;
-
 }
 
 .caixa-formulario .campo label {
@@ -62,11 +91,27 @@
 .campo input {
     padding: 0.7em 0;
     padding-left: 1.2em;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    font-weight: 300;
     width: 360px;
     border-radius: 10px;
     color: #0a181d;
-    background-color: #d9d9d9a6;;
+    background-color: #d9d9d9a6;
+}
+
+#img_olho {
+    position: absolute;
+    left: 938px;
+    top: 500px;
+    cursor: pointer;
+    background-color: #dbdbdb;
+    border-radius: 5px;
+    z-index: 6;
+} 
+
+#img_olho {
+    height: 14px;
+    width: 14px;
 }
 
 #msg-email, #msg-senha p {
@@ -79,7 +124,7 @@
     color: red;
 }
 
-.caixa-formulario button {
+#btn-entrar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,12 +139,12 @@
     transition: 0.8s;
 }
 
-.caixa-formulario button:hover {
+#btn-entrar:hover {
     background-color: #142F38;
     transform: scale(1.1, 1.1);
 }
 
-.caixa-formulario button:active {
+#btn-entrar:active {
     transform: scale(0.9, 0.9);
 }
 
@@ -141,3 +186,4 @@
     transform: translate(0, -8px);
     transition: 1.5s; 
 }
+
