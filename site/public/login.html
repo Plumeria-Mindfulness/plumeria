@@ -9,7 +9,6 @@
     <title>Plumeria</title>
 
     <script src="./js/functions.js"></script>
-    <script src="./js/login.js"></script>
 
     <link rel="icon" href="./assets/plumeria-icon.png">
     <link rel="stylesheet" href="css/style.css">
@@ -32,7 +31,6 @@
                         <img src="assets/plumeria-icon.png" alt="icone de uma plumeria">
                         <span class="nome-logo">Plumeria</span>
                     </a> 
-                    
                 </div>
     
                 <nav class="navbar">
@@ -40,10 +38,9 @@
                         <li><a href="index.html">Início</a></li>
                         <li><a href="sobre-nos.html">Sobre nós</a></li>
                         <li><a href="sobre-nos.html">Sobre mindfulness</a></li>
-                        <li><a href="cadastro.html">Contato</a></li>
+                        <li><a href="contato.html">Contato</a></li>
                         <li><a href="cadastro.html">Cadastro</a></li>
                     </ul>
-    
                 </nav>
     
                 <a id="btn-login" href="login.html"><button class="btn">Login</button></a>
@@ -64,7 +61,7 @@
                 <img id="mente-fluida" src="assets/mente-fluida.svg" alt="pessoa meditando com mente fluida">
             </div>
     
-            <div class="container-login">
+            <div class="container-formulario">
               <div class="caixa-formulario">
                     <h1>Seja bem-vindo!</h1>
     
@@ -75,26 +72,32 @@
                     <div class="campo">
                         <div class="campo-email">
                             <label for="in_email">E-mail</label>
+
                             <input placeholder="Digite seu e-mail" type="email" id="in_email">
+
                             <p id="msg_email"></p>
                         </div>
             
                         <div class="campo-senha">
                             <label for="in_senha">Senha</label>
+
                             <div class="olho">
                                 <input placeholder="Digite sua senha" type="password" id="in_senha">
+
                                 <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" id="img_olho" alt="olho para ver senha"></button>
                             </div>
+
                             <p id="msg_senha"></p>
                         </div>
                     </div>
         
-                    <button id="btn-entrar" class="btn" onclick="entrar()">Entrar</button>
+                    <button id="btn_entrar" class="btn" onclick="entrar()">Entrar</button>
         
                     <div class="text-login">
                         <p>
                             Esqueci minha <a href="#">senha.</a>
                         </p>
+                        
                         <p>
                             Não possui conta? <a href="cadastro.html">Cadastre-se!</a>
                         </p>
@@ -142,74 +145,3 @@
     </div>
 </body>
 </html>
-
-<script>
-function entrar() {
-    aguardar();
-
-    var emailVar = in_email.value;
-    var senhaVar = in_senha.value;
-
-    if (emailVar == "" || senhaVar == "") {
-        cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        finalizarAguardar();
-        return false;
-    }
-    else {
-        setInterval(sumirMensagem, 5000)
-    }
-
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
-
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            emailServer: emailVar,
-            senhaServer: senhaVar
-        })
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
-
-                setTimeout(function () {
-                    window.location = "./dashboard/grafico.html";
-                }, 1000); // apenas para exibir o loading
-
-            });
-
-        } else {
-
-            console.log("Houve um erro ao tentar realizar o login!");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-                finalizarAguardar(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-
-    return false;
-}
-
-function sumirMensagem() {
-    cardErro.style.display = "none"
-}
-</script>

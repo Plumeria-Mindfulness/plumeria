@@ -35,16 +35,17 @@
     justify-content: center;
     text-align: center;
     margin-bottom: 5.8em;
+    margin-top: 3.3em;
 }
 
-.banner .container-login {
+.container-formulario {
     width: 40%;
     background-color: #f7e0ab61;
     border-radius: 25px;
     border: #0f2b36 solid;
 }
 
-.container-login .caixa-formulario {
+.caixa-formulario {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -52,14 +53,14 @@
     justify-content: center;
 }
 
-.container-login .caixa-formulario h1 {
+.caixa-formulario h1 {
     color: #142E38;
     font-size: 2.2em;
     font-weight: 700;
     padding-top: 0.8em;
 }
 
-.caixa-formulario .legenda-titulo {
+.legenda-titulo {
     color: #142E38;
     text-align: center;
     width: 50%;
@@ -102,29 +103,27 @@
 #img_olho {
     position: absolute;
     left: 938px;
-    top: 500px;
+    top: 452px;
     cursor: pointer;
-    background-color: #dbdbdb;
+    background-color: #b4b4b4b4;
+    width: 10px;
     border-radius: 5px;
     z-index: 6;
+    height: 16px;
+    width: 16px;
 } 
 
-#img_olho {
-    height: 14px;
-    width: 14px;
-}
-
-#msg-email, #msg-senha p {
+#msg_email p, #msg_senha p {
     font-size: 12px;
     color: red;
     padding: 5px 15px;
 }
 
-#msg-email, #msg-senha strong {
+#msg_email strong, #msg_senha strong {
     color: red;
 }
 
-#btn-entrar {
+#btn_entrar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -139,12 +138,12 @@
     transition: 0.8s;
 }
 
-#btn-entrar:hover {
+#btn_entrar:hover {
     background-color: #142F38;
     transform: scale(1.1, 1.1);
 }
 
-#btn-entrar:active {
+#btn_entrar:active {
     transform: scale(0.9, 0.9);
 }
 
@@ -186,4 +185,3 @@
     transform: translate(0, -8px);
     transition: 1.5s; 
 }
-
