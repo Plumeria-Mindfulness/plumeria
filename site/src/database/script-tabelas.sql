@@ -1,8 +1,6 @@
 -- OBSERVAÇÕES:
--- ? Não estou conseguindo realizar o seguinte SELECT: 'Selecionar o nome, idade, os dados das sessões e os dados das mensagem daquelas que apenas foram avaliadas como 'muito ruim''
--- ? Não estou conseguindo realizar o SELECT de "Selecionar apenas os usuários que tiveram uma média de duração de sessões maior que 100"
--- ? Não estou conseguindo realizar o SELECT de "Selecionar quais foram as avaliações de sessões que são diferentes de 'excelente'"
--- ! Possibilidade de criar uma constraint que validará a senha do usuário
+-- ! Possibilidade de criar uma constraint que validará a senha do usuário;
+-- ! Verificação de senha usando "select sha2('senhaSegura', 512);"
 
 -- Criação de banco de dados
 create database Plumeria;
@@ -24,7 +22,7 @@ create table usuario (
 );
 
 create table sessao (
-    idSessao int auto_increment,
+    idSessao int,
     dtSessao date not null,
     duracao int not null, -- O dado da duração é transformado em minutos por uma função no JavaScript
     fkUsuario int not null, constraint fkUsuarioSessao foreign key (fkUsuario) 
@@ -33,7 +31,7 @@ create table sessao (
 );
 
 create table mensagem (
-    idMensagem int auto_increment,
+    idMensagem int,
     descricao varchar(1200),
     avaliacao varchar(10) not null, 
 		constraint chkAvaliacao check (avaliacao = 'excelente' or avaliacao = 'muito bom' or avaliacao ='bom' or avaliacao ='ruim' or avaliacao ='muito ruim'),
@@ -55,20 +53,20 @@ insert into usuario values
 	(null, 'Giulia', null, '1998-01-15', 'giulia@hotmail.com', '123abcDEF@!');
 
 insert into sessao values
-	(null, '2022-10-28', 30, 1),
-	(null, '2022-11-01', 40, 1),
-	(null, '2022-11-01', 60, 1),
-	(null, '2022-10-30', 20, 2),
-	(null, '2022-10-31', 40, 2),
-	(null, '2022-11-01', 30, 2);
+	(1, '2022-10-28', 30, 1),
+	(2, '2022-11-01', 40, 1),
+	(3, '2022-11-01', 60, 1),
+	(1, '2022-10-30', 20, 2),
+	(2, '2022-10-31', 40, 2),
+	(3, '2022-11-01', 30, 2);
 
 insert into mensagem values 
-	(null, 'Sessão bem intensa, mas com certeza me ajudou bastante a digerir algumas coisas que já estavam há muito tempo por aqui.', 'muito bom', 1, 1),
-	(null, 'Hoje a sessão foi curta, mas bem profeitosa.', 'bom', 2, 1),
-	(null, 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'excelente', 3, 1),
-	(null, 'Espaço muito bom que consegui criar hoje para refletir sobre uma dificuldade no trabalho.', 'muito bom', 1, 2),
-	(null, 'Foi um pouco difícil de controlar a ansiedade hoje. Preciso conversa e levar isso à terapia.', 'muito ruim', 2, 2),
-	(null, 'Ai... que momento bom e que experiência autocompassiva!', 'excelente', 3, 2);
+	(1, 'Sessão bem intensa, mas com certeza me ajudou bastante a digerir algumas coisas que já estavam há muito tempo por aqui.', 'muito bom', 1, 1),
+	(2, 'Hoje a sessão foi curta, mas bem profeitosa.', 'bom', 2, 1),
+	(3, 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'excelente', 3, 1),
+	(1, 'Espaço muito bom que consegui criar hoje para refletir sobre uma dificuldade no trabalho.', 'muito bom', 1, 2),
+	(2, 'Foi um pouco difícil de controlar a ansiedade hoje. Preciso conversa e levar isso à terapia.', 'muito ruim', 2, 2),
+	(3, 'Ai... que momento bom e que experiência autocompassiva!', 'excelente', 3, 2);
 
 -- Selecionar as tabelas isoladamente
 select * from usuario;
@@ -101,7 +99,7 @@ select concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do u
 					where u.idUsuario = 1
 						order by dtSessao desc;
                     
--- Selecionar o nome, idade, os dados das sessões e os dados das mensagem daquelas que apenas foram avaliadas como 'muito ruim'
+-- Selecionar o nome, idade, os dados das sessões e os dados das mensagens daquelas que apenas foram avaliadas como 'muito ruim'
 select u.nome,
 		timestampdiff(year, u.dtNascimento, curdate()) as idade,
         s.dtSessao,
@@ -112,41 +110,32 @@ select u.nome,
 				join sessao as s on s.fkUsuario = u.idUsuario
 					join mensagem as m on m.fkSessao = s.idSessao and m.fkUsuario = u.idUsuario
 						where m.avaliacao = 'muito ruim';
-
--- Conta a quantidade de sessões que um usuário realizou
+                        
+-- Somar a quantidade de sessões que um usuário realizou no geral
 select u.nome,
-		count(idSessao) 
+		count(idSessao) as "Total de sessões"
 			from usuario as u
 				join sessao on fkUsuario = u.idUsuario
-					where idUsuario = 1;
+					group by u.nome;
                     
 -- Indicar quais foram a duração máxima e mínima de sessões de um cliente específico e todos seus dados
 select max(duracao) as 'Duração máxima (em minutos)',
 		min(duracao) as 'Duração mínima  (em minutos)',
 		s.dtSessao as 'Data da sessão',
         concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do usuário',
-        u.email
-			from sessao as s
-				join usuario as u on s.fkUsuario = u.idUsuario;
-			
-            -- from usuario as u
-				-- join sessao as s on s.fkUsuario = u.idUsuario 
-					-- where idUsuario = 1
-                    ;
-	
--- A MELHORAR | MUDAR PARA TODOS OS CLIENTES
--- Somar a duração de todas as sessões realizadas por todos os clientes
+        u.email as 'E-mail'
+			from sessao as s 
+				join usuario as u on s.fkUsuario = u.idUsuario
+					group by u.nome;
+
+-- Somar a duração de todas as sessões realizadas por cada cliente
 select sum(duracao) as 'Soma da duração das sessões (em minutos)',
 		s.dtSessao as 'Data da sessão',
         concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do usuário',
         u.email
 			from usuario as u
-				left join sessao as s on s.fkUsuario = u.idUsuario and idSessao 
-					;
-                    -- where idUsuario = 1
-                    desc sessao;
-                    select * from sessao;
-                    select * from usuario;
+				join sessao as s on s.fkUsuario = u.idUsuario and idSessao
+					group by nome;
                     
 -- Fazer a média da duração de todas as sessões realizadas por todos os clientes
 select round(avg(duracao), 2) as 'Média da duração das sessões (em minutos)',
@@ -154,23 +143,15 @@ select round(avg(duracao), 2) as 'Média da duração das sessões (em minutos)'
         concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do usuário',
         u.email
 			from usuario as u
-				join sessao as s on s.fkUsuario = u.idUsuario 
-					where idUsuario = 1;
-
--- Selecionar apenas os usuários que tiveram uma média de duração de sessões maior que 100
-
-
-
-				
+				join sessao as s on s.fkUsuario = u.idUsuario
+					group by u.nome;
 
 -- Selecionar quais são as durações de sessão sem repetições e contar quantas durações não se repetem
 select distinct duracao from sessao;
 select count(distinct duracao) from sessao;
 
 -- Selecionar quais foram as avaliações de sessões que são diferentes de 'excelente'
-
-
-
+select distinct avaliacao from mensagem where avaliacao  <> 'excelente';
 
 -- Calcular a idade dos usuários
 -- Foi utilizada a função TIMESTAMPDIFF() para retornar um valor após uma operação de subtração entre o dado do atributo 'dtNascimento' com o CURDATE(), função essa que retorna a data atual
