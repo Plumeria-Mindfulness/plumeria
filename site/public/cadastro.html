@@ -10,7 +10,7 @@
 
     <script src="./js/funcoes.js"></script>
     <script src="./js/cadastro.js"></script>
-
+    
     <link rel="icon" href="./assets/plumeria-icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
@@ -39,8 +39,7 @@
                     <ul class="list-item">
                         <li><a href="index.html">Início</a></li>
                         <li><a href="sobre-nos.html">Sobre nós</a></li>
-                        <li><a href="sobre-nos.html">Sobre mindfulness</a></li>
-                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="sobre-mindfulness.html">Sobre mindfulness</a></li>
                         <li><a class="a-destaque" href="cadastro.html">Cadastro</a></li>
                     </ul>
                 </nav>
@@ -90,21 +89,25 @@
                         <div class="campo-senha">
                             <label class="tipo_campo" for="in_senha">Senha</label>
                             
-                            <input id="in_senha" type="password" placeholder="******">
-                            
-                            <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" id="img_olho" alt="olho para ver senha"></button>
+                            <div class="icone-input">
+                                <input id="in_senha" type="password" placeholder="******">
+                                
+                                <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" class="img_olho" alt="olho para ver senha"></button>
+                            </div>
                             
                             <p id="msg_senha">Insira sua senha corretamente.</p>
                         </div>
                         
-                        <div class="campo-senhaConfirm">
+                        <div class="campo-senha">
                             <label class="tipo_campo" 
                             for="in_confrimacaoSenha">Confirmação da Senha</label>
                             
-                            <input id="in_confirmacaoSenha" type="password" placeholder="******">
-                            
-                            <button class="btn-olho" onclick="verificarSenhaConfirmacao()"><img src="assets/hidden.png" id="img_olhoConfirm" alt="olho para ver senha"></button>
-                            
+                            <div class="icone-input">
+                                <input id="in_confirmacaoSenha" type="password" placeholder="******">
+                                
+                                <button class="btn-olho" onclick="verificarSenhaConfirmacao()"><img src="assets/hidden.png" class="img_olho" alt="olho para ver senha"></button>
+                            </div>
+                                                        
                             <p id="msg_confirmacaoSenha">Insira sua confirmação de senha corretamente.</p>
                         </div>
 
