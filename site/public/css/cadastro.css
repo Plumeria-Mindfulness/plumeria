@@ -73,6 +73,10 @@
     padding: 0;
 }
 
+#in_nome {
+    display: flex;
+}
+
 .campo-nome,
 .campo-email,
 .campo-senha,
@@ -91,10 +95,16 @@
     background-color: #d9d9d9a6;
 }
 
-#img_olho {
-    position: absolute;
-    left: 908px;
-    top: 490px;
+.icone-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_olho {
+    position: relative;
+    right: 25px;
     cursor: pointer;
     background-color: #b4b4b4b4;
     border-radius: 5px;
@@ -103,17 +113,10 @@
     width: 16px;
 } 
 
-#img_olhoConfirm {
-    position: absolute;
-    left: 908px;
-    top: 567px;
-    cursor: pointer;
-    background-color: #b4b4b4b4;
-    border-radius: 5px;
-    z-index: 6;
-    height: 16px;
-    width: 16px;
+.btn-olho {
+    background: none;
 }
+
 
 /* RETIRAR O DISPLAY NONE - UTILIZADO PARA TESTE DE VALIDAÇÃO */
 .campo p {

@@ -48,7 +48,7 @@ body {
     left: -80.66px;
     top: -120.47px;
     
-    background: rgb(250, 220, 156);
+    background: #fadc9c;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
@@ -62,7 +62,7 @@ body {
     left: 597px;
     top: 310.38px;
 
-    background: rgb(247, 197, 189);
+    background: #f7c5bd;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
@@ -76,7 +76,7 @@ body {
     left: 1153px;
     top: 428.38px;
 
-    background: rgb(161, 177, 130);
+    background: #a1b182;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
@@ -87,10 +87,10 @@ body {
     position: absolute;
     width: 320px;
     height: 320px;
-    left: 145px;
+    left: 55px;
     top: 1048.38px;
 
-    background: rgb(161, 177, 130);
+    background: #fadc9c;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
@@ -102,9 +102,9 @@ body {
     width: 320px;
     height: 320px;
     left: 609px;
-    top: 1395.38px;
+    top: 1515.38px;
 
-    background: rgb(250, 220, 156);
+    background: #f7c5bd;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
@@ -118,7 +118,7 @@ body {
     left: 1190px;
     top: 1093.38px;
 
-    background: rgb(247, 197, 189);
+    background: #f7c5bd;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
@@ -129,10 +129,10 @@ body {
     position: absolute;
     width: 320px;
     height: 320px;
-    left: 0px;
-    top: 2116.38px;
+    left: 190px;
+    top: 1986.38px;
 
-    background: rgb(247, 197, 189);
+    background: #a1b182;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
@@ -144,11 +144,52 @@ body {
     width: 320px;
     height: 320px;
     left: 1163px;
-    top: 1886.38px;
+    top: 2306.38px;
     
-    background: rgb(161, 177, 130);
+    background: #fadc9c;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
 
+    /* Ellipse 9 */
+.div_Balls9 {
+    position: absolute;
+    width: 507.33px;
+    height: 507.33px;
+    left: -420px;
+    top: 3032.47px;
+    
+    background: #fadd9cd4;
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 10 */
+.div_Balls10 {
+    position: absolute;
+    width: 507.33px;
+    height: 507.33px;
+    left: 511px;
+    top: 2275.47px;
+    
+    background: #a1b1826e;
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
+    z-index: -1;
+    filter: blur(118.812px);
+}
+
+    /* Ellipse 11 */
+.div_Balls11 {
+    position: absolute;
+    width: 537px;
+    height: 537px;
+    left: 998px;
+    top: 2954.47px;
+    
+    background: #f7c5bdd4;
+    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
 }
@@ -351,10 +392,108 @@ section {
     transition: 1.2s; 
 }
   
+
+/* 2ª Sessão - História e Idealizador*/
+.quem-sou-eu {
+    width: 100%;
+    height: 150%;
+    margin-top: 22.7em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.identifica {
+    display: flex;
+    flex-direction: column;
+}
+
+.identifica h1 {
+    text-decoration: underline;
+    font-size: 2em;
+    color: #142E38;
+}
+
+#foto-quem-somos {
+    width: 293px;
+    height: 352px;
+}
+
+.content-text-sobre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.historia,
+.idealizador {
+    width: 80%;
+    max-width: max-content;
+    padding: 2%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.historia {
+    position: relative;
+    left: -4%;
+    background-color: #b2b78f82;
+    max-width: max-content;
+    margin-bottom: 2em;
+}
+
+.content-text-sobre span {
+    font-weight: bold;
+}
+
+#span-nome-plumeria {
+    color: #FFB357;
+}
+
+#span-dev {
+    color: #065C77;
+}
+
+#span-cafe {
+    color: #2D1301;
+}
+
+#span-amizade {
+    color: #8C8708;
+}
+
+#span-natureza {
+    color: #072D01;
+}
+
+#span-fotografar {
+    color: #444644;
+}
+
+.idealizador {
+    background-color: #f6e0afed;
+    position: relative;
+    left: 2%;
+}
+
+.content-text-sobre h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #142E38;
+}
+
+.content-text-sobre p {
+    text-align: justify;
+}
+
+
 /* 2ª Sessão */
 .quem-somos {
     width: 100%;
-    padding-top: 16.7em;
+    padding-top: 8.7em;
 }
 
     /* Background de Flores */
@@ -363,7 +502,7 @@ section {
     position: absolute;
     width: 22%;
     left: 78%;
-    top: 91%;
+    top: 221%;
 } 
 
 .background-img #img-flor-menor {
@@ -371,7 +510,7 @@ section {
     position: absolute;
     width: 10%;
     right: 90%;
-    top: 170%;
+    top: 290%;
     transform: rotate(180.42deg);
 }
 
@@ -433,7 +572,7 @@ section {
     position: absolute;
     width: auto;
     left: -2%;
-    top: 120%;
+    top: 240%;
 }
 
 .quem-somos .content-img #garoto-meditando {
@@ -566,10 +705,10 @@ footer {
 
 .content-footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     margin: auto;
-    width: 60%;
+    width: 100%;
     height: 250px;
     color: #142E38;
 }

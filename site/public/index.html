@@ -8,11 +8,12 @@
 
     <title>Plumeria</title>
 
-    <script src="./js/functions.js"></script>
+    <script src="./js/funcoes.js"></script>
 
     <link rel="icon" href="./assets/plumeria-icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
 <body>
@@ -26,6 +27,9 @@
         <div class="div_Balls6"></div>
         <div class="div_Balls7"></div>
         <div class="div_Balls8"></div>
+        <div class="div_Balls9"></div>
+        <div class="div_Balls10"></div>
+        <div class="div_Balls11"></div>
     </div>
 
     <div class="div_allAbove">
@@ -43,8 +47,7 @@
                     <ul class="list-item">
                         <li><a class="a-destaque" href="index.html">Início</a></li>
                         <li><a href="sobre-nos.html">Sobre nós</a></li>
-                        <li><a href="sobre-nos.html">Sobre mindfulness</a></li>
-                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="sobre-mindfulness.html">Sobre mindfulness</a></li>
                         <li><a href="cadastro.html">Cadastro</a></li>
                     </ul>
                 </nav>
@@ -81,6 +84,40 @@
                 </div>
             </div>
         </section>
+
+        <!-- 2ª sessão - Quem somos -->
+        <section class="quem-sou-eu">
+            <div class="identifica">
+                <h1>Quem somos?</h1>
+
+                <img id="foto-quem-somos" src="../public/assets/foto-quem-somos.svg" alt="foto do Luiz Nison Filler">
+            </div>
+
+            <div class="content-text-sobre">
+                <div class="historia">
+                    <h2>Um pouco de história</h2>
+    
+                    <p>
+                        A <span id="span-nome-plumeria">Plumeria</span> nasceu a partir da necessidade de aliar tecnologia com práticas de mindfulness, buscando criar um espaço no qual houvesse harmonia por meio da combinação de música, lista de apoio e timers.
+                        <br> <br>
+                        O projeto foi idealizado e desenolvido pelo Luiz Nison Filler, psciólogo, pesquisador e, agora, desenvolvedor! Baseado em suas experiências pelas práticas de mindfulness, o Luiz examinou suas dificuldades e identificou algumas carências que perpassou durante suas jornadas por algumas aplicações.
+                        <br> <br>
+                        E, assim, surgiu a Plumeria. Um recanto calmo, aconchegante e elegante, feito para você e por você!
+                    </p>
+                </div>
+    
+                <div class="idealizador">
+                    <h2>Um pouco sobre o idealizador</h2>
+    
+                    <p>
+                        Natural de São Paulo, o <span id="span-dev">dev</span>, que também é psicólogo e cientista comportamental adora tirar um tempo para tomar um <span id="span-cafe">café</span>, desfrutar de boas <span id="span-amizade">amizades</span>, se aventurar pela <span id="span-natureza">natureza</span> e <span id="span-fotografar">fotografar</span> o mundo a fora.
+                        <br> <br>
+                        A busca pelo conhecimento e a inovação estão em suas veias, nutrindo a Plumeria, e sua paixão, fragrância e dedicação sustentam sua beleza única mesmo em tempos  pungentes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
     
         <!-- 2ª sessão - Quem somos -->
         <section class="quem-somos">
@@ -92,7 +129,7 @@
             <div class="container">
                 <div class="content-text">
                     <div class="explicacao">
-                        <h1>O QUE É A PLUMERIA?</h1>
+                        <h1>O que é a Plumeria?</h1>
             
                         <p>
                             Somos uma empresa que visa transmitir conhecimento acerca do mindfulness e suas práticas. Ademais, aspiramos ajudar as pessoas a encontrar um espaço zen para praticarem autocuidado, conseguindo meditar e se reconectar com seu self.
@@ -100,7 +137,7 @@
                     </div>
             
                     <div class="valores">
-                        <h1>NOSSOS VALORES SÃO:</h1>
+                        <h1>Nossos valores são:</h1>
             
                         
                         <ul class="lista-valores">
@@ -114,7 +151,7 @@
                     </div>
             
                     <div class="porque-fazemos">
-                        <h1>POR QUE FAZEMOS O QUE FAZEMOS?</h1>
+                        <h1>Por que fazemos o que fazemos?</h1>
             
                         <p>
                             Entendemos a importância e os benefícios globais à saúde física e mental que um espaço acolhedor pode fornecer. 
@@ -122,8 +159,6 @@
                             Também, reconhecemos o valor de, conjuntamente, transmitir conhecimento de práticas conhecidas e, assim, reduzir os possíveis obstáculos nesta jornada de autoconhecimento e autocuidado. 
                         </p>
                     </div>
-                    
-                    <a href="sobre-nos.html"><button class="btn" id="btn-sobre-nos">Sobre nós</button></a>
                 </div>
     
                 <div class="content-img">
@@ -141,7 +176,7 @@
             <div class="div_conteudo">
                 <div class="lista-funcionalidades">
                     <div class="sub-titulo">
-                        <h2>FUNCIONALIDADES CUSTOMIZÁVEIS</h2>
+                        <h2>Funcionalidades customizáveis</h2>
                     </div>
     
                     <div class="func-lista-apoio">
@@ -167,7 +202,7 @@
 
                 <div class="descricoes">
                     <div class="sub-titulo">
-                        <h2>BREVE DESCRIÇÃO</h2>
+                        <h2>Breve descrição</h2>
                     </div>
 
                     <div class="desc-lista-apoio">
@@ -244,3 +279,64 @@
     </div>
 </body>
 </html>
+
+<script>
+    ScrollReveal().reveal('.content-text',{
+        duration: 1000,
+        distance: "200px",
+    })
+
+    ScrollReveal().reveal('.historia',{
+        duration: 1000,
+        distance: "200px",
+        origin: "left",
+    })
+
+    ScrollReveal().reveal('.idealizador',{
+        duration: 1000,
+        distance: "200px",
+        origin: "left",
+        delay: 120,
+    })
+
+    ScrollReveal().reveal('.funcionalidades',{
+        duration: 1000,
+        distance: "200px",
+        origin: "left"
+    })
+
+    ScrollReveal().reveal('.descricoes',{
+        duration: 1000,
+        distance: "200px",
+        origin: "left",
+        delay: 800,
+    })
+
+    ScrollReveal().reveal('.desc-lista-apoio',{
+        duration: 1000,
+        distance: "200px",
+        origin: "left",
+    })
+
+    ScrollReveal().reveal('.desc-player-musica',{
+        duration: 1000,
+        distance: "200px",
+        origin: "left",
+        delay: 200
+    })
+
+    ScrollReveal().reveal('.desc-temporizador',{
+        duration: 1000,
+        distance: "200px",
+        origin: "left",
+        delay: 400
+    }) 
+
+    ScrollReveal().reveal('.desc-dashboard',{
+        duration: 1000,
+        distance: "200px",
+        origin: "left",
+        delay: 600
+    }) 
+    
+</script>
