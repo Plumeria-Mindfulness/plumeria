@@ -753,9 +753,9 @@ footer {
 .alerta_erro{
     display: flex;
     justify-content: center;
-  }
-  
-  .card_erro {
+}
+
+.card_erro {
     display: none;
     background-color: #f7e9cc;
     color: black;
@@ -765,23 +765,31 @@ footer {
     border: #A1B182 3px solid;
     padding: 25px;
     margin-right: 10%;
-  }
-  
-  .card_erro #mensagem_erro{
+}
+
+.card_erro #mensagem_erro{
     display: flex;
     text-align: justify;
     align-items: center;
     font-weight: 500;
     font-size: 1rem;
-  }
+}
 
-  .loading-div {
+.loading-div {
     width: 50px;
     margin: auto;
     display: none;
-  }
-  
-  .loading-div img {
+}
+
+.loading-div img {
     height: 50px;
     width: 50px;
-  }
+}
+
+.div_errosLogin {
+    color: #142E38;
+    text-align: center;
+    font-size: 0.9em;
+    padding-top: 0.2em;
+    padding-bottom: 0.6em;
+}

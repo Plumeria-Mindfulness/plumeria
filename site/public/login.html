@@ -13,6 +13,7 @@
     <link rel="icon" href="./assets/plumeria-icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/cadastro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
@@ -79,20 +80,18 @@
                             <label for="in_email">E-mail</label>
 
                             <input placeholder="Digite seu e-mail" type="email" id="in_email">
-
-                            <p id="msg_email"></p>
                         </div>
             
                         <div class="campo-senha">
                             <label for="in_senha">Senha</label>
 
-                            <div class="olho">
-                                <input placeholder="Digite sua senha" type="password" id="in_senha">
-
-                                <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" id="img_olho" alt="olho para ver senha"></button>
+                            <div class="icone-input">
+                                <div class="olho">
+                                    <input placeholder="Digite sua senha" type="password" id="in_senha">
+    
+                                    <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" class="img_olho" id="img_olho" alt="olho para ver senha"></button>
+                                </div>
                             </div>
-
-                            <p id="msg_senha"></p>
                         </div>
                     </div>
         
@@ -112,7 +111,7 @@
                         <img src="./assets/circle-loading.gif" id="loading-gif">
                     </div>
     
-                    <div id="div_erros_login">
+                    <div class="div_errosLogin" id="div_erros_login">
     
                     </div>
               </div>
@@ -168,7 +167,7 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Para se logar, é necessário preencher todos os campos corretamente! <br><br> Tente outra vez.";
             finalizarAguardar();
             return false;
         }
