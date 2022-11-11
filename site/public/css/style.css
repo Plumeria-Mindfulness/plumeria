@@ -129,8 +129,8 @@ body {
     position: absolute;
     width: 320px;
     height: 320px;
-    left: 190px;
-    top: 1986.38px;
+    left: 150px;
+    top: 1886.38px;
 
     background: #a1b182;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
@@ -155,10 +155,10 @@ body {
     /* Ellipse 9 */
 .div_Balls9 {
     position: absolute;
-    width: 507.33px;
-    height: 507.33px;
-    left: -420px;
-    top: 3032.47px;
+    width: 320px;
+    height: 320px;
+    left: -160px;
+    top: 2832.47px;
     
     background: #fadd9cd4;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
@@ -169,30 +169,17 @@ body {
     /* Ellipse 10 */
 .div_Balls10 {
     position: absolute;
-    width: 507.33px;
-    height: 507.33px;
-    left: 511px;
-    top: 2275.47px;
-    
-    background: #a1b1826e;
-    box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
-    z-index: -1;
-    filter: blur(118.812px);
-}
-
-    /* Ellipse 11 */
-.div_Balls11 {
-    position: absolute;
-    width: 537px;
-    height: 537px;
-    left: 998px;
-    top: 2954.47px;
+    width: 320px;
+    height: 320px;
+    left: 1190px;
+    top: 2930.47px;
     
     background: #f7c5bdd4;
     box-shadow: 11.8812px 16.6337px 123.565px rgba(0, 0, 0, 0.12);
     z-index: -1;
     filter: blur(118.812px);
 }
+
 
 .div_allAbove {
     z-index: 6;
@@ -561,18 +548,11 @@ section {
     left: 20%;
 }
 
-.quem-somos #btn-sobre-nos {
-    margin-top: 2.2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .quem-somos .container .content-img {
     position: absolute;
     width: auto;
     left: -2%;
-    top: 240%;
+    top: 225%;
 }
 
 .quem-somos .content-img #garoto-meditando {

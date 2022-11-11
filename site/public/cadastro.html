@@ -8,8 +8,8 @@
 
     <title>Plumeria</title>
 
-    <script src="./js/funcoes.js"></script>
-    <script src="./js/cadastro.js"></script>
+    <script src="../public/js/functions.js"></script>
+    <script src="../public/js/cadastro.js"></script>
     
     <link rel="icon" href="./assets/plumeria-icon.png">
     <link rel="stylesheet" href="css/style.css">
@@ -71,11 +71,27 @@
 
                     <div class="campo">
                         <div class="campo-nome">
-                            <label class="tipo_campo" for="in_nome">Nome completo</label>
+                            <label class="tipo_campo" for="in_nome">Nome</label>
                             
-                            <input id="in_nome" type="text" placeholder="Seu nome">
+                            <input id="in_nome" type="text" placeholder="Digite o seu nome">
                             
-                            <p id="msg_nome">Insira seu nome completo.</p>
+                            <p id="msg_nome">Insira seu nome.</p>
+                        </div>
+
+                        <div class="campo-nome">
+                            <label class="tipo_campo" for="in_sobrenome">Sobrenome</label>
+                            
+                            <input id="in_sobrenome" type="text" placeholder="Digite o seu sobrenome">
+                            
+                            <p id="msg_nome">Insira seu sobrenome.</p>
+                        </div>
+
+                        <div class="campo-dtNascimento">
+                            <label class="tipo_campo" for="in_dtNascimento">Data de nascimento</label>
+
+                            <input id="in_dtNascimento" type="date" placeholder="Insira sua data de nascimento">
+
+                            <p id="msg_dtNascimento">Insira sua data de nascimento.</p>
                         </div>
 
                         <div class="campo-email">
@@ -92,7 +108,7 @@
                             <div class="icone-input">
                                 <input id="in_senha" type="password" placeholder="******">
                                 
-                                <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" class="img_olho" alt="olho para ver senha"></button>
+                                <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" id="img_olhoSenha" class="img_olho" alt="olho para ver senha"></button>
                             </div>
                             
                             <p id="msg_senha">Insira sua senha corretamente.</p>
@@ -105,7 +121,7 @@
                             <div class="icone-input">
                                 <input id="in_confirmacaoSenha" type="password" placeholder="******">
                                 
-                                <button class="btn-olho" onclick="verificarSenhaConfirmacao()"><img src="assets/hidden.png" class="img_olho" alt="olho para ver senha"></button>
+                                <button class="btn-olho" onclick="verificarSenhaConfirmacao()"><img src="assets/hidden.png" id="img_olhoConfirm" class="img_olho" alt="olho para ver senha"></button>
                             </div>
                                                         
                             <p id="msg_confirmacaoSenha">Insira sua confirmação de senha corretamente.</p>

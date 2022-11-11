@@ -73,15 +73,14 @@
     padding: 0;
 }
 
-#in_nome {
-    display: flex;
-}
-
 .campo-nome,
 .campo-email,
 .campo-senha,
+.campo-dtNascimento,
 .campo-senhaConfirm {
-    padding-bottom: 2% !important;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3% !important;
 }
 
 .campo input {
