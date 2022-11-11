@@ -11,21 +11,20 @@
     <script src="../js/funcoes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="icon" href="./assets/plumeria-icon.png">
+    <link rel="icon" href="../assets/plumeria-icon.png">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dashboards.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
-<!-- Inserir onload() function na tag 'body' -->
-<body>
+<body onload=" atualizarFeed()">
     <div class="div_allAbove">
         <!-- Cabeçalho + Navbar -->
         <header class="header" id="header">
             <div class="container">
                 <div class="logo" id="logo">
                     <a href="../index.html">
-                        <img src="../assets/plumeria-icon.png" alt="icone de uma plumeria">
+                        <img class="rotate" src="../assets/plumeria-icon.png" alt="icone de uma plumeria">
                         <span class="nome-logo">Plumeria</span>
                     </a> 
                 </div>
@@ -81,7 +80,7 @@
         <section class="drop-funcionalidade">
             <div class="caixa">
                 <div class="cliente">
-                    <h1>Olá, Luiz Nison!</h1>
+                    <h1>Olá, <span id="b_usuario">usuário</span>!</h1>
     
                     <p>
                         Vamos respirar um pouco?
@@ -176,6 +175,22 @@
 
 </body>
 </html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    cpf_usuario.innerHTML = sessionStorage.CPF_USUARIO;
+    
+    let proximaAtualizacao;
+        
+    window.onload = obterDadosGrafico(1);
+
+    verificar_autenticacao();
+
+</script>
+
+
+
+
 
 <script>
     // Função para criar navbar dropdown

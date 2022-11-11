@@ -227,9 +227,22 @@ body {
 }
 
 .logo img {
-    width: 63px;
+    width: 63px; 
 
 }
+
+.rotate {
+    animation: rotation 98s infinite linear;
+  }
+  
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
 
 .logo span {
     padding-left: 0.5em;

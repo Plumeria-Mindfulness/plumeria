@@ -3,11 +3,10 @@ Files list
 - Caminho WEB-DATA-VIZ => C:\Users\luizn\OneDrive\Luiz\Documentos\Visual Studio 2022\web-data-viz
 - Caminho Plumeria => C:\Users\luizn\OneDrive\Área de Trabalho\plumeria
 
-Added 
-- .gitignore
-- package.json
 
-Update 
+Caminhos feitos 
+- Add .gitignore
+- Add package.json
 - cadastro.html 
     - Nova estrutura HTML 
     - Colada script JS
@@ -41,3 +40,7 @@ Update
             - function cadastrar(nome, sobrenome, dtNascimento, email, senha)
         - Insira exatamente a query do banco na:
             - var instrucao = `INSERT INTO usuario (nome, sobrenome, dtNascimento, email, senha) VALUES ('${nome}', ${sobrenome}, ${dtNascimento}, '${email}', '${senha}');`
+
+
+- LOGIN
+    - 
