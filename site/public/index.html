@@ -8,7 +8,8 @@
 
     <title>Plumeria</title>
 
-    <script src="./js/funcoes.js"></script>
+    <script defer src="js/index.js"></script>
+    <script defer src="js/funcoes.js"></script>
 
     <link rel="icon" href="./assets/plumeria-icon.png">
     <link rel="stylesheet" href="css/style.css">
@@ -45,7 +46,7 @@
                 <nav class="navbar">
                     <ul class="list-item">
                         <li><a class="a-destaque" href="index.html">Início</a></li>
-                        <li><a href="sobre-nos.html">Sobre nós</a></li>
+                        <li><a href="#sec-quem-sou-eu">Sobre nós</a></li>
                         <li><a href="sobre-mindfulness.html">Sobre mindfulness</a></li>
                         <li><a href="cadastro.html">Cadastro</a></li>
                     </ul>
@@ -85,14 +86,14 @@
         </section>
 
         <!-- 2ª sessão - Quem somos -->
-        <section class="quem-sou-eu">
+        <section class="quem-sou-eu" id="sec-quem-sou-eu">
             <div class="identifica">
                 <h1>Quem somos?</h1>
 
-                <img id="foto-quem-somos" src="../public/assets/foto-quem-somos.svg" alt="foto do Luiz Nison Filler">
+                <img id="foto-quem-somos" src="assets/foto-quem-somos.svg" alt="foto do Luiz Nison Filler">
             </div>
 
-            <div class="content-text-sobre">
+            <div class="content-text-sobre" id="content-text-sobre">
                 <div class="historia">
                     <h2>Um pouco de história</h2>
     
@@ -252,7 +253,7 @@
                 <div class="links">
                     <h2>Links</h2>
                     <ul class="lista-links-footer">
-                        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+                        <li><a href="#sec-quem-sou-eu">Sobre Nós</a></li>
                         <li><a href="sobre-mindfulness.html">Sobre Mindfulness</a></li>
                         <li><a href="termos.html">Termos de Serviço</a></li>
                         <li><a href="cadastro.html">Cadastro</a></li>
@@ -278,64 +279,3 @@
     </div>
 </body>
 </html>
-
-<script>
-    ScrollReveal().reveal('.content-text',{
-        duration: 1000,
-        distance: "200px",
-    })
-
-    ScrollReveal().reveal('.historia',{
-        duration: 1000,
-        distance: "200px",
-        origin: "left",
-    })
-
-    ScrollReveal().reveal('.idealizador',{
-        duration: 1000,
-        distance: "200px",
-        origin: "left",
-        delay: 120,
-    })
-
-    ScrollReveal().reveal('.funcionalidades',{
-        duration: 1000,
-        distance: "200px",
-        origin: "left"
-    })
-
-    ScrollReveal().reveal('.descricoes',{
-        duration: 1000,
-        distance: "200px",
-        origin: "left",
-        delay: 800,
-    })
-
-    ScrollReveal().reveal('.desc-lista-apoio',{
-        duration: 1000,
-        distance: "200px",
-        origin: "left",
-    })
-
-    ScrollReveal().reveal('.desc-player-musica',{
-        duration: 1000,
-        distance: "200px",
-        origin: "left",
-        delay: 200
-    })
-
-    ScrollReveal().reveal('.desc-temporizador',{
-        duration: 1000,
-        distance: "200px",
-        origin: "left",
-        delay: 400
-    }) 
-
-    ScrollReveal().reveal('.desc-dashboard',{
-        duration: 1000,
-        distance: "200px",
-        origin: "left",
-        delay: 600
-    }) 
-    
-</script>
