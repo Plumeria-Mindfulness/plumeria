@@ -3,11 +3,10 @@ Files list
 - Caminho WEB-DATA-VIZ => C:\Users\luizn\OneDrive\Luiz\Documentos\Visual Studio 2022\web-data-viz
 - Caminho Plumeria => C:\Users\luizn\OneDrive\Área de Trabalho\plumeria
 
-Added 
-- .gitignore
-- package.json
 
-Update 
+Caminhos feitos 
+- Add .gitignore
+- Add package.json
 - cadastro.html 
     - Nova estrutura HTML 
     - Colada script JS
