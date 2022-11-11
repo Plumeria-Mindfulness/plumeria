@@ -27,16 +27,6 @@
     filter: blur(118.812px);
 }
 
-.alerta_erro{
-    display: flex;
-    justify-content: flex-end;
-}
-  
-.card_erro #mensagem_erro{
-    font-weight: 500;
-    font-size: 20px;
-}
-
 .div_allAbove {
     z-index: 6;
 }

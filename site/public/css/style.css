@@ -752,24 +752,27 @@ footer {
 
 .alerta_erro{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
   }
   
   .card_erro {
     display: none;
-    background-color: #fff;
+    background-color: #f7e9cc;
     color: black;
-    width: 230px;
+    width: 320px;
     position: fixed;
     border-radius: 4px;
-    border: #e6005a 3px solid;
-    padding: 10px;
+    border: #A1B182 3px solid;
+    padding: 25px;
     margin-right: 10%;
   }
   
   .card_erro #mensagem_erro{
+    display: flex;
+    text-align: justify;
+    align-items: center;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1rem;
   }
 
   .loading-div {
