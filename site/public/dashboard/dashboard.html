@@ -14,11 +14,11 @@
 
     <link rel="icon" href="../assets/plumeria-icon.png">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/dashboards.css">
+    <link rel="stylesheet" href="dashboards.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
-<body onload=" atualizarFeed()">
+<body> <!-- onload=" atualizarFeed()"-->
     <div class="div_allAbove">
         <!-- Cabeçalho + Navbar -->
         <header class="header" id="header">
@@ -112,7 +112,7 @@
 
                 <div class="conteudo-hidden">
                     <div class="hidden-completo">
-                        <div class="lista-apoio-completa" id="subMenuLista">
+                        <div class="lista-apoio-completa" id="drop-subMenuLista">
                             <div class="titulo">
                                 <h2>Lista de apoio</h2>
                                 
@@ -154,19 +154,49 @@
     
                             </div>
                         </div>
+                                                                    <!-- style="display: none;" -->
+                        <div class="temporizador-completo" id="subMenuTemporizador">
+                            <div class="sub-titulo-arrow">
+                                <h2>Temporizador</h2>
+                                <button class="btn_passar" id="btn_passar" onclick="passarRelogio()">></button>
+                            </div>
+
+                            <div class="contador-relogio">
+                                00 : 00 : 00
+                            </div>
+
+                            <div class="campo-temporizador">
+                                <label for="in_temporizador">Insira o tempo de foco:</label>
+                                <input type="time" id="in_temporizador" step="2">
+
+                                <button class="btn_passar">Começar</button>
+
+                            </div>
+                        </div>
+
+                        <div class="cronometro-completo" id="subMenuCronometro">
+                            <div class="sub-titulo-arrow">
+                                <h2>Cronômetro</h2>
+                                <button class="btn_passar" id="btn_passar" onclick="passarRelogio()">></button>
+                            </div>
+
+                            <div class="contador-relogio">
+                                00 : 00 : 00
+                            </div>
+
+                            <div class="campo-temporizador">
+                                <div class="btns-cronometro">
+                                    <button class="btn_passar">Iniciar</button>
+
+                                    <button class="btn_passar">Reiniciar</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Bubbles -->
-        <!-- Gotas de água -->
-        <!-- <div class="bubbles">
-            <div class="c">
-                <div class="drop drop1"></div>
-                <div class="drop drop2"></div>
-            </div>
-        </div> -->
 
         <div class="bubbles">
 
