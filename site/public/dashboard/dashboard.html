@@ -19,6 +19,15 @@
 </head>
 
 <body> <!-- onload=" atualizarFeed()"-->
+
+    <div class="div_backgroundBalls">
+        <div class="div_Balls1"></div>
+        <div class="div_BallsHeader1"></div>
+        <div class="div_BallsHeader2"></div>
+        <div class="div_BallsDown1"></div>
+        <div class="div_BallsDown2"></div>
+    </div>
+
     <div class="div_allAbove">
         <!-- Cabeçalho + Navbar -->
         <header class="header" id="header">
@@ -154,42 +163,46 @@
     
                             </div>
                         </div>
-                                                                    <!-- style="display: none;" -->
-                        <div class="temporizador-completo" id="subMenuTemporizador">
+                                    <!-- style="display: none;" -->
+                        <div class="temporizador-completo" id="subMenuTemporizador" style="display: none;">
                             <div class="sub-titulo-arrow">
-                                <h2>Temporizador</h2>
-                                <button class="btn_passar" id="btn_passar" onclick="passarRelogio()">></button>
+                                <h2 class="h2-tipo">Temporizador</h2>
+                                
+                                <button><img id="seta" onclick="passarRelogioCronometro()" src="../assets/seta.svg" alt=""></button>
                             </div>
 
                             <div class="contador-relogio">
-                                00 : 00 : 00
+                                <span id="counter_Temporizador">00 : 00 : 00</span>
                             </div>
 
                             <div class="campo-temporizador">
                                 <label for="in_temporizador">Insira o tempo de foco:</label>
                                 <input type="time" id="in_temporizador" step="2">
 
-                                <button class="btn_passar">Começar</button>
+                            </div>
 
+                            <div class="btns_relogio">
+                                <button onclick="iniciarCronometro()" class="btn_passar" id="btn_iniciar">Iniciar</button>
+
+                                <button onclick="pausarCronometro()" class="btn_passar" id="btn_parar">Parar</button>
                             </div>
                         </div>
 
                         <div class="cronometro-completo" id="subMenuCronometro">
                             <div class="sub-titulo-arrow">
-                                <h2>Cronômetro</h2>
-                                <button class="btn_passar" id="btn_passar" onclick="passarRelogio()">></button>
+                                <h2 class="h2-tipo">Cronômetro</h2>
+                                
+                                <button><img id="seta" onclick="passarRelogioTemporizador()" src="../assets/seta.svg" alt=""></button>
                             </div>
 
                             <div class="contador-relogio">
-                                00 : 00 : 00
+                                <span id="counter_Cronometro">00 : 00 : 00</span>
                             </div>
 
-                            <div class="campo-temporizador">
-                                <div class="btns-cronometro">
-                                    <button class="btn_passar">Iniciar</button>
+                            <div class="btns_relogio">
+                                <button onclick="iniciarCronometro()" class="btn_passar" id="btn_iniciar">Iniciar</button>
 
-                                    <button class="btn_passar">Reiniciar</button>
-                                </div>
+                                <button onclick="pausarCronometro()" class="btn_passar" id="btn_parar">Parar</button>
                             </div>
                         </div>
                     </div>
