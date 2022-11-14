@@ -1,4 +1,48 @@
-// Função para passar de relógios
+// Função para habilitar drop down da LISTA DE APOIO
+function mostrarListaApoio() {
+    var styleId = document.getElementById("drop_subMenuLista")
+    var styleAtualLista = styleId.style.display  
+    
+    console.log(styleAtualLista);
+
+    if (styleAtualLista == "none") {
+        drop_subMenuLista.style.display = "flex";
+    } else {
+        drop_subMenuLista.style.display = "none";
+    }
+}
+
+
+// Função para habilitar drop down do TEMPORIZADOR
+function mostrarTemporizador() {
+    var styleId = document.getElementById("subMenuTemporizador")
+    var styleAtualLista = styleId.style.display  
+    
+    console.log(styleAtualLista);
+
+    if (styleAtualLista == "none") {
+        subMenuTemporizador.style.display = "flex";
+    } else {
+        subMenuTemporizador.style.display = "none";
+    }
+}
+
+// Função para habilitar drop down do Dashboard
+// function mostrarTemporizador() {
+//     var styleId = document.getElementById("subMenuDashboard")
+//     var styleAtualLista = styleId.style.display  
+    
+//     console.log(styleAtualLista);
+
+//     if (styleAtualLista == "none") {
+//         subMenuDashboard.style.display = "flex";
+//     } else {
+//         subMenuDashboard.style.display = "none";
+//     }
+// }
+
+
+// Funções para passar de relógios
 function passarRelogioCronometro() {
     subMenuCronometro.style.display = "flex";
     subMenuTemporizador.style.display = "none";
@@ -9,7 +53,9 @@ function passarRelogioTemporizador() {
     subMenuTemporizador.style.display = "flex";
 }
 
+
 // Função para TEMPORIZADOR
+
 
 
 //  Função para CRÔNOMETRO
@@ -17,7 +63,7 @@ var hora = 0;
 var minuto = 0;
 var segundo = 0;
 
-var tempo = 1000; // quantidade de milisegundos
+var tempo = 1000; // quantidade em milisegundos
 var cronometro;
 
 function iniciarCronometro() {
@@ -58,58 +104,19 @@ function timer() {
 }
 
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  // Função para criar navbar dropdown
-    var subMenu = document.getElementById("subMenu")
-    
-    function alternarMenu() {
-        subMenu.classList.toggle("open-menu")
-    }
-    
-    // Função para habilitar drop down da Lista de apoio 
-    var subMenuLista = document.getElementById("drop-subMenuLista")
-    
-    function mostrarListaApoio() {
-        subMenuLista.style.display = "block";
-    }
+// Função para criar navbar dropdown
+var subMenu = document.getElementById("subMenu")
 
-    // Função para habilitar drop down do Cronômetro
-    var subMenuTemporizador = document.getElementById("subMenuTemporizador")
-    
-    function mostrarTemporizador() {
-        subMenuTemporizador.classLista.toggle("open-menu-lista")
-    }
+function alternarMenu() {
+    subMenu.classList.toggle("open-menu")
+}
+
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+b_usuarioDropDown.innerHTML = sessionStorage.NOME_USUARIO;
 
 
+let proximaAtualizacao;
     
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    b_usuarioDropDown.innerHTML = sessionStorage.NOME_USUARIO;
-    
-    
-    let proximaAtualizacao;
-        
-    // window.onload = obterDadosGrafico(1);
+// window.onload = obterDadosGrafico(1);
 
-    // verificar_autenticacao();
+// verificar_autenticacao();

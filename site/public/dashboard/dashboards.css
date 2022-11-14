@@ -259,14 +259,15 @@ body {
     border-radius: 20px;
 }
 
-#drop-subMenuLista {
+#drop_subMenuLista,
+#subMenuTemporizador,
+#subMenuCronometro {
     display: none;
 }
 
-/* 
-#drop-subMenuTemporizador {
-    display: none;
- */
+.drop-funcionalidades img {
+    cursor: pointer;
+} 
 
 .hidden-completo {
     width: 100%;
