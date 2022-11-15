@@ -10,7 +10,7 @@
 
     <script defer src="dashboard.js"></script>
     <script defer src="../js/funcoes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="icon" href="../assets/plumeria-icon.png">
     <link rel="stylesheet" href="../css/style.css">
@@ -114,7 +114,7 @@
                         <img src="../assets/icones-drop-funcionalidades/temporizador-icone-drop.svg" alt="icone de lista de apoio">
                     </div>
     
-                    <div class="dashboard-drop-func">
+                    <div class="dashboard-drop-func" onclick="mostrarDashboard()">
                         <img src="../assets/icones-drop-funcionalidades/dashboard-icone-drop.svg" alt="icone de lista de apoio">
                     </div>                
                 </div>
@@ -205,14 +205,27 @@
                                 <button onclick="pausarCronometro()" class="btn_passar" id="btn_parar">Parar</button>
                             </div>
                         </div>
+                    
+                        <div class="dashboard-completo" id="subMenuDashboard" style="display: none;">
+                            <div class="titulo">
+                                <h2 class="h2-tipo">Dashboard</h2>
+                        
+                                <p>
+                                    Olhando um pouco mais os seus números
+                                </p>
+                            </div>
+
+                            <!-- INSERÇÃO DOS GRÁFICOS -->
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <div class="bubbles">
-
+        <div class="div_container_bubbles">
+            <div class="bubbles">
+                <button class="btn_passar" id="btn_bubble" onclick="sortearCor()">Sortear cor</button>
+            </div>
         </div>
         
     </div>       
