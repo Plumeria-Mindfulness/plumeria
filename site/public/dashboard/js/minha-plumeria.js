@@ -27,21 +27,6 @@ function mostrarTemporizador() {
     }
 }
 
-// Função para habilitar drop down do Dashboard
-// function mostrarTemporizador() {
-//     var styleId = document.getElementById("subMenuDashboard")
-//     var styleAtualLista = styleId.style.display  
-    
-//     console.log(styleAtualLista);
-
-//     if (styleAtualLista == "none") {
-//         subMenuDashboard.style.display = "flex";
-//     } else {
-//         subMenuDashboard.style.display = "none";
-//     }
-// }
-
-
 // Funções para passar de relógios
 function passarRelogioCronometro() {
     subMenuCronometro.style.display = "flex";
@@ -111,7 +96,7 @@ function alternarMenu() {
     subMenu.classList.toggle("open-menu")
 }
 
-b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+// b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 b_usuarioDropDown.innerHTML = sessionStorage.NOME_USUARIO;
 
 

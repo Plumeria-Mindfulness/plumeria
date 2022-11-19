@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plumeria | Minha Plumeria</title>
+
+    <script defer src="js/minha-plumeria.js"></script>
+    <script defer src="../js/funcoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="icon" href="../assets/plumeria-icon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/minha-plumeria.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+
+    <div class="div_backgroundBalls">
+        <div class="div_Balls1"></div>
+        <div class="div_BallsHeader1"></div>
+        <div class="div_BallsHeader2"></div>
+        <div class="div_BallsDown1"></div>
+        <div class="div_BallsDown2"></div>
+    </div>
+
+    <div class="div_allAbove">
+        <!-- Cabeçalho + Navbar -->
+        <header class="header" id="header">
+            <div class="container">
+                <div class="logo" id="logo">
+                    <a href="../index.html">
+                        <img class="rotate" src="../assets/plumeria-icon.png" alt="icone de uma plumeria">
+                        <span class="nome-logo">Plumeria</span>
+                    </a> 
+                </div>
+
+                <div class="container-nav">
+                    <nav class="navbar">
+                      <div class="drop-down" onclick="alternarMenu()">
+                        <img class="drop-down-ball-menu" src="../assets/drop-down-perfil/drop-down-ball-menu.svg">
+                        <img class="drop-down-user-profile" src="../assets/drop-down-perfil/usuario-de-perfil.png">
+                      </div>
+                
+                      <div class="sub-menu-wrap" id="subMenu">
+                        <div class="sub-menu">
+                          <div class="user-info">
+                            <img src="../assets/drop-down-perfil/usuario-de-perfil.png" alt="icone usuario de perfil">
+                            <!-- Adicionar um JS para pegar o nome que a pessoa cadastrou -->
+                            <h3 id="nome"><span id="b_usuarioDropDown">usuário</span></h3>
+                          </div>
+                          <hr>
+                
+                          <a href="#" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/edit-user.png" alt="">
+                            <p>Editar perfil</p>
+                            <span>></span>
+                          </a>
+                
+                          <a href="#" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/settings-profile.png" alt="">
+                            <p>Configurações</p>
+                            <span>></span>
+                          </a>
+                
+                          <a href="dashboard.html" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/dashboard-especifico.png" alt="">
+                            <p>Dashboard</p>
+                            <span>></span>
+                          </a>
+                
+                          <a href="../login.html" class="sub-menu-link" onclick="limparSessao()">
+                            <img src="../assets/drop-down-perfil/log-out.png" alt="">
+                            <p>Sair</p>
+                            <span>></span>
+                          </a>
+                        </div>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <a href="mural.html">Mural de mensagem</a>
+
+        <!-- Drop Downd de Funcionalidades -->
+        <section class="drop-funcionalidade">
+            <div class="caixa">
+                <div class="cliente">
+                    <h1>Olá, <span id="b_usuario">usuário</span>!</h1>
+    
+                    <p>
+                        Vamos respirar um pouco?
+                    </p>
+                </div>
+
+                <div class="drop-funcionalidades">
+                    <div class="lista-apoio-drop-func" onclick="mostrarListaApoio()">
+                        <img src="../assets/icones-drop-funcionalidades/lista-apoio-icone-drop.svg" alt="icone de lista de apoio">
+                    </div>
+    
+                    <div class="temporizador-drop-func" onclick="mostrarTemporizador()">
+                        <img src="../assets/icones-drop-funcionalidades/temporizador-icone-drop.svg" alt="icone de lista de apoio">
+                    </div>
+    
+                    <div class="dashboard-drop-func">
+                        <a href="dashboard.html">
+                            <img src="../assets/icones-drop-funcionalidades/dashboard-icone-drop.svg" alt="icone de lista de apoio">
+                        </a>
+                    </div>                
+                </div>
+
+                <div class="conteudo-hidden">
+                    <div class="hidden-completo">
+                        <div class="lista-apoio-completa" id="drop_subMenuLista" style="display: none;">
+                            <div class="titulo">
+                                <h2>Lista de apoio</h2>
+                                
+                                <p>
+                                    Algumas recomendações para maximizar sua experiência    
+                                </p>
+                            </div>
+    
+                            <div class="check-list">
+                                <div class="chk">
+                                    <input type="checkbox" class="in_chk" id="chk1">
+    
+                                    <label for="chk1">Ambiente organizado;</label><br>
+                                </div>
+                            
+                                <div class="chk">
+                                    <input type="checkbox" class="in_chk" id="chk2">
+                                    
+                                    <label for="chk2">Lugar confortável e silêncioso;</label><br>
+                                </div>
+    
+                                <div class="chk">
+                                    <input type="checkbox" class="in_chk" id="chk3">
+    
+                                    <label for="chk3">Música escolhida;</label><br>
+                                </div>
+    
+                                <div class="chk">
+                                    <input type="checkbox" class="in_chk" id="chk4">
+    
+                                    <label for="chk4">Lembrar dos meus objetivos;</label><br>
+                                </div>
+    
+                                <div class="chk">
+                                    <input type="checkbox" class="in_chk" id="chk5">
+    
+                                    <label for="chk5">Ainda não sei o que escrever aqui.</label><br>
+                                </div>
+    
+                            </div>
+                        </div>
+                
+                        <div class="temporizador-completo" id="subMenuTemporizador" style="display: none;">
+                            <div class="sub-titulo-arrow">
+                                <h2 class="h2-tipo">Temporizador</h2>
+                                
+                                <button><img id="seta" onclick="passarRelogioCronometro()" src="../assets/seta.svg" alt=""></button>
+                            </div>
+
+                            <div class="contador-relogio">
+                                <span id="counter_Temporizador">00 : 00 : 00</span>
+                            </div>
+
+                            <div class="campo-temporizador">
+                                <label for="in_temporizador">Insira o tempo de foco:</label>
+                                <input type="time" id="in_temporizador" step="2">
+
+                            </div>
+
+                            <div class="btns_relogio">
+                                <button onclick="iniciarCronometro()" class="btn_passar" id="btn_iniciar">Iniciar</button>
+
+                                <button onclick="pausarCronometro()" class="btn_passar" id="btn_parar">Parar</button>
+                            </div>
+                        </div>
+
+                        <div class="cronometro-completo" id="subMenuCronometro" style="display: none;">
+                            <div class="sub-titulo-arrow">
+                                <h2 class="h2-tipo">Cronômetro</h2>
+                                
+                                <button><img id="seta" onclick="passarRelogioTemporizador()" src="../assets/seta.svg" alt=""></button>
+                            </div>
+
+                            <div class="contador-relogio">
+                                <span id="counter_Cronometro">00 : 00 : 00</span>
+                            </div>
+
+                            <div class="btns_relogio">
+                                <button onclick="iniciarCronometro()" class="btn_passar" id="btn_iniciar">Iniciar</button>
+
+                                <button onclick="pausarCronometro()" class="btn_passar" id="btn_parar">Parar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="div_container_bubbles">
+            <div class="bubbles">
+                <button class="btn_passar" id="btn_bubble" onclick="sortearCor()">Sortear cor</button>
+            </div>
+        </div>
+    </div>       
+    
+</body>
+</html>
