@@ -6,87 +6,157 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Avisos</title>
+    <title>Plumeria | Mensagem</title>
 
+    <script defer src="minha-plumeria.js"></script>
+    <script defer src="../js/funcoes.js"></script>
+
+    <link rel="icon" href="../assets/plumeria-icon.png">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./dashboards.css">
-    <script src="../js/funcoes.js"></script>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="mural.css">
+    <link rel="stylesheet" href="minha-plumeria.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
-    <!-- <body onload="validarSessao()"> -->
+<!--  -->
+<body onload="validarSessao(), atualizarFeed()">
 
-    <div class="janela">
+    <div class="div_backgroundBalls">
+        <div class="div_Balls1"></div>
+        <div class="div_BallsHeader1"></div>
+        <div class="div_BallsHeader2"></div>
+        <div class="div_BallsDown1"></div>
+        <div class="div_BallsDown2"></div>
+    </div>
 
+    <div class="div_allAbove">
+        <!-- Cabeçalho + Navbar -->
+        <header class="header" id="header">
+            <div class="container">
+                <div class="logo" id="logo">
+                    <a href="../index.html">
+                        <img class="rotate" src="../assets/plumeria-icon.png" alt="icone de uma plumeria">
+                        <span class="nome-logo">Plumeria</span>
+                    </a> 
+                </div>
 
-        <div class="header-left">
-
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash-right">
-
-            <div class="avisos">
-                <div class="container">
-                    <h1>Publicar um aviso</h1>
-                    <div class="div-form">
-                        <form id="form_postagem" method="post" onsubmit="return publicar()">
-                            <label>
-                                Título:
-                                <br>
-                                <input name="titulo" id="titulo" maxlength="100" type="text">
-                            </label>
-                            <br>
-                            <label>
-                                Descrição (máximo de 250 caracteres):
-                                <br>
-                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
-                            </label>
-                            <br>
-                            <button>Enviar</button>
-                        </form>
-                    </div>
-                    <h1>Mural de Avisos</h1>
-                    <div class="div-results">
-                        <div id="feed_container" class="feed-container">
+                <div class="container-nav">
+                    <nav class="navbar">
+                      <div class="drop-down" onclick="alternarMenu()">
+                        <img class="drop-down-ball-menu" src="../assets/drop-down-perfil/drop-down-ball-menu.svg">
+                        <img class="drop-down-user-profile" src="../assets/drop-down-perfil/usuario-de-perfil.png">
+                      </div>
+                
+                      <div class="sub-menu-wrap" id="subMenu">
+                        <div class="sub-menu">
+                          <div class="user-info">
+                            <img src="../assets/drop-down-perfil/usuario-de-perfil.png" alt="icone usuario de perfil">
+                            <!-- Adicionar um JS para pegar o nome que a pessoa cadastrou -->
+                            <h3 id="nome"><span id="b_usuarioDropDown">usuário</span></h3>
+                          </div>
+                          <hr>
+                
+                          <a href="#" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/edit-user.png" alt="">
+                            <p>Editar perfil</p>
+                            <span>></span>
+                          </a>
+                
+                          <a href="#" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/settings-profile.png" alt="">
+                            <p>Configurações</p>
+                            <span>></span>
+                          </a>
+                
+                          <a href="dashboard.html" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/dashboard-especifico.png" alt="">
+                            <p>Dashboard</p>
+                            <span>></span>
+                          </a>
+                
+                          <!-- Quando clicar no "Sair" será redirecionado para a página de login -->
+                          <a href="../login.html" class="sub-menu-link" onclick="limparSessao()">
+                            <img src="../assets/drop-down-perfil/log-out.png" alt="">
+                            <p>Sair</p>
+                            <span>></span>
+                          </a>
                         </div>
-                    </div>
+                      </div>
+                    </nav>
                 </div>
             </div>
+        </header>
 
-
-
-
+        <div class="dash-right">
+            <div class="avisos">
+                <div class="container-mensagem-mural">
+                    <div class="mensagem">
+                        <div class="titulo-mensagem">
+                            <h2 class="h2-dashboard">Publicar Mensagem</h2>
+        
+                            <p>
+                                Escreva uma mensagem para si mesmo(a) falando um pouco de como foi sua experiência.
+                            </p>
+                        </div>
+    
+                        <div class="div-form">
+                            <form class="form-postagem" id="form_postagem" method="post" onsubmit="return publicar()">
+                                <input placeholder="Título" name="titulo" id="titulo" maxlength="100" type="text">
+    
+                                <br>
+    
+                                <textarea placeholder="Descrição (máximo de 1200 caracteres)" name="descricao" id="textarea_descricao" maxlength="1200" rows="10"></textarea>
+                                
+                                <br>
+    
+                                <div class="select-avaliacao">
+                                    <p>
+                                        Avalie como foi a experiência:
+                                    </p>
+    
+                                    <select required name="avalicao" id="avaliacao">
+                                        <option value="" disabled selected hidden>selecione uma opção</option>
+                                        <option value="excelente">Excelente</option>
+                                        <option value="muito bom">Muito bom</option>
+                                        <option value="bom">Bom</option>
+                                        <option value="ruim">Ruim</option>
+                                        <option value="muito ruim">Muito ruim</option>
+                                    </select>
+                                </div>
+                                
+                                <button class="btn_passar">Enviar</button>
+    
+                                <div class="sigilo">
+                                    <p>
+                                        Essa mensagem é apenas para você! Prezamos pelo seu sigilo e não compartilhamos ou analisamos nenhuma informação.
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+    
+                    <div class="vertical-line"></div> 
+    
+                    <div class="mural">
+                        <div class="titulo-mural">
+                            <h2 class="h2-dashboard">Meu Mural</h2>
+    
+                            <p>
+                                Aqui estão algumas lembranças das suas experiências.
+                                <br>
+                                Sinta-se a vontade para editar!
+                            </p>
+                        </div>
+                        
+                        <div class="div-results">
+                            <div id="feed_container" class="feed-container">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            
             <!-- MODAL -->
             <!-- <div id="div_modal" class="div-modal">
                 <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
@@ -95,15 +165,13 @@
                     <button class="btn-fechar-modal" onclick="fecharModal()">X</button>
                 </div>
             </div> -->
-
+            
             <!-- AGUARDAR -->
             <!-- <div id="div_aguardar" class="div-aguardar">
                 <img src="./assets/aguarde-pink3.gif" id="img_aguarde">
             </div>  -->
-
         </div>
     </div>
-
 
 
 
@@ -113,25 +181,32 @@
 
 <script>
     
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuarioDropDown.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
     }
 
     function publicar() {
+        // Luiz => A variável abaixo pega o idUsuario do SessionStorage
         var idUsuario = sessionStorage.ID_USUARIO;
 
         var corpo = {
             titulo: form_postagem.titulo.value,
-            descricao: form_postagem.descricao.value
+            descricao: form_postagem.descricao.value,
+            avaliacao: form_postagem.avaliacao.value
+            // Luiz => Aqui é um objeto JSON que pega o título e descricão lá dos inputs
         }
 
+        // Luiz => O método 'fetch' busca informação de alguma rota, fazendo uma requisição a ela
+        // Luiz => Ir no src/routes/avisos.js ; que está sendo utilizada dentro de app.js
+        // Luiz => o caminho é: Função JS chama fetch -> app.js -> routes/avisos.js -> dentro do routes/avisos.js o 'router' chama função chamando outra função 'publicar' dentro do avisoController e que passará valores de 'req' e 'res' -> controllers/avisoController.js -> os valores da vaiável 'corpo' criada aqui, é passada pelo 'req' para a função 'publicar' dentro da controllers/avisoController.js, onde são criadas novas variáveis isoladas para cada valor que veio da 'req' -> Caso não estiver com nenhuma variável 'undefined', chamará a função publicar model/avisoModel.js, que é quando será passado os valores de 'titulo', 'descricao' e 'idUsuario' -> model/avisoModel.js -> dentro da model/avisoModel.js tem uma função publicar que fará um 'insert into' com os valores passados nos parâmetros da própria função -> ao final dessa função terá um 'return' executando a instrução dentro do 'database' e o valor dessa excucção do 'return' será armazenado no 'res' que será retornado para controller/avisoController.js -> dentro da controller/avisoController.js e após passar pelo 'avisoModel.publicar()' entrará no método '.then' que pegará o 'res' do return passado e caso der tudo certo eu vou chorar muito de alegria e aívio, senão irá cair no método '.catch' retornando o que houve de erro
         fetch(`/avisos/publicar/${idUsuario}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
             },
+            // Luiz => aqui fala para passar os valores que estão no objeto JSON 'corpo', declarado acima, para a requisição
             body: JSON.stringify(corpo)
         }).then(function (resposta) {
 
@@ -158,32 +233,11 @@
 
     function editar(idAviso) {
         sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
+
         console.log("cliquei em editar - " + idAviso);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
-        window.location = "/dashboard/edicao-aviso.html"
+        window.alert("Você será redirecionado(a) à página de edição do aviso de id número: " + idAviso);
 
-    }
-
-    function deletar(idAviso) {
-        console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+        window.location = "/dashboard/edicao-mensagem.html"
     }
 
     function atualizarFeed() {
@@ -203,26 +257,34 @@
 
                     var feed = document.getElementById("feed_container");
                     feed.innerHTML = "";
-                    for (let i = 0; i < resposta.length; i++) {
+
+                    for (let i = resposta.length - 1; i>= 0; i--) {
                         var publicacao = resposta[i];
+
+                        // Deixar a primeira letra da avaliação, que veio do BD, maiúscula
+                        var avaliacaoMaiuscula = publicacao.avaliacao.charAt(0).toUpperCase() + publicacao.avaliacao.slice(1)
 
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
                         var spanID = document.createElement("span");
+                        // Luiz => Achar uma forma de pegar a data da sessão
+                        var dataAviso = document.createElement("span");
                         var spanTitulo = document.createElement("span");
                         var spanNome = document.createElement("span");
                         var divDescricao = document.createElement("div");
+                        var spanAvaliacao = document.createElement("span");
                         var divButtons = document.createElement("div");
                         var btnEditar = document.createElement("button");
-                        var btnDeletar = document.createElement("button");
 
 
                         spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        // Luiz => Achar uma forma de pegar a data da sessão
+                        dataAviso.innerHTML = "Data: <b> 19/11/2022 </b>";
                         spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
                         spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        spanAvaliacao.innerHTML = "Avaliação: <b>" + avaliacaoMaiuscula + "</b>";
                         btnEditar.innerHTML = "Editar";
-                        btnDeletar.innerHTML = "Deletar";
 
                         divPublicacao.className = "publicacao";
                         spanTitulo.id = "inputNumero" + publicacao.idAviso;
@@ -230,23 +292,21 @@
                         spanTitulo.className = "publicacao-titulo";
                         divDescricao.className = "publicacao-descricao";
 
-                        divButtons.className = "div-buttons"
+                        divButtons.className = "div-buttons";
 
-                        btnEditar.className = "publicacao-btn-editar"
+                        btnEditar.className = "publicacao-btn-editar";
                         btnEditar.id = "btnEditar" + publicacao.idAviso;
                         btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
 
-                        btnDeletar.className = "publicacao-btn-editar"
-                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
-
                         divPublicacao.appendChild(spanID);
+                        // Luiz => Achar uma forma de pegar a data da sessão
+                        divPublicacao.appendChild(dataAviso);
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
+                        divPublicacao.appendChild(spanAvaliacao);
                         divPublicacao.appendChild(divButtons);
                         divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
                         feed.appendChild(divPublicacao);
                     }
 
@@ -261,19 +321,19 @@
         });
     }
 
-    function testar() {
-        aguardar();
+    // function testar() {
+    //     aguardar();
 
-        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+    //     var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
 
-        var divResultado = document.getElementById("div_feed");
+    //     var divResultado = document.getElementById("div_feed");
 
-        divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
-        divResultado.innerHTML = formulario.get("descricao");
+    //     divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
+    //     divResultado.innerHTML = formulario.get("descricao");
 
-        finalizarAguardar();
+    //     finalizarAguardar();
 
-        return false;
-    }
+    //     return false;
+    // }
 
 </script>

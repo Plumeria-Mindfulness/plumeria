@@ -1,0 +1,170 @@
+.container-mensagem-mural {
+    margin: 2.3em 4em 2em 4em;
+    padding: 1em 0em;
+    display: flex;
+    border: 2px outset #142E38;
+    border-radius: 20px;
+    background-color: #DBDCC9;
+}
+
+/* Mensagens */
+.mensagem {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-mensagem, 
+.titulo-mural {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;    
+}
+
+.titulo-mensagem p {
+    width: 46%;
+    font-size: 0.8em;
+}
+
+.form-postagem {
+    margin: 1.8em 0 0.5em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+    justify-content: center;
+}
+
+.form-postagem input {
+    width: 90%;
+    height: 30px;
+    padding-left: 1.2em;
+    border: solid 0.1em #142E38;
+    border-radius: 20px;
+    background-color: #DCD7B9;
+}
+
+.form-postagem textarea {
+    width: 90%;
+    padding-left: 1.2em;
+    padding-top: 0.5em;
+    border: solid 0.1em #142E38;
+    border-radius: 20px;
+    background-color: #DCD7B9;
+}
+
+.select-avaliacao {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.select-avaliacao p {
+    padding-right: 1.6em;
+    font-size: 0.9em;
+}
+
+.select-avaliacao select {
+    width: 200px;
+    padding: 0.3em 1em;
+    border: solid 0.1em #142E38;
+    border-radius: 20px;
+    background-color: #DCD7B9;
+}
+
+.select-avaliacao select:invalid {
+    color: #7a7479;
+}
+
+.select-avaliacao select option {
+    color: #142E38;
+}
+
+.sigilo {
+    width: 70%;
+    margin-top: 2em;
+    font-size: 0.7em;
+    display: flex;
+    text-align: center;
+}
+
+.btn_passar {
+    margin-top: 2.4em !important;
+    padding: 0.6em 1.6em !important;
+}
+
+.vertical-line {
+    width: 0.2%;
+    margin: 1.2em 0;
+    background-color: #142E38;
+    border-radius: 50px;
+}
+
+
+/* Mural de mensagens */
+.mural {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-mural p {
+    width: 70%;
+    font-size: 0.8em;
+}
+
+.feed-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.publicacao-btn-editar {
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 10px;
+    color: #AA9F00;
+    background-color: #142E38;
+    width: 80px;
+}
+
+.publicacao {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 0.08em #142E38;
+    border-radius: 20px;
+    background-color: #DCD7B9;
+    margin-bottom: 0.75em;
+    padding: 1.2em 0.8em 0.8em 1.2em;
+}
+
+.publicacao > *:not(:last-child) {
+    padding: 0 0 10px 0;
+}
+
+.div-results {
+    width: 100%;
+    margin: 1.8em 0 0.5em 0;
+}
+
+.div-results .feed-container {
+    border-radius: 20px;
+    margin-bottom: 2em;
+}
+  
+.div-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.div-buttons > * {
+    margin-left: 1.2em;
+}
