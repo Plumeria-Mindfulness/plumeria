@@ -1,27 +1,30 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(idSessao, limite_linhas) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc`;
+        instrucaoSql = `
+        select top ${limite_linhas}
+            dtSessao as momento_grafico,
+            duracao
+                from sessao
+                    join usuario on fkUsuario = idUsuario
+                        where idUsuario = ${idSessao}
+                            order by idSessao desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc limit ${limite_linhas}`;
+        // TALVEZ O JOIN FEITO NESSA INSTRUÇÃO DÊ PROBLEMA
+        // QUALQUER COISA, SUBSTITUIR A LINHA DO JOIN POR 'where fkUsuario = ${idSessao}'
+        // TALVEZ ESSE 'idSessao' TENHA QUE SER, NA VERDADE, O 'idCliente' REGISTRADO NO SESSION.STORAGE
+        instrucaoSql = `
+            select
+                dtSessao as momento_grafico,
+                duracao
+                    from sessao
+                        join usuario on fkUsuario = idUsuario
+                            where idUsuario = ${idSessao}
+                                order by idSessao desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -31,27 +34,28 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idSessao) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc`;
-
+        instrucaoSql = `
+        select top 1
+        dtSessao as momento_grafico,
+        duracao
+            from sessao
+                join usuario on fkUsuario = idUsuario
+                    where idUsuario = ${idSessao}
+                        order by idSessao desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc limit 1`;
+        instrucaoSql = `
+        select
+        dtSessao as momento_grafico,
+        duracao
+            from sessao
+                join usuario on fkUsuario = idUsuario
+                    where idUsuario = ${idSessao}
+                        order by idSessao desc limit 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
