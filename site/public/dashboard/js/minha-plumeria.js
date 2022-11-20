@@ -96,7 +96,7 @@ function alternarMenu() {
     subMenu.classList.toggle("open-menu")
 }
 
-// b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 b_usuarioDropDown.innerHTML = sessionStorage.NOME_USUARIO;
 
 
