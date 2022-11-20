@@ -5,22 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Plumeria</title>
+    <title>Plumeria | Editar Mensagem</title>
 
     <script defer src="js/minha-plumeria.js"></script>
-    <script defer src="js/dashboard.js"></script>
+    <script src="js/edicao-mensagem.js"></script>
     <script defer src="../js/funcoes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="icon" href="../assets/plumeria-icon.png">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/mural.css">
+    <link rel="stylesheet" href="css/edicao-mensagem.css">
     <link rel="stylesheet" href="css/minha-plumeria.css">
-    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
-<body>
+<!--  -->
+<body onload="validarSessao(), listarInfosDeUm()">
 
     <div class="div_backgroundBalls">
         <div class="div_Balls1"></div>
@@ -75,6 +75,7 @@
                             <span>></span>
                           </a>
                 
+                          <!-- Quando clicar no "Sair" será redirecionado para a página de login -->
                           <a href="../login.html" class="sub-menu-link" onclick="limparSessao()">
                             <img src="../assets/drop-down-perfil/log-out.png" alt="">
                             <p>Sair</p>
@@ -87,91 +88,73 @@
             </div>
         </header>
 
-        <a href="mural.html">Mural de mensagem</a>
-
-
-        <!-- Drop Downd de Funcionalidades -->
-        <div class="container-all">
-            <section class="drop-funcionalidade">
-                <div class="caixa">
-                    <div class="cliente">
-                        <h1>Olá, <span id="b_usuario">usuário</span>!</h1>
+        <div class="dash-right">
+            <div class="avisos">
+                <div class="container-mensagem-mural">
+                    <div class="mensagem">
+                        <div class="titulo-mensagem">
+                            <h2 class="h2-dashboard">Editar Mensagem</h2>
         
-                        <p>
-                            Vamos respirar um pouco?
-                        </p>
-                    </div>
-    
-                    <div class="drop-funcionalidades">
-                        <div class="lista-apoio-drop-func">
-                            <a href="minha-plumeria.html">
-                                <img src="../assets/icones-drop-funcionalidades/lista-apoio-icone-drop.svg" alt="icone de lista de apoio">
-                            </a>
+                            <p>
+                                Reescreva um pouco da sua experiência.
+                            </p>
                         </div>
+    
+                        <div class="div-form">
+                            <form class="form-postagem" id="form_postagem" method="post" onsubmit="return publicar()">
+                                <div class="div_inputNaoEditar" onclick="eventoNaoEditar()">
+                                    <input placeholder="ID: " id="input_id" maxlength="100" type="text" disabled>
+                                </div>
         
-                        <div class="temporizador-drop-func">
-                            <a href="minha-plumeria.html">
-                                <img src="../assets/icones-drop-funcionalidades/temporizador-icone-drop.svg" alt="icone de lista de apoio">
-                            </a>
+                                <br>
+                                
+                                <div class="div_inputNaoEditar" onclick="eventoNaoEditar()">
+                                    <input placeholder="Autor: " id="input_nome" maxlength="100" type="text" disabled>
+                                </div>
+                                
+                                <br>
+
+                                <div class="div_inputNaoEditar" onclick="eventoNaoEditar()">
+                                    <input placeholder="Título: " id="input_titulo" maxlength="100" type="text" disabled>
+                                </div>
+    
+                                <br>
+    
+                                <textarea placeholder="Descrição (máximo de 1200 caracteres)" name="descricao" id="textarea_descricao" maxlength="1200" rows="10"></textarea>
+                                
+                                <br>
+    
+                                <div class="select-avaliacao">
+                                    <p>
+                                        Avalie como foi a experiência:
+                                    </p>
+    
+                                    <select required name="avalicao" id="avaliacao">
+                                        <option value="" disabled selected hidden>selecione uma opção</option>
+                                        <option value="excelente">Excelente</option>
+                                        <option value="muito bom">Muito bom</option>
+                                        <option value="bom">Bom</option>
+                                        <option value="ruim">Ruim</option>
+                                        <option value="muito ruim">Muito ruim</option>
+                                    </select>
+                                </div>
+                                
+                                <button class="btn_passar" onclick="editar()">Finalizar edição</button>
+    
+                                <div class="sigilo">
+                                    <p>
+                                        Essa mensagem é apenas para você! 
+                                        <br>
+                                        Prezamos pelo seu sigilo e não compartilhamos ou analisamos nenhuma informação.
+                                    </p>
+                                </div>
+                            </form>
                         </div>
-        
-                        <div class="dashboard-drop-func">
-                            <a href="dashboard.html">
-                                <img src="../assets/icones-drop-funcionalidades/dashboard-icone-drop.svg" alt="icone de lista de apoio">
-                            </a>
-                        </div>                
-                    </div>
-                </div>
-            </section>
-            
-    
-            <!-- Começo dos gráficos -->
-            <div class="dashboard">
-                <div class="titulo-dashboard">
-                    <h2 class="h2-dashboard">Dashboard</h2>
-            
-                    <p>
-                        Olhando um pouco mais a fundo os dados das suas sessões 
-                    </p>
-                </div>
-
-                <div class="dash-mensagem">
-                        <h2 class="h2-mensagem">Parabéns! Nessa semana você completou 2h de sessão na Plumeria 👏</h2>
-    
-                        <p class="p-mensagem">Continue buscando encontrar momentos de qualidade para aumentar a sua saúde!</p>
-                </div>
-    
-                <div class="dash">
-                    <div>
-                        <h3 class="tituloGraficos">
-                            <span id="tituloDash">...</span>
-                        </h3>
-                    </div>
-                    
-                    <div class="graficos">
-                        <div class="graph">
-                            <canvas id="myChart"></canvas>
-                        </div>
-
-                        <!-- <div class="graph">
-                            <canvas id="myChart2"></canvas>
-                        </div> -->
-                    </div>
-                    
-                    <div class="btns-dash">
-                        <!-- O gráfico é chamado de acordo com o idUsuario do banco   -->
-                        <button class="btn-chart" onclick="obterDadosGrafico(idUsuarioDash)">Atualizar</button>
-                    </div>
-
-                    <div class="avisoCaptura">
-                        <p id="avisoCaptura" style="color: #142E38"></p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>       
-    
+    </div>
 </body>
-</html>
 
-<script src="js/dashboard.js"></script>
+</html>

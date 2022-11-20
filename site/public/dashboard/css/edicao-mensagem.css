@@ -1,0 +1,32 @@
+.avisos {
+    display: flex;
+    justify-content: center;
+}
+
+.container-mensagem-mural {
+    width: 60%;
+}
+
+.mensagem {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.div_inputNaoEditar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#input_id,
+#input_nome,
+#input_titulo {
+    background-color: #dbd198;
+}
+
+.sigilo {
+    display: flex;
+    justify-content: center;
+}

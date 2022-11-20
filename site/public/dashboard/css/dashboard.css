@@ -1,0 +1,103 @@
+.container-all {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard {
+    width: 100%;
+    margin: 2.3em 4em 2em 4em;
+    padding: 0.5em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #DBDCC9;
+    border: 2px outset #142E38;
+    border-radius: 20px;
+}
+
+.titulo-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;    
+}
+
+.h2-dashboard {
+    font-size: 3em;
+    margin-bottom: 0 !important;
+}
+
+.titulo-dashboard p {
+    width: 25%;
+    font-size: 0.8em;
+}
+
+.dash-mensagem {
+    margin: 1em auto;
+    width: 72%;
+    padding: 1.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #dcd7b9;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.tituloGraficos {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+.graficos {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.graph {
+    width: 450px;
+    height: 400px;
+}
+
+#myChart,
+#myChart2 {
+    border-radius: 10px;
+    color: #142E38;
+    background-color: #B8BB81;
+    padding: 15px;
+}
+
+.btns-dash {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0 1em 0;
+}
+
+.btn-chart {
+    padding: 5px 14px;
+    background-color: #142E38;
+    border-radius: 50px;
+    color: #AA9F00;
+    font-size: 0.9rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avisoCaptura {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2em;
+}
+
+#avisoCaptura {
+    font-size: 0.8em;
+}

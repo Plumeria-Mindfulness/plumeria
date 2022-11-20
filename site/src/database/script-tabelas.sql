@@ -1,6 +1,7 @@
 -- OBSERVAÇÕES:
 -- ! Possibilidade de criar uma constraint que validará a senha do usuário;
 -- ! Verificação de senha usando "select sha2('senhaSegura', 512);"
+-- ? Como utilizar auto_increment nas tables de sessão e mensagem
 
 -- Criação de banco de dados
 create database Plumeria;
@@ -18,7 +19,6 @@ create table usuario (
         constraint chkEmail check (email like '%@%.%' and email not like '@%' and email not like '%.'), 
     senha varchar(20) not null
         -- Possibilidade de criar uma constraint que validará a senha do usuário
-        -- constraint chkSenha check (senha like ('%!%' or '%"%' or '%#%'or '%$%'or '%%%' or '%&%' or "%'%" or '%(%' or '%)%' or '%*%' or '%+%' or '%,%' or '%-%' or '%.%' or '%/%' or '%:%' or '%;%' or '%<%' or '%=%' or '%>%' or '%?%' or '%@%' or '%[%' or '%\%' or '%]%' or '%^%' or '%_%' or '%`%' or '%{%' or '%|%' or '%}%' or '%~%') and ('%0%' or '%1%' or '%2%' or '%3%' or '%4%' or '%5%' or '%6%' or '%7%' or '%8%' or '%9%') and ('%a%' or '%b%' or '%c%' or '%d%' or '%e%' or '%f%' or '%g%' or '%h%' or '%i%' or '%j%' or '%k%' or '%l%' or '%m%' or '%n%' or '%o%' or '%p%' or '%q%' or '%r%' or '%s%' or '%t%' or '%u%' or '%v%' or '%w%' or '%x%' or '%y%' or '%z%') and ('%A%' or '%B%' or '%C%' or '%D%' or '%E%' or '%F%' or '%G%' or '%H%' or '%I%' or '%J%' or '%K%' or '%L%' or '%M%' or '%N%' or '%O%' or '%P%' or '%Q%' or '%R%' or '%S%' or '%T%' or '%U%' or '%V%' or '%W%' or '%X%' or '%Y%' or '%Z%'))
 );
 
 create table sessao (
@@ -30,8 +30,21 @@ create table sessao (
 	primary key (idSessao, fkUsuario)
 );
 
+-- Tabela inicial de mensagem para integração com API
 create table mensagem (
     idMensagem int,
+    titulo varchar(100),
+    descricao varchar(1200),
+    avaliacao varchar(10) not null, 
+		constraint chkAvaliacao check (avaliacao = 'excelente' or avaliacao = 'muito bom' or avaliacao ='bom' or avaliacao ='ruim' or avaliacao ='muito ruim'),
+	fkUsuario int not null, constraint fkUsuarioMensagem foreign key (fkUsuario)
+		references usuario(idUsuario)
+);
+
+-- Tabela completa de mensagem
+create table mensagem (
+    idMensagem int,
+    titulo varchar(100),
     descricao varchar(1200),
     avaliacao varchar(10) not null, 
 		constraint chkAvaliacao check (avaliacao = 'excelente' or avaliacao = 'muito bom' or avaliacao ='bom' or avaliacao ='ruim' or avaliacao ='muito ruim'),
@@ -49,24 +62,38 @@ desc mensagem;
 
 -- Inserção de dados nas tabelas 
 insert into usuario values 
-	(null, 'Luiz Nison', 'Filler', '2022-08-18', 'luiznison@gmail.com', '@Sptech2022'),
+	(null, 'Luiz Nison', 'Filler', '1999-08-18', 'luiznison.ac@gmail.com', '@Sptech2022'),
 	(null, 'Giulia', null, '1998-01-15', 'giulia@hotmail.com', '123abcDEF@!');
 
 insert into sessao values
-	(1, '2022-10-28', 30, 1),
+	(1, '2022-10-31', 30, 1),
 	(2, '2022-11-01', 40, 1),
 	(3, '2022-11-01', 60, 1),
+	(4, '2022-11-01', 65, 1),
+	(5, '2022-11-02', 20, 1),
+	(6, '2022-11-02', 35, 1),
+	(7, '2022-11-03', 42, 1),
+	(8, '2022-11-03', 15, 1),
+	(9, '2022-11-04', 22, 1),
+	(10, '2022-11-05', 75, 1),
 	(1, '2022-10-30', 20, 2),
 	(2, '2022-10-31', 40, 2),
 	(3, '2022-11-01', 30, 2);
 
 insert into mensagem values 
-	(1, 'Sessão bem intensa, mas com certeza me ajudou bastante a digerir algumas coisas que já estavam há muito tempo por aqui.', 'muito bom', 1, 1),
-	(2, 'Hoje a sessão foi curta, mas bem profeitosa.', 'bom', 2, 1),
-	(3, 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'excelente', 3, 1),
-	(1, 'Espaço muito bom que consegui criar hoje para refletir sobre uma dificuldade no trabalho.', 'muito bom', 1, 2),
-	(2, 'Foi um pouco difícil de controlar a ansiedade hoje. Preciso conversa e levar isso à terapia.', 'muito ruim', 2, 2),
-	(3, 'Ai... que momento bom e que experiência autocompassiva!', 'excelente', 3, 2);
+	(1, 'Um titulo 1', 'Sessão bem intensa, mas com certeza me ajudou bastante a digerir algumas coisas que já estavam há muito tempo por aqui.', 'muito bom', 1, 1),
+	(2, 'Dois titulos 2', 'Hoje a sessão foi curta, mas bem profeitosa.', 'bom', 2, 1),
+	(3, 'Três titulo 3', 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'ruim', 3, 1),
+	(4, 'Quatro titulo 4', 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'muito ruim', 4, 1),
+	(5, 'Um titulo 5', 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'bom', 5, 1),
+	(6, 'Titulo 6', 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'excelente', 6, 1),
+	(7, 'Titulo 7', 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'muito bom', 7, 1),
+	(8, 'Titulo 8', 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'excelente', 8, 1),
+	(9, 'Qualquer título 9', 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'muito bom', 9, 1),
+	(10, 'Titulo 10', 'Tentei ficar o mesmo tempo de hoje manhã e consegui ficar mais 20 minutos que me ajudaram bastante.', 'excelente', 10, 1),
+	(1, '1 Titulo Giulia', 'Espaço muito bom que consegui criar hoje para refletir sobre uma dificuldade no trabalho.', 'muito bom', 1, 2),
+	(2, '2 Titulo Giulia', 'Foi um pouco difícil de controlar a ansiedade hoje. Preciso conversa e levar isso à terapia.', 'muito ruim', 2, 2),
+	(3, '3 Titulo Giulia', 'Ai... que momento bom e que experiência autocompassiva!', 'excelente', 3, 2);
 
 -- Selecionar as tabelas isoladamente
 select * from usuario;

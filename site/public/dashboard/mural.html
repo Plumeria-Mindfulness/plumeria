@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plumeria | Mensagem</title>
+
+    <script defer src="js/minha-plumeria.js"></script>
+    <script defer src="js/mural.js"></script>
+    <script defer src="../js/funcoes.js"></script>
+
+    <link rel="icon" href="../assets/plumeria-icon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/mural.css">
+    <link rel="stylesheet" href="css/minha-plumeria.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body onload="validarSessao(), atualizarFeed()">
+
+    <div class="div_backgroundBalls">
+        <div class="div_Balls1"></div>
+        <div class="div_BallsHeader1"></div>
+        <div class="div_BallsHeader2"></div>
+        <div class="div_BallsDown1"></div>
+        <div class="div_BallsDown2"></div>
+    </div>
+
+    <div class="div_allAbove">
+        <!-- Cabeçalho + Navbar -->
+        <header class="header" id="header">
+            <div class="container">
+                <div class="logo" id="logo">
+                    <a href="../index.html">
+                        <img class="rotate" src="../assets/plumeria-icon.png" alt="icone de uma plumeria">
+                        <span class="nome-logo">Plumeria</span>
+                    </a> 
+                </div>
+
+                <div class="container-nav">
+                    <nav class="navbar">
+                      <div class="drop-down" onclick="alternarMenu()">
+                        <img class="drop-down-ball-menu" src="../assets/drop-down-perfil/drop-down-ball-menu.svg">
+                        <img class="drop-down-user-profile" src="../assets/drop-down-perfil/usuario-de-perfil.png">
+                      </div>
+                
+                      <div class="sub-menu-wrap" id="subMenu">
+                        <div class="sub-menu">
+                          <div class="user-info">
+                            <img src="../assets/drop-down-perfil/usuario-de-perfil.png" alt="icone usuario de perfil">
+                            <!-- Adicionar um JS para pegar o nome que a pessoa cadastrou -->
+                            <h3 id="nome"><span id="b_usuarioDropDown">usuário</span></h3>
+                          </div>
+                          <hr>
+                
+                          <a href="#" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/edit-user.png" alt="">
+                            <p>Editar perfil</p>
+                            <span>></span>
+                          </a>
+                
+                          <a href="#" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/settings-profile.png" alt="">
+                            <p>Configurações</p>
+                            <span>></span>
+                          </a>
+                
+                          <a href="dashboard.html" class="sub-menu-link">
+                            <img src="../assets/drop-down-perfil/dashboard-especifico.png" alt="">
+                            <p>Dashboard</p>
+                            <span>></span>
+                          </a>
+                
+                          <!-- Quando clicar no "Sair" será redirecionado para a página de login -->
+                          <a href="../login.html" class="sub-menu-link" onclick="limparSessao()">
+                            <img src="../assets/drop-down-perfil/log-out.png" alt="">
+                            <p>Sair</p>
+                            <span>></span>
+                          </a>
+                        </div>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class="dash-right">
+            <div class="avisos">
+                <div class="container-mensagem-mural">
+                    <div class="mensagem">
+                        <div class="titulo-mensagem">
+                            <h2 class="h2-dashboard">Publicar Mensagem</h2>
+        
+                            <p>
+                                Escreva uma mensagem para si mesmo(a) falando um pouco de como foi sua experiência.
+                            </p>
+                        </div>
+    
+                        <div class="div-form">
+                            <form class="form-postagem" id="form_postagem" method="post" onsubmit="return publicar()">
+                                <input placeholder="Título" name="titulo" id="titulo" maxlength="100" type="text">
+    
+                                <br>
+    
+                                <textarea placeholder="Descrição (máximo de 1200 caracteres)" name="descricao" id="textarea_descricao" maxlength="1200" rows="10"></textarea>
+                                
+                                <br>
+    
+                                <div class="select-avaliacao">
+                                    <p>
+                                        Avalie como foi a experiência:
+                                    </p>
+    
+                                    <select required name="avalicao" id="avaliacao">
+                                        <option value="" disabled selected hidden>selecione uma opção</option>
+                                        <option value="excelente">Excelente</option>
+                                        <option value="muito bom">Muito bom</option>
+                                        <option value="bom">Bom</option>
+                                        <option value="ruim">Ruim</option>
+                                        <option value="muito ruim">Muito ruim</option>
+                                    </select>
+                                </div>
+                                
+                                <button class="btn_passar">Enviar</button>
+    
+                                <div class="sigilo">
+                                    <p>
+                                        Essa mensagem é apenas para você! Prezamos pelo seu sigilo e não compartilhamos ou analisamos nenhuma informação.
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+    
+                    <div class="vertical-line"></div> 
+    
+                    <div class="mural">
+                        <div class="titulo-mural">
+                            <h2 class="h2-dashboard">Meu Mural</h2>
+    
+                            <p>
+                                Aqui estão algumas lembranças das suas experiências.
+                                <br>
+                                Sinta-se a vontade para editar!
+                            </p>
+                        </div>
+                        
+                        <div class="div-results">
+                            <div id="feed_container" class="feed-container">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            
+            <!-- MODAL -->
+            <!-- <div id="div_modal" class="div-modal">
+                <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
+                </div>
+                <div id="modal_container" class="modal-container">
+                    <button class="btn-fechar-modal" onclick="fecharModal()">X</button>
+                </div>
+            </div> -->
+            
+            <!-- AGUARDAR -->
+            <!-- <div id="div_aguardar" class="div-aguardar">
+                <img src="./assets/aguarde-pink3.gif" id="img_aguarde">
+            </div>  -->
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

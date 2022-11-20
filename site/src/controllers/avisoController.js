@@ -66,8 +66,11 @@ function pesquisarDescricao(req, res) {
 }
 
 function publicar(req, res) {
+    // Luiz => abaixo são separados os valores que vieram da 'req', que são basicamente os valores que vieram do objeto 'corpo' criado na função publicar da dashboard/mural.html
+    // Luiz => o idUsuario é pego do 'params', ou seja daquela valor dinâmico que estava depois dos dois pontos ':' no router dentro do routes/aviso.js
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
+    var avaliacao = req.body.avaliacao;
     var idUsuario = req.params.idUsuario;
 
     if (titulo == undefined) {
@@ -77,7 +80,7 @@ function publicar(req, res) {
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
+        avisoModel.publicar(titulo, descricao, avaliacao, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -95,9 +98,10 @@ function publicar(req, res) {
 
 function editar(req, res) {
     var novaDescricao = req.body.descricao;
+    var novaAvaliacao = req.body.avaliacao;
     var idAviso = req.params.idAviso;
 
-    avisoModel.editar(novaDescricao, idAviso)
+    avisoModel.editar(novaDescricao, novaAvaliacao, idAviso)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -113,30 +117,11 @@ function editar(req, res) {
 
 }
 
-function deletar(req, res) {
-    var idAviso = req.params.idAviso;
-
-    avisoModel.deletar(idAviso)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
 module.exports = {
     testar,
     listar,
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
-    editar,
-    deletar
+    editar
 }
