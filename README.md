@@ -35,3 +35,15 @@ Projeto individual que está sendo desenvolvido durante o 1º semestre do curso 
 ```bash
   cd Plumeria
 ```
+
+### Instale as dependências com NPM
+
+```bash
+  npm install
+```
+
+### Inicie o servidor local
+
+```bash
+  npm start
+```

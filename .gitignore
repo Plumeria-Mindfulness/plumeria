@@ -6,9 +6,3 @@ site/node_modules
 site/package-lock.json
 
 .github
-
-file-list.md
-
-site/spotify-test
-spotify-test.html
-spotify-test.js
