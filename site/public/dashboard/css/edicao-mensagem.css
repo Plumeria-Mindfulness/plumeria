@@ -25,3 +25,8 @@
 #input_titulo {
     background-color: #dbd198;
 }
+
+.sigilo {
+    display: flex;
+    justify-content: center;
+}
