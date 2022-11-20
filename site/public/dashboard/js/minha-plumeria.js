@@ -100,7 +100,7 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 b_usuarioDropDown.innerHTML = sessionStorage.NOME_USUARIO;
 
 
-let proximaAtualizacao;
+// let proximaAtualizacao;
     
 // window.onload = obterDadosGrafico(1);
 

@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idSessao, limite_linhas) {
+function buscarUltimasMedidas(idUsuarioDash, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -11,20 +11,17 @@ function buscarUltimasMedidas(idSessao, limite_linhas) {
             duracao
                 from sessao
                     join usuario on fkUsuario = idUsuario
-                        where idUsuario = ${idSessao}
-                            order by idSessao desc`;
+                        where idUsuario = ${idUsuarioDash}
+                            order by idUsuario desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        // TALVEZ O JOIN FEITO NESSA INSTRUÇÃO DÊ PROBLEMA
-        // QUALQUER COISA, SUBSTITUIR A LINHA DO JOIN POR 'where fkUsuario = ${idSessao}'
-        // TALVEZ ESSE 'idSessao' TENHA QUE SER, NA VERDADE, O 'idCliente' REGISTRADO NO SESSION.STORAGE
         instrucaoSql = `
             select
                 dtSessao as momento_grafico,
                 duracao
                     from sessao
                         join usuario on fkUsuario = idUsuario
-                            where idUsuario = ${idSessao}
-                                order by idSessao desc limit ${limite_linhas}`;
+                            where idUsuario = ${idUsuarioDash}
+                                order by idUsuario desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -34,7 +31,7 @@ function buscarUltimasMedidas(idSessao, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idSessao) {
+function buscarMedidasEmTempoReal(idUsuarioDash) {
 
     instrucaoSql = ''
 
@@ -45,8 +42,8 @@ function buscarMedidasEmTempoReal(idSessao) {
         duracao
             from sessao
                 join usuario on fkUsuario = idUsuario
-                    where idUsuario = ${idSessao}
-                        order by idSessao desc`;
+                    where idUsuario = ${idUsuarioDash}
+                        order by idUsuario desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
         select
@@ -54,8 +51,8 @@ function buscarMedidasEmTempoReal(idSessao) {
         duracao
             from sessao
                 join usuario on fkUsuario = idUsuario
-                    where idUsuario = ${idSessao}
-                        order by idSessao desc limit 1`;
+                    where idUsuario = ${idUsuarioDash}
+                        order by idUsuario desc limit 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

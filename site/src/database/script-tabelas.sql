@@ -19,7 +19,6 @@ create table usuario (
         constraint chkEmail check (email like '%@%.%' and email not like '@%' and email not like '%.'), 
     senha varchar(20) not null
         -- Possibilidade de criar uma constraint que validará a senha do usuário
-        -- constraint chkSenha check (senha like ('%!%' or '%"%' or '%#%'or '%$%'or '%%%' or '%&%' or "%'%" or '%(%' or '%)%' or '%*%' or '%+%' or '%,%' or '%-%' or '%.%' or '%/%' or '%:%' or '%;%' or '%<%' or '%=%' or '%>%' or '%?%' or '%@%' or '%[%' or '%\%' or '%]%' or '%^%' or '%_%' or '%`%' or '%{%' or '%|%' or '%}%' or '%~%') and ('%0%' or '%1%' or '%2%' or '%3%' or '%4%' or '%5%' or '%6%' or '%7%' or '%8%' or '%9%') and ('%a%' or '%b%' or '%c%' or '%d%' or '%e%' or '%f%' or '%g%' or '%h%' or '%i%' or '%j%' or '%k%' or '%l%' or '%m%' or '%n%' or '%o%' or '%p%' or '%q%' or '%r%' or '%s%' or '%t%' or '%u%' or '%v%' or '%w%' or '%x%' or '%y%' or '%z%') and ('%A%' or '%B%' or '%C%' or '%D%' or '%E%' or '%F%' or '%G%' or '%H%' or '%I%' or '%J%' or '%K%' or '%L%' or '%M%' or '%N%' or '%O%' or '%P%' or '%Q%' or '%R%' or '%S%' or '%T%' or '%U%' or '%V%' or '%W%' or '%X%' or '%Y%' or '%Z%'))
 );
 
 create table sessao (
@@ -31,6 +30,18 @@ create table sessao (
 	primary key (idSessao, fkUsuario)
 );
 
+-- Tabela inicial de mensagem para integração com API
+create table mensagem (
+    idMensagem int,
+    titulo varchar(100),
+    descricao varchar(1200),
+    avaliacao varchar(10) not null, 
+		constraint chkAvaliacao check (avaliacao = 'excelente' or avaliacao = 'muito bom' or avaliacao ='bom' or avaliacao ='ruim' or avaliacao ='muito ruim'),
+	fkUsuario int not null, constraint fkUsuarioMensagem foreign key (fkUsuario)
+		references usuario(idUsuario)
+);
+
+-- Tabela completa de mensagem
 create table mensagem (
     idMensagem int,
     titulo varchar(100),
@@ -51,7 +62,7 @@ desc mensagem;
 
 -- Inserção de dados nas tabelas 
 insert into usuario values 
-	(null, 'Luiz Nison', 'Filler', '2022-08-18', 'luiznison.ac@gmail.com', '@Sptech2022'),
+	(null, 'Luiz Nison', 'Filler', '1999-08-18', 'luiznison.ac@gmail.com', '@Sptech2022'),
 	(null, 'Giulia', null, '1998-01-15', 'giulia@hotmail.com', '123abcDEF@!');
 
 insert into sessao values
