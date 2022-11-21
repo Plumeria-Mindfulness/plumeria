@@ -21,7 +21,11 @@ function verificarSenhaConfirmacao() {
 function cadastrar() {
     aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
+    msg_email.style.display = "none";
+    msg_senha.style.display = "none";
+    msg_confirmacaoSenha.style.display = "none";
+
+    // Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = in_nome.value;
     var sobrenomeVar = in_sobrenome.value;
@@ -29,15 +33,15 @@ function cadastrar() {
     var emailVar = in_email.value;
     var senhaVar = in_senha.value;
     var confirmacaoSenhaVar = in_confirmacaoSenha.value;
-    
 
-    /* Validação das regras para senha
+    /* 
+    Validação das regras para senha
     As duas variáveis abaixo servem para verificar se a string, respectivamente do e-mail e da senha contêm:
     caracteres antes e depois do '@' e depois um ponto final '.' que é precedido e sucedido por mais caracteres; 
     e ter no mínimo 1 número, 1 letra minúscula, 1 letra maiúscula, 1 caracter especial, além de conter no mínimo 8 caracteres e no máximo 20
     */
     var emailCorreto = /\S+@\S+\.\S+/;
-    var senhaCorreta = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/; 
+    var senhaCorreta = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
 
     // A função ".test()" serve para testar por um correspondência de caracteres da expressão supracitada para emailCorreto, deixando a = a "true"
     // A função ".match()" serve para pesquisar na string a expressão supracitada para senhaCorreta
@@ -48,9 +52,9 @@ function cadastrar() {
     var confirmarSenhaErrada = senhaVar != confirmacaoSenhaVar;
 
     //  Variável booleana para saber se o campo ainda não foi preenchido/está vazio 
-    var campoNaoPreenchido = nomeVar == "" || sobrenomeVar == "" || dtNascimentoVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == ""
+    var campoNaoPreenchido = nomeVar == "" || sobrenomeVar == "" || dtNascimentoVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "";
 
-    if (campoNaoPreenchido || emailErrado || senhaErrada || confirmarSenhaErrada) {
+    if (emailErrado || senhaErrada || confirmarSenhaErrada || campoNaoPreenchido) {
         if (emailErrado) {
             msg_email.style.display = "block";
         }
@@ -60,7 +64,7 @@ function cadastrar() {
         }
 
         if (confirmarSenhaErrada) {
-            msg_confirmacaoSenha.innerHTML += `<br>As duas senhas têm que ser iguais!`;
+            msg_confirmacaoSenha.innerHTML = `Insira sua confirmação de senha corretamente. <br>As duas senhas têm que ser iguais!`;
             msg_confirmacaoSenha.style.display = "block";
         }
     
@@ -81,15 +85,16 @@ function cadastrar() {
                 msg_confirmacaoSenha.style.display = "block";
             }
         
-            cardErro.style.display = "block"
+            cardErro.style.display = "block";
             mensagem_erro.innerHTML = "Precisamos de todos os seus dados. <br><br> Tente novamente completando todo o formulário.";
 
             finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000)
+            return false;    
         }
-
+        finalizarAguardar();
+    } else {
+        setInterval(sumirMensagem, 3000);
+    
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -129,7 +134,17 @@ function cadastrar() {
         });
 
         return false;
-        }
+    }
+}  
+
+function finalizarAguardar(texto) {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "none";
+
+    var divErrosLogin = document.getElementById("div_erros_login");
+    if (texto) {
+        divErrosLogin.innerHTML = texto;
+    }
 }
 
 function sumirMensagem() {
