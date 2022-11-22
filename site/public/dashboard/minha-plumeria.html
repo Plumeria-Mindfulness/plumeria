@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
-<body>
+<body onload="validarSessao(), atualizarFeed()">
 
     <div class="div_backgroundBalls">
         <div class="div_Balls1"></div>
@@ -85,8 +85,6 @@
             </div>
         </header>
 
-        <a href="mural.html">Mural de mensagem</a>
-
         <!-- Drop Downd de Funcionalidades -->
         <section class="drop-funcionalidade">
             <div class="caixa">
@@ -100,16 +98,22 @@
 
                 <div class="drop-funcionalidades">
                     <div class="lista-apoio-drop-func" onclick="mostrarListaApoio()">
-                        <img src="../assets/icones-drop-funcionalidades/lista-apoio-icone-drop.svg" alt="icone de lista de apoio">
+                        <img src="../assets/icones-drop-funcionalidades/lista-apoio-icone-drop.svg" alt="ícone de lista de apoio">
                     </div>
     
                     <div class="temporizador-drop-func" onclick="mostrarTemporizador()">
-                        <img src="../assets/icones-drop-funcionalidades/temporizador-icone-drop.svg" alt="icone de lista de apoio">
+                        <img src="../assets/icones-drop-funcionalidades/temporizador-icone-drop.svg" alt="ícone de temporizador">
+                    </div>
+
+                    <div class="mural-drop-func">
+                        <a href="mural.html">
+                            <img src="../assets/icones-drop-funcionalidades/mural-icone-drop.svg" alt="ícone de mural de mensagens">
+                        </a>
                     </div>
     
                     <div class="dashboard-drop-func">
                         <a href="dashboard.html">
-                            <img src="../assets/icones-drop-funcionalidades/dashboard-icone-drop.svg" alt="icone de lista de apoio">
+                            <img src="../assets/icones-drop-funcionalidades/dashboard-icone-drop.svg" alt="ícone de dashboard">
                         </a>
                     </div>                
                 </div>

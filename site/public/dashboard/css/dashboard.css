@@ -3,8 +3,12 @@
     justify-content: space-between;
 }
 
+.caixa {
+    width: 100% !important;
+}
+
 .dashboard {
-    width: 100%;
+    width: 80%;
     margin: 2.3em 4em 2em 4em;
     padding: 0.5em 0;
     display: flex;
