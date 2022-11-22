@@ -17,8 +17,7 @@ create table usuario (
     dtNascimento date not null,
     email varchar(50) not null, 
         constraint chkEmail check (email like '%@%.%' and email not like '@%' and email not like '%.'), 
-    senha varchar(20) not null
-        -- Possibilidade de criar uma constraint que validará a senha do usuário
+    senha varchar(256) not null
 );
 
 create table sessao (
