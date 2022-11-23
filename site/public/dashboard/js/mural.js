@@ -58,8 +58,9 @@ function editar(idAviso) {
 }
 
 function atualizarFeed() {
+    var idUsuario = sessionStorage.ID_USUARIO;
     //aguardar();
-    fetch("/avisos/listar").then(function (resposta) {
+    fetch(`/avisos/listar/${idUsuario}`).then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
                 var feed = document.getElementById("feed_container");
@@ -83,7 +84,7 @@ function atualizarFeed() {
 
                     // criando e manipulando elementos do HTML via JavaScript
                     var divPublicacao = document.createElement("div");
-                    var spanID = document.createElement("span");
+
                     // Luiz => Achar uma forma de pegar a data da sessão
                     var dataAviso = document.createElement("span");
                     var spanTitulo = document.createElement("span");
@@ -93,8 +94,6 @@ function atualizarFeed() {
                     var divButtons = document.createElement("div");
                     var btnEditar = document.createElement("button");
 
-
-                    spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
                     // Luiz => Achar uma forma de pegar a data da sessão
                     dataAviso.innerHTML = "Data: <b> 19/11/2022 </b>";
                     spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
@@ -115,7 +114,6 @@ function atualizarFeed() {
                     btnEditar.id = "btnEditar" + publicacao.idAviso;
                     btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
 
-                    divPublicacao.appendChild(spanID);
                     // Luiz => Achar uma forma de pegar a data da sessão
                     divPublicacao.appendChild(dataAviso);
                     divPublicacao.appendChild(spanNome);
