@@ -6,22 +6,23 @@ function buscarUltimasMedidas(idUsuarioDash, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `
-        select top ${limite_linhas}
-            dtSessao as momento_grafico,
-            duracao
-                from sessao
-                    join usuario on fkUsuario = idUsuario
-                        where idUsuario = ${idUsuarioDash}
-                            order by idUsuario desc`;
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `
-            select
+            select top ${limite_linhas}
                 dtSessao as momento_grafico,
                 duracao
                     from sessao
                         join usuario on fkUsuario = idUsuario
                             where idUsuario = ${idUsuarioDash}
-                                order by idUsuario desc limit ${limite_linhas}`;
+                                order by dtSessao;`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `
+            select
+                dtSessao as momento_grafico,
+                sum(duracao) as duracao
+                    from sessao
+                        join usuario on fkUsuario = idUsuario
+                            where idUsuario = ${idUsuarioDash}
+                                group by dtSessao    
+                                    order by dtSessao limit ${limite_linhas};`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -31,28 +32,28 @@ function buscarUltimasMedidas(idUsuarioDash, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idUsuarioDash) {
+function buscarUltimasMedidas2(idUsuarioDash, limite_linhas) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `
-        select top 1
-        dtSessao as momento_grafico,
-        duracao
+        select count(idSessao),
+        dtsessao as momento_grafico
             from sessao
                 join usuario on fkUsuario = idUsuario
                     where idUsuario = ${idUsuarioDash}
-                        order by idUsuario desc`;
+                        group by dtSessao
+                            order by dtSessao limit ${limite_linhas};`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        select
-        dtSessao as momento_grafico,
-        duracao
-            from sessao
-                join usuario on fkUsuario = idUsuario
-                    where idUsuario = ${idUsuarioDash}
-                        order by idUsuario desc limit 1`;
+            select count(idSessao) as totalSessao,
+            dtsessao as momento_grafico
+                from sessao
+                    join usuario on fkUsuario = idUsuario
+                        where idUsuario = ${idUsuarioDash}
+                            group by dtSessao
+                                order by dtSessao limit ${limite_linhas};`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -65,5 +66,5 @@ function buscarMedidasEmTempoReal(idUsuarioDash) {
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarUltimasMedidas2
 }
