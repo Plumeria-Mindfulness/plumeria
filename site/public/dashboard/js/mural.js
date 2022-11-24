@@ -1,5 +1,12 @@
 b_usuarioDropDown.innerHTML = sessionStorage.NOME_USUARIO;
 
+// Função para criar navbar dropdown
+var subMenu = document.getElementById("subMenu")
+
+function alternarMenu() {
+    subMenu.classList.toggle("open-menu")
+}
+
 function limparFormulario() {
     document.getElementById("form_postagem").reset();
 }
@@ -31,7 +38,7 @@ function publicar() {
 
         if (resposta.ok) {
             window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-            window.location = "/dashboard/mural.html";
+            window.location = "/dashboard/apenas-mural.html";
             limparFormulario();
             finalizarAguardar();
         } else if (resposta.status == 404) {

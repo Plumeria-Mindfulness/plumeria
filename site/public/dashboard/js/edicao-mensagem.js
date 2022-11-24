@@ -20,7 +20,7 @@ function editar() {
 
         if (resposta.ok) {
             window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-            window.location = "/dashboard/mural.html"
+            window.location = "/dashboard/apenas-mural.html"
         } else if (resposta.status == 404) {
             window.alert("Deu 404!");
         } else {
