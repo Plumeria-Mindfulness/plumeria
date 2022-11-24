@@ -8,7 +8,7 @@
 
     <title>Plumeria</title>
 
-    <script defer src="js/login.js"></script>
+    <script defer src="js/redefine-senha.js"></script>
     <script defer src="js/funcoes.js"></script>
 
     <link rel="icon" href="./assets/plumeria-icon.png">
@@ -70,39 +70,53 @@
     
             <div class="container-formulario">
               <div class="caixa-formulario">
-                    <h1>Seja bem-vindo!</h1>
+                    <h1>Esqueceu sua senha?</h1>
     
                     <p class="legenda-titulo">
-                        Entre e encontre o espaço de equilíbrio feito para você, por você!
+                        Basta inserir sua nova senha abaixo e logar novamente!
                     </p>
     
                     <div class="campo">
                         <div class="campo-email">
-                            <label for="in_email">E-mail</label>
+                            <label for="in_emailRedefineSenha">E-mail</label>
 
-                            <input placeholder="Digite seu e-mail" type="email" id="in_email">
+                            <input placeholder="Digite seu e-mail" type="email" id="in_emailRedefineSenha">
+
+                            <p id="msg_email">Insira seu e-mail corretamente.</p>
                         </div>
-            
+
                         <div class="campo-senha">
-                            <label for="in_senha">Senha</label>
+                            <label for="in_redefineSenha">Nova senha</label>
 
                             <div class="icone-input">
                                 <div class="olho">
-                                    <input placeholder="Digite sua senha" type="password" id="in_senha">
+                                    <input placeholder="Digite sua senha" type="password" id="in_redefineSenha">
     
-                                    <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" class="img_olho" id="img_olho" alt="olho para ver senha"></button>
+                                    <button class="btn-olho" onclick="verificarSenha()"><img src="assets/hidden.png" class="img_olho" id="img_olhoRedefineSenha" alt="olho para ver senha"></button>
                                 </div>
                             </div>
+
+                            <p id="msg_senha">Insira sua senha com caracter especial e alfanuméricos.</p>
+                        </div>
+
+                        <div class="campo-senha">
+                            <label for="in_redefineConfirmSenha">Confirmação da nova senha</label>
+
+                            <div class="icone-input">
+                                <div class="olho">
+                                    <input placeholder="Digite sua senha" type="password" id="in_redefineConfirmSenha">
+    
+                                    <button class="btn-olho" onclick="verificarSenhaConfirmacao()"><img src="assets/hidden.png" class="img_olho" id="img_redefineConfirmSenha" alt="olho para ver senha"></button>
+                                </div>
+                            </div>
+                            
+                            <p id="msg_confirmacaoSenha">Insira sua confirmação de senha corretamente.</p>
                         </div>
                     </div>
         
-                    <button id="btn_entrar" class="btn" onclick="entrar()">Entrar</button>
+                    <button id="btn_entrar" class="btn" onclick="redefinirSenha()">Redefinir</button>
         
                     <div class="text-login">
-                        <p>
-                            Esqueci minha <a href="redefine-senha.html">senha.</a>
-                        </p>
-                        
                         <p>
                             Não possui conta? <a href="cadastro.html">Cadastre-se!</a>
                         </p>
