@@ -24,6 +24,9 @@
     border: none;
     text-decoration: none;
 }
+* {
+    font-family: 'Poppins', sans-serif;
+}
 
 /* Corpo da página */
 body {
@@ -290,25 +293,30 @@ body {
 
     /* Botão de login */
 .container .btn {
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #AA9F00;
-    font-weight: 700;
-    font-size: 1.1rem;
-    background-color: #142F38;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-family: Poppins;
+    background-color: #67732C;
     border-radius: 17px;
-    padding: 0.85em 1.3em;
+    padding: 0.75em 1.2em;
     cursor: pointer;
     transition: 0.8s;
 }
 
-#btn-bisbilhotar:hover {
-    background-color: #142F38;
+.container #a-btn {
+    display: flex;
+}
+
+.btn:hover {
+    background-color: #67732C;
     transform: scale(1.1, 1.1);
 }
     
-#btn-bisbilhotar:active {
+.btn:active {
     transform: scale(0.9, 0.9);
 }
 
@@ -352,11 +360,11 @@ section {
     /* Conteúdo de texto */
 .container .span-tag {
     width: max-content;
-    background-color: #D5EEC6;
+    background-color: #8b9651;
     padding: 0.4em 1em;
     border-radius: 50px;
-    color: #142E38;
-    font-weight: 500;
+    color: #FFFFFF;
+    font-weight: 300;
     font-size: 0.85rem;
 }
 
@@ -379,9 +387,13 @@ section {
     color: #142E38;
 }
 
+.container #a-btn {
+    width: max-content;
+}
+
 .content-text #btn-bisbilhotar {
     margin-top: 1.75rem;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .banner .container .content-img {
@@ -593,7 +605,7 @@ section {
     z-index: 6;
     width: 1520px;
     height: 600px;
-    margin-top: 2%;
+    margin-top: 8%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -635,9 +647,16 @@ section {
 }
 
 .lista-funcionalidades .func-lista-apoio,
-.func-player-musica,
+.func-mural-mensagem,
 .func-temporizador,
-.func-dashboard {
+.func-dashboard,
+.func-lava-lamp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.func-lista-apoio {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -650,9 +669,10 @@ section {
 .lista-funcionalidades .func-lista-apoio img,
 .func-temporizador img {
     padding-right: 5%;
+    padding-bottom: 17%;
 }
 
-.lista-funcionalidades .func-player-musica img,
+.lista-funcionalidades .func-mural-mensagem img,
 .func-dashboard img {
     padding-left: 5%;
 }
@@ -674,9 +694,10 @@ section {
 }
 
 .descricoes .desc-lista-apoio, 
-.desc-player-musica,
+.desc-mural-mensagem,
 .desc-temporizador,
-.desc-dashboard {
+.desc-dashboard,
+.desc-lava-lamp {
     width: 62%;
     padding: 1.2em 1.5em;
     border-radius: 20px;
@@ -684,7 +705,7 @@ section {
     background: #F4E8CFCC;
 }
 
-.descricoes .desc-player-musica {
+.descricoes .desc-mural-mensagem {
     position: relative;
     left: 10%;
     background: #F7C5BD;
@@ -700,6 +721,14 @@ section {
     background: #A1B182CC;
 }
 
+.descricoes .desc-lava-lamp {
+    background: #F7C5BD;
+}
+
+.desc-lava-lamp,
+.func-lava-lamp {
+    margin-bottom: 4.8em;
+}
 
 /* Footer */
 footer {

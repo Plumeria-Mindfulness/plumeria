@@ -440,10 +440,11 @@ body {
 
 .btn_passar {
     padding: 5px 14px;
-    background-color: #142E38;
+    background-color: #67732C;
     border-radius: 50px;
-    color: #AA9F00;
-    font-weight: 800;
+    color: #FFF;
+    font-family: Poppins;
+    font-weight: 400;
     cursor: pointer;
     margin-top: 17px;
     display: flex;
@@ -557,6 +558,7 @@ body {
     border-radius: 50%;
     background-color: #e8630a;
     position: absolute;
+    box-shadow: 0 0 30px #ff4d00;
 }
 
 .blob.top {
@@ -580,7 +582,7 @@ body {
     left: 45%;
     bottom: -15%;
     
-    /* A animação 'ease-in-out' com indicação de tempo indica que haverá uma movimentação por um determinado tempo   e coom um efeito de 'slow' no começo e no final dessa animação. */
+    /* A animação 'ease-in-out' com indicação de tempo indica que haverá uma movimentação por um determinado tempo e com um efeito de 'slow' no começo e no final dessa animação. */
     animation: blob-one ease-in-out 7s infinite;
 }
 
