@@ -18,7 +18,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
-<body onload="validarSessao()">
+<!-- onload="validarSessao()" -->
+<body >
 
     <div class="div_backgroundBalls">
         <div class="div_Balls1"></div>
@@ -209,11 +210,44 @@
             </div>
         </section>
 
-        <div class="div_container_bubbles">
-            <div class="bubbles">
-                <button class="btn_passar" id="btn_bubble" onclick="sortearCor()">Sortear cor</button>
+        <div class="div_container_auxiliares">
+            <div id="containerBubbles">
+                <div class="bubbles" id="bubbles">
+                    <button class="btn_passar" id="btn_bubble" onclick="sortearCorBubble()">Sortear cor</button>
+                    <button class="btn_passar" id="btn_passarBubble" onclick="passarBubbleLamp()">Lava Lamp ></button>
+                </div>
+            </div>
+    
+            <div id="containerLavaLamp" style="display: none;">
+                <div class="lamp">
+                    <div class="glass">
+                      <div class="lava">
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob top"></div>
+                        <div class="blob bottom"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                      <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                        <feBlend in="SourceGraphic" in2="goo" />
+                      </filter>
+                    </defs>
+                  </svg>
+
+                  <div class="btn_auxiliares">
+                    <button class="btn_passar" id="btn_bubble" onclick="sortearCorLavaLamp()">Sortear cor</button>
+                    <button class="btn_passar" id="btn_passarBubble" onclick="passarLampBubble()">Bubble ></button>
+                </div>
             </div>
         </div>
+
     </div>       
     
 </body>
