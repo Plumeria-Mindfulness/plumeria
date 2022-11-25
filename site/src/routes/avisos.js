@@ -15,10 +15,6 @@ router.get("/listar/:idUsuario", function (req, res) {
     avisoController.listarPorUsuario(req, res);
 });
 
-router.get("/pesquisar/:descricao", function (req, res) {
-    avisoController.pesquisarDescricao(req, res);
-});
-
 // Luiz => os dois pontos ':' significa que está recebendo um valor dinâmico do idUsuario 
 // Luiz => esse valor dinâmico do idUsuario é aquela variável que está sendo declarada na função 'publicar' dentro do script JS do dashboard/mural.html
 router.post("/publicar/:idUsuario", function (req, res) {

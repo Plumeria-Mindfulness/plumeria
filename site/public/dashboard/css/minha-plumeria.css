@@ -322,10 +322,6 @@ body {
 }
 
 
-    /* Player de música */
-
-
-
     /* Temporizador */
 .temporizador-completo {
     display: flex;
@@ -333,16 +329,48 @@ body {
     align-items: center;
     text-align: center;
     
-    padding: 1.7em 0.6em;
+    padding: 1.7em 1.2em;
     margin-bottom: 1.8em;
-    width: 370px;
+    width: fit-content;
 
     background: #DCD7B9;
     border: 1px solid #000000;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     
-    height: 300px;
+    height: fit-content;
+}
+
+#display-temporizador {
+    width: 280px;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 0.3em 0 0.3em;
+    margin: 1em 0 1.2em 0;
+    background-color: #8a9651a1;
+    border-radius: 20px;
+}
+
+#display-temporizador>div {
+    padding: 1em;
+    display: inline-block;
+    justify-content: center;
+}
+
+#display-temporizador div>span {
+    padding: 14px;
+    border-radius: 3px;
+    background: #878b8a80;
+    display: inline-block;
+}
+
+smalltext {
+    padding-top: 5px;
+    font-size: 16px;
 }
 
 .contador-relogio {
@@ -376,7 +404,7 @@ body {
 
     font-size: 1rem;
     font-weight: 400;
-    padding: 6px 12px;
+    padding: 0.2em 0.4em;
 
     background-color: #CBCBCB;
     border: #8b8b8b91 outset;
@@ -400,7 +428,7 @@ body {
     
     padding: 1.7em 0.6em;
     margin-bottom: 1.8em;
-    width: 370px;
+    width: fit-content;
 
     background: #DCD7B9;
     border: 1px solid #000000;
@@ -440,10 +468,11 @@ body {
 
 .btn_passar {
     padding: 5px 14px;
-    background-color: #142E38;
+    background-color: #67732C;
     border-radius: 50px;
-    color: #AA9F00;
-    font-weight: 800;
+    color: #FFF;
+    font-family: Poppins;
+    font-weight: 400;
     cursor: pointer;
     margin-top: 17px;
     display: flex;
@@ -452,36 +481,37 @@ body {
     font-size: 0.9rem;
 }
 
+.div_container_auxiliares {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-
-/* Bubble */
+    /* Bubble */
 .bubbles {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
+    top: 155px;
+    left: 650px;
     border: 2px outset #142E38;
     border-radius: 20px;
     background: #DBDCC9;
     padding: 20px 60px;
-    top: 155px;
-    left: 700px;
 }
 
 .bubbles::before {
     content: '';
     display: block;
-    min-height: 400px;
-    min-width: 400px;
-    width: 40vh;
+    width: 60vh;
     height: 40vh;  
     background-color: var(--blob);  
     box-shadow: var(--shades);
-    background-size: 1600% 1600%;
     transform-origin: 50% 50%;
     transform-style: preserve-3d;
-    perspective: 1000px;
     animation: 
       transform 50s ease-in-out infinite both alternate,
       movement 40s ease-in-out infinite both;
@@ -507,20 +537,134 @@ body {
 :root {
     --background: #fff;
     --blob: #4eb62f9e;
-    --shades: inset 10px 0 40px #2482089e,
-              inset -10px 0 20px #2557169e,
-              inset -40px 10px 100px #3ee00d9e;
-    
-    @media (prefers-color-scheme: dark) {
-      --background: #0f0c24;
-      --blob: #bca5e3;
-      --shades: inset 10px 0 40px #a174db,
-                inset -10px 0 20px #40245e,
-                inset -40px 10px 110px #1b1648;
-    }
+    --shades: inset -40px 10px 100px #4e564c9e;
 } 
 
-#btn_bubble {
+.bubbles #btn_bubble {
     margin-top: 7em;
     z-index: 6;
+}
+
+
+    /* Lava Lamp  */
+.lamp {
+    position: absolute;
+    top: 55%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    
+    height: 73vh;
+    width: 37vh;
+    background: #2b4353;
+    
+    /* O 'clip-path' é uma propriedade do CSS que, quando utilizada, indica as regiões de um objeto que deverá ser recortado */
+    /* O 'polygon()' é considerado um valor do 'clip-path' que preenche com SVG um conjunto de vértices predeterminados, criando algo parecido com um retângulo */
+    /* Os valores indicados em porcentagem recortam o polígono formando uma imagem semelhante a uma lava lamp */
+    clip-path: polygon(33% 0, 0 70%, 22% 88%, 0 100%, 100% 100%, 78% 88%, 100% 70%, 67% 0);
+}
+.glass {
+    background: #b6e1e0;
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    bottom: 30%;
+    overflow: hidden;
+}
+
+  /* Aqui é feito um efeito de bolhas se grudando e desgrudando */
+.lava {
+    filter: url("#goo");
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+  
+  /* Abaixo são criadas as bolhas e setadas as suas porpriedades como cores, posições fixas e as animações que faram se movimentar pela área determinada  */
+.blob {
+    border-radius: 50%;
+    background-color: #e8630a;
+    position: absolute;
+    box-shadow: 0 0 30px #ff4d00;
+}
+
+.blob.top {
+    width: 100%;
+    height: 4%;
+    top: -3.7%;
+    left: 0;
+}
+
+.blob.bottom {
+    width: 100%;
+    height: 4%;
+    bottom: -3%;
+    left: 0;
+}
+
+  /* ':nth-child(n)' é um seletor do CSS que seleciona dentro de um conjunto de elementos filhos da classe indicada antes dos dois pontos (':'). O 'n' dentro do parenteses recebe um número para indicar qual será o elemento filho a ser selecionado e estilizado. */
+.blob:nth-child(1) {
+    width: calc(15% * 1.4);
+    height: 15%;
+    left: 45%;
+    bottom: -15%;
+    
+    /* A animação 'ease-in-out' com indicação de tempo indica que haverá uma movimentação por um determinado tempo e com um efeito de 'slow' no começo e no final dessa animação. */
+    animation: blob-one ease-in-out 7s infinite;
+}
+
+.blob:nth-child(2) {
+    width: calc(22% * 1.4);
+    height: 22%;
+    right: 14%;
+    bottom: -15%;
+    
+    animation: blob-two ease-in-out 11s infinite;
+}
+
+.blob:nth-child(3) {
+    width: calc(32% * 1.4);
+    height: 32%;
+    bottom: -15%;
+    left: 14%;
+    
+    animation: blob-three ease-in-out 16s infinite;
+}
+  
+  /* '@keyframes' são como regras estabelecidas para realizar animações graduais de acordo com o conjunto de elementos e suas estilizações (como a supracitada). */
+  /* Já a função 'translateY()' faz com que haja um reposicionamento vertical num plano 2D dos elementos indicados. */
+@keyframes blob-one {
+    0%, 100%{
+      transform: translateY(0);
+    }
+    50%{
+      transform: translateY(-700%);
+    }
+}
+  
+@keyframes blob-two {
+    0%, 100%{
+      transform: translateY(0);
+    }
+    50%{
+      transform: translateY(-420%);
+    }
+}
+  
+@keyframes blob-three {
+    0%, 100%{
+      transform: translateY(0);
+    }
+    50%{
+      transform: translateY(-305%);
+    }
+}
+
+.btn_auxiliares {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70%;
+    left: 56.5%;
 }

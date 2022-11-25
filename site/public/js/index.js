@@ -35,7 +35,7 @@ ScrollReveal().reveal('.desc-lista-apoio',{
     origin: "left",
 })
 
-ScrollReveal().reveal('.desc-player-musica',{
+ScrollReveal().reveal('.desc-mural-mensagem',{
     duration: 1000,
     distance: "200px",
     origin: "left",
@@ -54,4 +54,11 @@ ScrollReveal().reveal('.desc-dashboard',{
     distance: "200px",
     origin: "left",
     delay: 600
+}) 
+
+ScrollReveal().reveal('.desc-lava-lamp',{
+    duration: 1000,
+    distance: "200px",
+    origin: "left",
+    delay: 700
 }) 

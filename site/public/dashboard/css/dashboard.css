@@ -9,6 +9,7 @@
 
 .dashboard {
     width: 80%;
+    height: max-content;
     margin: 2.3em 4em 2em 4em;
     padding: 0.5em 0;
     display: flex;
@@ -39,7 +40,7 @@
 
 .dash-mensagem {
     margin: 1em auto;
-    width: 72%;
+    width: 60%;
     padding: 1.2em;
     display: flex;
     flex-direction: column;
@@ -50,29 +51,37 @@
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 
-.tituloGraficos {
-    display: flex;
-    justify-content: center;
-    margin: 1em 0;
+.dash-mensagem .h2-mensagem {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.dash-mensagem .p-mensagem {
+    font-size: 0.8em;
+    margin-bottom: 8px;
 }
 
 .graficos {
     display: flex;
-    justify-content: center;
     justify-content: space-evenly;
+    margin: 1.2em 0 2em 0;
 }
 
 .graph {
-    width: 450px;
-    height: 400px;
+    height: 32vh;
+    display: flex;
+    justify-content: center;
 }
 
 #myChart,
 #myChart2 {
     border-radius: 10px;
     color: #142E38;
-    background-color: #B8BB81;
+    background-color: #b8bb81e8;
     padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 
 .btns-dash {
@@ -92,16 +101,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.avisoCaptura {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 2em;
-}
-
-#avisoCaptura {
-    font-size: 0.8em;
 }

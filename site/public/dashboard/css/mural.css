@@ -134,8 +134,9 @@
     font-weight: 600;
     font-size: 14px;
     padding: 8px 10px;
-    color: #AA9F00;
-    background-color: #142E38;
+    color: #FFF;
+    font-family: Poppins;
+    background-color: #67732C;
     width: 80px;
 }
 

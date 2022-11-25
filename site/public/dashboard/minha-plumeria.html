@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()">
+<body onload="validarSessao()">
 
     <div class="div_backgroundBalls">
         <div class="div_Balls1"></div>
@@ -106,7 +106,7 @@
                     </div>
 
                     <div class="mural-drop-func">
-                        <a href="mural.html">
+                        <a href="apenas-mural.html">
                             <img src="../assets/icones-drop-funcionalidades/mural-icone-drop.svg" alt="ícone de mural de mensagens">
                         </a>
                     </div>
@@ -170,20 +170,35 @@
                                 <button><img id="seta" onclick="passarRelogioCronometro()" src="../assets/seta.svg" alt=""></button>
                             </div>
 
-                            <div class="contador-relogio">
-                                <span id="counter_Temporizador">00 : 00 : 00</span>
+                            <div id="display-temporizador">
+                                <div>
+                                    <span class="horas" id="horasTemp">00</span>
+                                    <div class="smalltext">h</div>
+                                </div>
+                                <div>
+                                    <span class="minutos" id="minutosTemp">00</span>
+                                    <div class="smalltext">min</div>
+                                </div>
+                                <div>
+                                    <span class="segundos" id="segundosTemp">00</span>
+                                    <div class="smalltext">s</div>
+                                </div>
                             </div>
+
+                            <!-- <div class="contador-relogio">
+                                <span id="counter_Temporizador">00 : 00 : 00</span>
+                            </div> -->
 
                             <div class="campo-temporizador">
                                 <label for="in_temporizador">Insira o tempo de foco:</label>
-                                <input type="time" id="in_temporizador" step="2">
+                                <input type="time" id="in_temporizador">
 
                             </div>
 
                             <div class="btns_relogio">
-                                <button onclick="iniciarCronometro()" class="btn_passar" id="btn_iniciar">Iniciar</button>
+                                <button onclick="iniciarTemporizador()" class="btn_passar" id="btn_iniciar">Iniciar</button>
 
-                                <button onclick="pausarCronometro()" class="btn_passar" id="btn_parar">Parar</button>
+                                <button onclick="pausarTemporizador()" class="btn_passar" id="btn_parar">Parar</button>
                             </div>
                         </div>
 
@@ -209,11 +224,44 @@
             </div>
         </section>
 
-        <div class="div_container_bubbles">
-            <div class="bubbles">
-                <button class="btn_passar" id="btn_bubble" onclick="sortearCor()">Sortear cor</button>
+        <div class="div_container_auxiliares">
+            <div id="containerBubbles" style="display: none;">
+                <div class="bubbles" id="bubbles">
+                    <button class="btn_passar" id="btn_bubble" onclick="sortearCorBubble()">Sortear cor</button>
+                    <button class="btn_passar" id="btn_passarBubble" onclick="passarBubbleLamp()">Lava Lamp ></button>
+                </div>
+            </div>
+    
+            <div id="containerLavaLamp">
+                <div class="lamp">
+                    <div class="glass">
+                      <div class="lava">
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob top"></div>
+                        <div class="blob bottom"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                      <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                        <feBlend in="SourceGraphic" in2="goo" />
+                      </filter>
+                    </defs>
+                  </svg>
+
+                  <div class="btn_auxiliares">
+                    <button class="btn_passar" id="btn_bubble" onclick="sortearCorLavaLamp()">Sortear cor</button>
+                    <button class="btn_passar" id="btn_passarBubble" onclick="passarLampBubble()">Bubble ></button>
+                </div>
             </div>
         </div>
+
     </div>       
     
 </body>

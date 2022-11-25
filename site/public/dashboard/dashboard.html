@@ -21,7 +21,6 @@
 </head>
 
 <body>
-
     <div class="div_backgroundBalls">
         <div class="div_Balls1"></div>
         <div class="div_BallsHeader1"></div>
@@ -113,7 +112,7 @@
                         </div>
 
                         <div class="mural-drop-func">
-                            <a href="mural.html">
+                            <a href="apenas-mural.html">
                                 <img src="../assets/icones-drop-funcionalidades/mural-icone-drop.svg" alt="ícone de mural de mensagens">
                             </a>
                         </div>
@@ -144,30 +143,13 @@
                         <p class="p-mensagem">Continue buscando encontrar momentos de qualidade para aumentar a sua saúde!</p>
                 </div>
     
-                <div class="dash">
-                    <div>
-                        <h3 class="tituloGraficos">
-                            <span id="tituloDash">...</span>
-                        </h3>
-                    </div>
-                    
-                    <div class="graficos">
-                        <div class="graph">
-                            <canvas id="myChart"></canvas>
-                        </div>
-
-                        <!-- <div class="graph">
-                            <canvas id="myChart2"></canvas>
-                        </div> -->
-                    </div>
-                    
-                    <div class="btns-dash">
-                        <!-- O gráfico é chamado de acordo com o idUsuario do banco   -->
-                        <button class="btn-chart" onclick="obterDadosGrafico(idUsuarioDash)">Atualizar</button>
+                <div class="graficos">
+                    <div class="graph">
+                        <canvas id="myChart"></canvas>
                     </div>
 
-                    <div class="avisoCaptura">
-                        <p id="avisoCaptura" style="color: #142E38"></p>
+                    <div class="graph">
+                        <canvas id="myChart2"></canvas>
                     </div>
                 </div>
             </div>
@@ -176,5 +158,3 @@
     
 </body>
 </html>
-
-<script src="js/dashboard.js"></script>

@@ -44,27 +44,6 @@ function listarPorUsuario(req, res) {
         );
 }
 
-function pesquisarDescricao(req, res) {
-    var descricao = req.params.descricao;
-
-    avisoModel.pesquisarDescricao(descricao)
-        .then(
-            function (resultado) {
-                if (resultado.length > 0) {
-                    res.status(200).json(resultado);
-                } else {
-                    res.status(204).send("Nenhum resultado encontrado!");
-                }
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
 function publicar(req, res) {
     // Luiz => abaixo são separados os valores que vieram da 'req', que são basicamente os valores que vieram do objeto 'corpo' criado na função publicar da dashboard/mural.html
     // Luiz => o idUsuario é pego do 'params', ou seja daquela valor dinâmico que estava depois dos dois pontos ':' no router dentro do routes/aviso.js
@@ -121,7 +100,6 @@ module.exports = {
     testar,
     listar,
     listarPorUsuario,
-    pesquisarDescricao,
     publicar,
     editar
 }

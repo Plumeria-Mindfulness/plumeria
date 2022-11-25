@@ -1,5 +1,12 @@
 b_usuarioDropDown.innerHTML = sessionStorage.NOME_USUARIO;
 
+// Função para criar navbar dropdown
+var subMenu = document.getElementById("subMenu")
+
+function alternarMenu() {
+    subMenu.classList.toggle("open-menu")
+}
+
 function limparFormulario() {
     document.getElementById("form_postagem").reset();
 }
@@ -30,8 +37,8 @@ function publicar() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-            window.location = "/dashboard/mural.html";
+            window.alert("Post realizado com sucesso!");
+            window.location = "/dashboard/apenas-mural.html";
             limparFormulario();
             finalizarAguardar();
         } else if (resposta.status == 404) {
@@ -51,15 +58,15 @@ function publicar() {
 function editar(idAviso) {
     sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
 
-    console.log("cliquei em editar - " + idAviso);
-    window.alert("Você será redirecionado(a) à página de edição do aviso de id número: " + idAviso);
+    window.alert("Você será redirecionado(a) à página de edição do seu aviso. Só mais um instante!");
 
     window.location = "/dashboard/edicao-mensagem.html"
 }
 
 function atualizarFeed() {
-    //aguardar();
-    fetch("/avisos/listar").then(function (resposta) {
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch(`/avisos/listar/${idUsuario}`).then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
                 var feed = document.getElementById("feed_container");
@@ -78,13 +85,20 @@ function atualizarFeed() {
                 for (let i = resposta.length - 1; i>= 0; i--) {
                     var publicacao = resposta[i];
 
+                    publicacao.dtMensagem = publicacao.dtMensagem.slice(0,10);
+
+                    var publicacao2 = publicacao.dtMensagem.split('-');
+                    var ano = Number(publicacao2[0]);
+                    var mes = Number(publicacao2[1]);
+                    var dia = Number(publicacao2[2]);
+            
+                    var dataManipulada = dia + '/' + mes + '/' + ano
+
                     // Deixar a primeira letra da avaliação, que veio do BD, maiúscula
                     var avaliacaoMaiuscula = publicacao.avaliacao.charAt(0).toUpperCase() + publicacao.avaliacao.slice(1)
 
-                    // criando e manipulando elementos do HTML via JavaScript
                     var divPublicacao = document.createElement("div");
-                    var spanID = document.createElement("span");
-                    // Luiz => Achar uma forma de pegar a data da sessão
+
                     var dataAviso = document.createElement("span");
                     var spanTitulo = document.createElement("span");
                     var spanNome = document.createElement("span");
@@ -93,10 +107,7 @@ function atualizarFeed() {
                     var divButtons = document.createElement("div");
                     var btnEditar = document.createElement("button");
 
-
-                    spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                    // Luiz => Achar uma forma de pegar a data da sessão
-                    dataAviso.innerHTML = "Data: <b> 19/11/2022 </b>";
+                    dataAviso.innerHTML = "Data: <b>" + dataManipulada + "</b>";
                     spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
                     spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                     divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
@@ -115,8 +126,6 @@ function atualizarFeed() {
                     btnEditar.id = "btnEditar" + publicacao.idAviso;
                     btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
 
-                    divPublicacao.appendChild(spanID);
-                    // Luiz => Achar uma forma de pegar a data da sessão
                     divPublicacao.appendChild(dataAviso);
                     divPublicacao.appendChild(spanNome);
                     divPublicacao.appendChild(spanTitulo);
