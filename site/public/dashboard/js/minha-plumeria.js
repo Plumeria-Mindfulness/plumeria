@@ -12,8 +12,6 @@ function alternarMenu() {
 function mostrarListaApoio() {
     var styleId = document.getElementById("drop_subMenuLista")
     var styleAtualLista = styleId.style.display  
-    
-    console.log(styleAtualLista);
 
     if (styleAtualLista == "none") {
         drop_subMenuLista.style.display = "flex";
@@ -87,15 +85,112 @@ function sortearCorBubble() {
 
 
 // Função para TEMPORIZADOR
+var soundStart = new Audio('../assets/audios/audio-start.mp3');
+var soundEnd = new Audio('../assets/audios/audio-end.mp3');
+var totMiliTemp
+
+function iniciarTemporizador() {
+    soundStart.play();
+
+    var tempoInput = in_temporizador.value;
+    console.log(`Tempo retirado do input: ${tempoInput}`);
+
+    var tempoManipulado = tempoInput.split(':');
+
+    console.log(`O tempo manipulado é: ${tempoManipulado}`);
+
+    var horaTemp = tempoManipulado[0];
+    console.log(`A hora é: ${horaTemp}`);
+
+    var minutoTemp = tempoManipulado[1];
+    console.log(`O minuto é: ${minutoTemp}`);
+
+    // Convertendo a hora e minuto em milisegundos para facilitar a contagem 
+    var horaParaMili = horaTemp * 3600000;
+    var minutoParaMili = minutoTemp * 60000;
+
+    totMiliTemp = horaParaMili + minutoParaMili;
+    console.log(`O total que deseja em milisegundos é: ${totMiliTemp}`);
+
+    // Capturando a data e horário atuais do usuário
+    //  Depois, esse horário será somado aos milisegundos calculado acima, com isso, tendo o horário final que o cliente deseja para a sessão, tendo a deadline
+    // Após isso, fazer a subtração da deadline com o horário atual
+    var dataAtual = new Date();
+    var horaAtual = dataAtual.getHours();
+    var minutoAtual = dataAtual.getMinutes();
+
+    console.log(horaAtual);
+    console.log(minutoAtual);
 
 
+    // Somando a deadline à somatória em milisegundos do que o usuário inseriu na input
+    var deadline = new Date().getTime() + totMiliTemp;
 
-//  Função para CRÔNOMETRO
+    var intervaloTemp = setInterval(function () {
+
+        var tempoAtualTemp = new Date().getTime();
+        var tempoFinalTemp = deadline - tempoAtualTemp;
+        var horasTemp = Math.floor((tempoFinalTemp % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutosTemp = Math.floor((tempoFinalTemp % (1000 * 60 * 60)) / (1000 * 60));
+        var segundosTemp = Math.floor((tempoFinalTemp % (1000 * 60)) / 1000);
+
+        var formatHoraTemp = (horasTemp < 10 ? '0' + horasTemp : horasTemp);
+        var formtMinutoTemp = (minutosTemp < 10 ? '0' + minutosTemp : minutosTemp);
+        var formatSegundoTemp = (segundosTemp < 10 ? '0' + segundosTemp : segundosTemp);
+    
+        document.getElementById('horasTemp').innerHTML = formatHoraTemp;
+        document.getElementById('minutosTemp').innerHTML = formtMinutoTemp;
+        document.getElementById('segundosTemp').innerHTML = formatSegundoTemp;
+
+        if (tempoFinalTemp < 0) {
+            soundEnd.play();
+            
+            pausarTemporizador();
+
+            clearInterval(intervaloTemp);
+            document.getElementById("horasTemp").innerHTML = '00';
+            document.getElementById("minutosTemp").innerHTML = '00';
+            document.getElementById("segundosTemp").innerHTML = '00';
+        }
+    }, 1000);
+}
+
+function pausarTemporizador() {
+    var horaFinalTemp = document.getElementById('horasTemp').innerHTML;
+    var minutoFinalTemp = document.getElementById('minutosTemp').innerHTML;
+    var segundoFinalTemp = document.getElementById('segundosTemp').innerHTML;
+
+    console.log(horaFinalTemp);
+    console.log(minutoFinalTemp);
+    console.log(segundoFinalTemp);
+
+    var horaFinalMili = Number(horaFinalTemp) * 3600000;
+    var minutoFinalMili = Number(minutoFinalTemp) * 60000;
+    var segundoFinalMili = Number(minutoFinalTemp) * 1000;
+
+    var totFinalMili = horaFinalMili + minutoFinalMili + segundoFinalMili;
+    console.log(`Total final de mili é: ${totFinalMili}`);
+
+    var restoMili = totMiliTemp - totFinalMili;
+    var totMinFinal = restoMili / 60000;
+    console.log(`Resto em mili do quanto ficou na sessão: ${restoMili} \n Resto em minutos: ${totMinFinal}`);
+    
+    if (horaFinalTemp !== '00' && minutoFinalTemp !== '00' && segundoFinalTemp !== '00') {
+        var dataSessao = new Date();
+        dataString = new Date(dataSessao.getTime() - (dataSessao.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];    
+    
+        console.log(' | Dia da sessão é: ' + dataString);
+    }
+    publicarDuracaoData(totMinFinal, dataString);
+}
+
+
+// Função para CRÔNOMETRO
 var hora = 0;
 var minuto = 0;
 var segundo = 0;
 
-var tempo = 10; // quantidade em milisegundos
+var tempo = 1000; // quantidade em milisegundos
 var cronometro;
 
 function iniciarCronometro() {
@@ -115,7 +210,6 @@ function timer() {
             hora++;
         }
     }
-
 
     var format = (hora < 10 ? '0' + hora : hora) + ' : ' + (minuto < 10 ? '0' + minuto : minuto) + ' : ' +  (segundo < 10 ? '0' + segundo : segundo)
 
@@ -170,14 +264,13 @@ function pausarCronometro(totMinFinal, dataString) {
 function publicarDuracaoData(totMinFinal, dataString) {
     var idUsuario = sessionStorage.ID_USUARIO;
 
-    //  Não sei se as variáveis desse objeto estão corretas, se vão puxar os valores da variável pausarCronometro()
     var corpo = {
         totMinFinal: totMinFinal,
         dataString: dataString
     }
 
     fetch(`/minhasPlumerias/publicarDuracaoData/${idUsuario}`, {
-        method: "post",
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },

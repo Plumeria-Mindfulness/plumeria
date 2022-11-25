@@ -170,20 +170,35 @@
                                 <button><img id="seta" onclick="passarRelogioCronometro()" src="../assets/seta.svg" alt=""></button>
                             </div>
 
-                            <div class="contador-relogio">
-                                <span id="counter_Temporizador">00 : 00 : 00</span>
+                            <div id="display-temporizador">
+                                <div>
+                                    <span class="horas" id="horasTemp">00</span>
+                                    <div class="smalltext">h</div>
+                                </div>
+                                <div>
+                                    <span class="minutos" id="minutosTemp">00</span>
+                                    <div class="smalltext">min</div>
+                                </div>
+                                <div>
+                                    <span class="segundos" id="segundosTemp">00</span>
+                                    <div class="smalltext">s</div>
+                                </div>
                             </div>
+
+                            <!-- <div class="contador-relogio">
+                                <span id="counter_Temporizador">00 : 00 : 00</span>
+                            </div> -->
 
                             <div class="campo-temporizador">
                                 <label for="in_temporizador">Insira o tempo de foco:</label>
-                                <input type="time" id="in_temporizador" step="2">
+                                <input type="time" id="in_temporizador">
 
                             </div>
 
                             <div class="btns_relogio">
-                                <button onclick="iniciarCronometro()" class="btn_passar" id="btn_iniciar">Iniciar</button>
+                                <button onclick="iniciarTemporizador()" class="btn_passar" id="btn_iniciar">Iniciar</button>
 
-                                <button onclick="pausarCronometro()" class="btn_passar" id="btn_parar">Parar</button>
+                                <button onclick="pausarTemporizador()" class="btn_passar" id="btn_parar">Parar</button>
                             </div>
                         </div>
 
