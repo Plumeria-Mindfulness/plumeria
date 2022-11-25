@@ -83,8 +83,7 @@ function sortearCorBubble() {
 }
 
 
-
-// Função para TEMPORIZADOR
+// Funções para TEMPORIZADOR
 var soundStart = new Audio('../assets/audios/audio-start.mp3');
 var soundEnd = new Audio('../assets/audios/audio-end.mp3');
 var totMiliTemp
@@ -148,6 +147,7 @@ function iniciarTemporizador() {
             pausarTemporizador();
 
             clearInterval(intervaloTemp);
+
             document.getElementById("horasTemp").innerHTML = '00';
             document.getElementById("minutosTemp").innerHTML = '00';
             document.getElementById("segundosTemp").innerHTML = '00';
@@ -181,11 +181,47 @@ function pausarTemporizador() {
     
         console.log(' | Dia da sessão é: ' + dataString);
     }
-    publicarDuracaoData(totMinFinal, dataString);
+
+    publicarDuracaoDataTemp(totMinFinal, dataString);
 }
 
+function publicarDuracaoDataTemp() {
+    var idUsuario = sessionStorage.ID_USUARIO;
 
-// Função para CRÔNOMETRO
+    var corpo = {
+        totMinFinal: totMinFinal,
+        dataString: dataString
+    }
+
+    fetch(`/minhasPlumerias/publicarDuracaoDataTemp/${idUsuario}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(corpo)
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            window.alert("Os dados da sua sessão foram armazenados com sucesso!");
+            window.location = "/dashboard/mural.html";
+            limparFormulario();
+        } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    return false;
+
+}
+
+// Funções para CRÔNOMETRO
 var hora = 0;
 var minuto = 0;
 var segundo = 0;
@@ -281,10 +317,9 @@ function publicarDuracaoData(totMinFinal, dataString) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            window.alert("Os dados da sua sessão foram armazenados com sucesso pelo usuario de ID: " + idUsuario + "!");
+            window.alert("Os dados da sua sessão foram armazenados com sucesso!");
             window.location = "/dashboard/mural.html";
             limparFormulario();
-            finalizarAguardar();
         } else if (resposta.status == 404) {
             window.alert("Deu 404!");
         } else {
@@ -292,14 +327,8 @@ function publicarDuracaoData(totMinFinal, dataString) {
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
     });
 
     return false;
 
 }
-
-
-// let proximaAtualizacao;
-    
-// verificar_autenticacao();
