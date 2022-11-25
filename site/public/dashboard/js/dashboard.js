@@ -8,9 +8,6 @@ let proximaAtualizacao;
     
 window.onload = obterDadosGrafico(idUsuarioDash);
 
-// Luiz => A OPÇÃO DE DROP DOWN DO MENU DIREITO FICA QUEBRADA QUANDO O COMANDO ABAIXO ESTÁ SEM COMENTÁRIO 
-// verificar_autenticacao(); 
-
 // Função para criar navbar dropdown
 var subMenu = document.getElementById("subMenu")
 

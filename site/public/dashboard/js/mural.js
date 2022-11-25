@@ -37,7 +37,7 @@ function publicar() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+            window.alert("Post realizado com sucesso!");
             window.location = "/dashboard/apenas-mural.html";
             limparFormulario();
             finalizarAguardar();
