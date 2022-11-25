@@ -1,13 +1,11 @@
--- OBSERVAÇÕES:
--- ! Possibilidade de criar uma constraint que validará a senha do usuário;
--- ! Verificação de senha usando "select sha2('senhaSegura', 512);"
--- ? Como utilizar auto_increment nas tables de sessão e mensagem
-
 -- Criação de banco de dados
 create database Plumeria;
 
 -- Selecionar o banco de dados 'Plumeria'
 use Plumeria;
+
+-- Mostrar tabelas 
+show tables;
 
 -- Criação de tabelas 
 create table usuario (
@@ -21,9 +19,9 @@ create table usuario (
 );
 
 create table sessao (
-    idSessao int,
+    idSessao int auto_increment,
     dtSessao date not null,
-    duracao int not null, -- O dado da duração é transformado em minutos por uma função no JavaScript
+    duracao int not null,
     fkUsuario int not null, constraint fkUsuarioSessao foreign key (fkUsuario) 
         references usuario(idUsuario),
 	primary key (idSessao, fkUsuario)
@@ -59,7 +57,7 @@ desc usuario;
 desc sessao;
 desc mensagem;
 
--- Inserção de dados nas tabelas 
+-- Inserção de dados testes nas tabelas 
 insert into usuario values 
 	(null, 'Luiz Nison', 'Filler', '1999-08-18', 'luiznison.ac@gmail.com', '@Sptech2022'),
 	(null, 'Giulia', null, '1998-01-15', 'giulia@hotmail.com', '123abcDEF@!');
@@ -110,7 +108,7 @@ select concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do u
         from usuario as u
 			join sessao as s on s.fkUsuario = u.idUsuario;
 
--- Selecionar os dados de um usuário específico junto aos dados de suas sessões e mensagem estando em ordem decrescente de acordo com a data da sessão
+-- Selecionar os dados de um usuário específico junto aos dados de suas sessões e mensagens estando em ordem decrescente de acordo com a data da sessão
 -- Foi utilizado a função UPPER e LOWER para, respectivamente, deixar a primeira letra maiúscula e as demais minúsculas utilizando a SUBSTRING para indicar que apenas a primeira letra da primeira palavra ficará maiúculas e a segunda palavra ficará totalmente minúscula.
 select concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do usuário',
 		u.dtNascimento as 'Data de Nascimento',
@@ -118,7 +116,7 @@ select concat (u.nome, ' ', coalesce(`sobrenome`, '')) as 'Nome e sobrenome do u
         s.dtSessao as 'Data da sessão',
         s.duracao as 'Duração da sessão (em minutos)',
         m.descricao as 'Descrição da sessão',
-        concat(upper(substring(m.avaliacao ,1,1)), lower(substring(m.avaliacao , 2)))
+        concat(upper(substring(m.avaliacao ,1,1)), lower(substring(m.avaliacao , 2))) as 'Avalição da sessão'
         from usuario as u
 			join sessao as s on s.fkUsuario = u.idUsuario
 				join mensagem as m on m.fkSessao = s.idSessao and m.fkUsuario = u.idUsuario
@@ -174,7 +172,7 @@ select round(avg(duracao), 2) as 'Média da duração das sessões (em minutos)'
 
 -- Selecionar quais são as durações de sessão sem repetições e contar quantas durações não se repetem
 select distinct duracao from sessao;
-select count(distinct duracao) from sessao;
+select count(distinct duracao) as 'Durações não repetidas' from sessao;
 
 -- Selecionar quais foram as avaliações de sessões que são diferentes de 'excelente'
 select distinct avaliacao from mensagem where avaliacao  <> 'excelente';
@@ -182,4 +180,3 @@ select distinct avaliacao from mensagem where avaliacao  <> 'excelente';
 -- Calcular a idade dos usuários
 -- Foi utilizada a função TIMESTAMPDIFF() para retornar um valor após uma operação de subtração entre o dado do atributo 'dtNascimento' com o CURDATE(), função essa que retorna a data atual
 select concat('A pessoa ', nome, ' ', coalesce(`sobrenome`, ''), ' possui ', timestampdiff(year, dtNascimento, curdate()), ' anos.') as 'Nome e idade dos usuários' from usuario;
-	
