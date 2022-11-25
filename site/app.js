@@ -13,6 +13,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var minhasPlumeriasRouter = require("./src/routes/minhasPlumerias");
+var redefinicaoSenhaRouter = require("./src/routes/redefinicaoSenha");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,6 +26,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/minhasPlumerias", minhasPlumeriasRouter);
+app.use("/redefinicaoSenha", redefinicaoSenhaRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
