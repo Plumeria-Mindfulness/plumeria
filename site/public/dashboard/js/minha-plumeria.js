@@ -86,7 +86,10 @@ function sortearCorBubble() {
 // Funções para TEMPORIZADOR
 var soundStart = new Audio('../assets/audios/audio-start.mp3');
 var soundEnd = new Audio('../assets/audios/audio-end.mp3');
-var totMiliTemp
+var totMiliTemp = 0;
+var totMinFinal = 0;
+var dataString = '';
+
 
 function iniciarTemporizador() {
     soundStart.play();
@@ -155,7 +158,9 @@ function iniciarTemporizador() {
     }, 1000);
 }
 
-function pausarTemporizador() {
+function pausarTemporizador(totMinFinal, dataString) {
+    soundEnd.play();
+    
     var horaFinalTemp = document.getElementById('horasTemp').innerHTML;
     var minutoFinalTemp = document.getElementById('minutosTemp').innerHTML;
     var segundoFinalTemp = document.getElementById('segundosTemp').innerHTML;
@@ -172,20 +177,19 @@ function pausarTemporizador() {
     console.log(`Total final de mili é: ${totFinalMili}`);
 
     var restoMili = totMiliTemp - totFinalMili;
-    var totMinFinal = restoMili / 60000;
+    totMinFinal = restoMili / 60000;
     console.log(`Resto em mili do quanto ficou na sessão: ${restoMili} \n Resto em minutos: ${totMinFinal}`);
     
-    if (horaFinalTemp !== '00' && minutoFinalTemp !== '00' && segundoFinalTemp !== '00') {
-        var dataSessao = new Date();
-        dataString = new Date(dataSessao.getTime() - (dataSessao.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];    
-    
-        console.log(' | Dia da sessão é: ' + dataString);
-    }
+    var dataSessao = new Date();
+    dataString = new Date(dataSessao.getTime() - (dataSessao.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];    
+
+    console.log(' | Dia da sessão é: ' + dataString);
+
 
     publicarDuracaoDataTemp(totMinFinal, dataString);
 }
 
-function publicarDuracaoDataTemp() {
+function publicarDuracaoDataTemp(totMinFinal, dataString) {
     var idUsuario = sessionStorage.ID_USUARIO;
 
     var corpo = {
@@ -252,8 +256,8 @@ function timer() {
     document.getElementById('counter_Cronometro').innerHTML = format;
 }
 
-var totMinFinal = 0;
-var dataString = '';
+// var totMinFinal = 0;
+// var dataString = '';
 
 function pausarCronometro(totMinFinal, dataString) {
     // 1- Atribuindo elemento HTML do cronômentro à uma variável
