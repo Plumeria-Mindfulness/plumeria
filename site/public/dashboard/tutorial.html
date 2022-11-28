@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plumeria | Editar Mensagem</title>
+
+    <script src="js/edicao-mensagem.js"></script>
+    <script defer src="../js/funcoes.js"></script>
+
+    <link rel="icon" href="../assets/plumeria-icon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/minha-plumeria.css">
+    <link rel="stylesheet" href="css/tutorial.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body onload="validarSessao(), listarInfosDeUm()">
+
+    <div class="div_backgroundBalls">
+        <div class="div_Balls1"></div>
+        <div class="div_BallsHeader1"></div>
+        <div class="div_BallsHeader2"></div>
+        <div class="div_BallsDown1"></div>
+        <div class="div_BallsDown2"></div>
+    </div>
+
+    <div class="div_allAbove">
+        <!-- Cabeçalho + Navbar -->
+        <header class="header" id="header">
+            <div class="container">
+                <div class="logo" id="logo">
+                    <a href="../index.html">
+                        <img class="rotate" src="../assets/plumeria-icon.png" alt="icone de uma plumeria">
+                        <span class="nome-logo">Plumeria</span>
+                    </a> 
+                </div>
+
+                <div class="container-nav">
+                    <nav class="navbar">
+                      <div class="drop-down" onclick="alternarMenu()">
+                        <img class="drop-down-ball-menu" src="../assets/drop-down-perfil/drop-down-ball-menu.svg">
+                        <img class="drop-down-user-profile" src="../assets/drop-down-perfil/usuario-de-perfil.png">
+                      </div>
+                
+                      <div class="sub-menu-wrap" id="subMenu">
+                        <div class="sub-menu">
+                            <div class="user-info">
+                                <img src="../assets/drop-down-perfil/usuario-de-perfil.png" alt="icone usuario de perfil">
+
+                                <h3 id="nome"><span id="b_usuarioDropDown">usuário</span></h3>
+                            </div>
+                            
+                            <hr>
+
+                            <a href="tutorial.html" class="sub-menu-link">
+                                <img src="../assets/drop-down-perfil/tutorial.png" alt="">
+                                <p>Tutorial</p>
+                                <span>></span>
+                            </a>
+                                    
+                            <a href="dashboard.html" class="sub-menu-link">
+                                <img src="../assets/drop-down-perfil/dashboard-especifico.png" alt="">
+                                <p>Dashboard</p>
+                                <span>></span>
+                            </a>
+                                    
+                            <a href="apenas-mural.html" class="sub-menu-link">
+                                <img src="../assets/drop-down-perfil/edit-user.png" alt="">
+                                <p>Mural de mensagens</p>
+                                <span>></span>
+                            </a>
+
+                            <a href="../login.html" class="sub-menu-link" onclick="limparSessao()">
+                                <img src="../assets/drop-down-perfil/log-out.png" alt="">
+                                <p>Sair</p>
+                                <span>></span>
+                            </a>
+                        </div>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-tutorial">
+            <div class="content-text">
+                <p>
+                    <strong>Aqui estão algumas dicas para começar aqui em sua Plumeria:</strong>
+                        <br>
+                        ➼ Clique no ícone de lista 📋 para ser direcionado à página 'Minha Plumeria' e ver algumas recomendações para ter uma melhor experiência;
+                        <br> <br>
+                        ➼ Clique na ampulheta ⌛ para poder escolher entre temporizador e cronômetro e começar a sua sessão;
+                        <br> <br>
+                        ➼ Sempre que pausar/finalizar uma sessão, você será redirecionado à página de mural de mensagens para poder escrever um pouco sobre sua experiência;
+                        <br> <br>
+                        ➼ Se quiser editar alguma mensagem, basta clicar no ícone de mensagem 📝;
+                        <br> <br>
+                        ➼ Para ver seus gráficos, clique no ícone de dashboard 📊;
+                        <br> <br>
+                        ➼ A depender da duração total das suas sessões na semana você terá uma mensagem diferente na sua tela de dashboard. Então bora começar?
+                        <br> <br>
+                        ➼ Caso não se lembrar mais de alguma dessas informações iniciais, não se preocupe, você conseguirá acessá-la clicando na sua foto de perfil e em 'Tutorial'.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<script>
+    function alternarMenu() {
+        subMenu.classList.toggle("open-menu")
+    }
+</script>
