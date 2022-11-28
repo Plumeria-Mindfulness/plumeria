@@ -106,8 +106,6 @@
     background: none;
 }
 
-
-/* RETIRAR O DISPLAY NONE - UTILIZADO PARA TESTE DE VALIDAÇÃO */
 .campo p {
     display: none;
     text-align: start;

@@ -114,5 +114,5 @@ function validarRedefinicao() {
 }
 
 function sumirMensagem() {
-    cardErro.style.display = "none"
+    cardErro.style.display = "none";
 }

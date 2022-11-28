@@ -230,15 +230,15 @@ var hora = 0;
 var minuto = 0;
 var segundo = 0;
 
-var tempo = 1000; // quantidade em milisegundos
+var tempo = 10; // quantidade em milisegundos
 var cronometro;
 
 function iniciarCronometro() {
+    soundStart.play();
     cronometro = setInterval(timer, tempo);
 }
 
 function timer() {
-
     segundo++;
 
     if (segundo == 60) {
@@ -256,10 +256,9 @@ function timer() {
     document.getElementById('counter_Cronometro').innerHTML = format;
 }
 
-// var totMinFinal = 0;
-// var dataString = '';
-
 function pausarCronometro(totMinFinal, dataString) {
+    soundEnd.play();
+    
     // 1- Atribuindo elemento HTML do cronômentro à uma variável
     // 2- Pegando o valor que está nessa variável/tag HTML
     // 3- Utilizando '.split()' para separar e deixar num array o tempo final com três posições 0, 1, 2 (h, min, s) | Essa função retorna os dados num array que será acessado no próximo passo 

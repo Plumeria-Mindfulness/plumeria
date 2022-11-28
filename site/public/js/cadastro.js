@@ -23,6 +23,9 @@ function cadastrar() {
 
     msg_email.style.display = "none";
     msg_senha.style.display = "none";
+    msg_dtNascimento.style.display = "none";
+    msg_email.style.display = "none";
+    msg_senha.style.display = "none";
     msg_confirmacaoSenha.style.display = "none";
 
     // Recupere o valor da nova input pelo nome do id
@@ -48,10 +51,10 @@ function cadastrar() {
     var emailErrado = emailCorreto.test(emailVar) == false;
     var senhaErrada = senhaVar.match(senhaCorreta) == null;
 
-    // Variável para confirmar se a senha digitada é igual a senha de confirmação
+    // Variável para validar igualdade entre senha e a sua confirmação 
     var confirmarSenhaErrada = senhaVar != confirmacaoSenhaVar;
 
-    //  Variável booleana para saber se o campo ainda não foi preenchido/está vazio 
+    //  Variável booleana para saber se o campo está vazio 
     var campoNaoPreenchido = nomeVar == "" || sobrenomeVar == "" || dtNascimentoVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "";
 
     if (emailErrado || senhaErrada || confirmarSenhaErrada || campoNaoPreenchido) {
@@ -81,6 +84,14 @@ function cadastrar() {
                 msg_dtNascimento.style.display = "block";
             }
 
+            if (emailVar == "") {
+                msg_email.style.display = "block";
+            }
+
+            if (senhaVar == "") {
+                msg_senha.style.display = "block";
+            }
+
             if (confirmacaoSenhaVar == "") {
                 msg_confirmacaoSenha.style.display = "block";
             }
@@ -89,21 +100,19 @@ function cadastrar() {
             mensagem_erro.innerHTML = "Precisamos de todos os seus dados. <br><br> Tente novamente completando todo o formulário.";
 
             finalizarAguardar();
+            setInterval(sumirMensagem, 3000);
             return false;    
         }
         finalizarAguardar();
     } else {
         setInterval(sumirMensagem, 3000);
     
-        // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 sobrenomeServer: sobrenomeVar,
                 dtNascimentoServer: dtNascimentoVar, 
@@ -149,4 +158,9 @@ function finalizarAguardar(texto) {
 
 function sumirMensagem() {
     cardErro.style.display = "none"
+}
+
+function aguardar() {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "flex";
 }

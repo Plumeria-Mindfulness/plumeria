@@ -54,7 +54,7 @@ function entrar() {
                 setTimeout(function () {
                     window.alert(`Seja bem-vindo novamente, ${sessionStorage.NOME_USUARIO}! \nVamos meditar um pouco?`);
                     window.location = "./dashboard/dashboard.html";
-                }, 1000); // apenas para exibir o loading
+                }, 1000);
 
             });
 
@@ -76,5 +76,5 @@ function entrar() {
 }
 
 function sumirMensagem() {
-    cardErro.style.display = "none"
+    cardErro.style.display = "none";
 }

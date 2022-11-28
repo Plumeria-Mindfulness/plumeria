@@ -48,36 +48,37 @@
                 
                       <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
-                          <div class="user-info">
-                            <img src="../assets/drop-down-perfil/usuario-de-perfil.png" alt="icone usuario de perfil">
-                            <!-- Adicionar um JS para pegar o nome que a pessoa cadastrou -->
-                            <h3 id="nome"><span id="b_usuarioDropDown">usuário</span></h3>
-                          </div>
-                          <hr>
-                
-                          <a href="#" class="sub-menu-link">
-                            <img src="../assets/drop-down-perfil/edit-user.png" alt="">
-                            <p>Editar perfil</p>
-                            <span>></span>
-                          </a>
-                
-                          <a href="#" class="sub-menu-link">
-                            <img src="../assets/drop-down-perfil/settings-profile.png" alt="">
-                            <p>Configurações</p>
-                            <span>></span>
-                          </a>
-                
-                          <a href="dashboard.html" class="sub-menu-link">
-                            <img src="../assets/drop-down-perfil/dashboard-especifico.png" alt="">
-                            <p>Dashboard</p>
-                            <span>></span>
-                          </a>
-                
-                          <a href="../login.html" class="sub-menu-link" onclick="limparSessao()">
-                            <img src="../assets/drop-down-perfil/log-out.png" alt="">
-                            <p>Sair</p>
-                            <span>></span>
-                          </a>
+                            <div class="user-info">
+                                <img src="../assets/drop-down-perfil/usuario-de-perfil.png" alt="icone usuario de perfil">
+
+                                <h3 id="nome"><span id="b_usuarioDropDown">usuário</span></h3>
+                            </div>
+                            
+                            <hr>
+
+                            <a href="tutorial.html" class="sub-menu-link">
+                                <img src="../assets/drop-down-perfil/tutorial.png" alt="">
+                                <p>Tutorial</p>
+                                <span>></span>
+                            </a>
+
+                            <a href="dashboard.html" class="sub-menu-link">
+                                <img src="../assets/drop-down-perfil/dashboard-especifico.png" alt="">
+                                <p>Dashboard</p>
+                                <span>></span>
+                            </a>
+                    
+                            <a href="apenas-mural.html" class="sub-menu-link">
+                                <img src="../assets/drop-down-perfil/edit-user.png" alt="">
+                                <p>Mural de mensagens</p>
+                                <span>></span>
+                            </a>
+                    
+                            <a href="../login.html" class="sub-menu-link" onclick="limparSessao()">
+                                <img src="../assets/drop-down-perfil/log-out.png" alt="">
+                                <p>Sair</p>
+                                <span>></span>
+                            </a>
                         </div>
                       </div>
                     </nav>
@@ -135,31 +136,30 @@
     
                                     <label for="chk1">Ambiente organizado;</label><br>
                                 </div>
-                            
+
                                 <div class="chk">
                                     <input type="checkbox" class="in_chk" id="chk2">
-                                    
-                                    <label for="chk2">Lugar confortável e silêncioso;</label><br>
-                                </div>
     
+                                    <label for="chk2">Eliminadas as distrações;</label><br>
+                                </div>
+                            
                                 <div class="chk">
                                     <input type="checkbox" class="in_chk" id="chk3">
-    
-                                    <label for="chk3">Música escolhida;</label><br>
+                                    
+                                    <label for="chk3">Lugar confortável e silêncioso;</label><br>
                                 </div>
     
                                 <div class="chk">
                                     <input type="checkbox" class="in_chk" id="chk4">
     
-                                    <label for="chk4">Lembrar dos meus objetivos;</label><br>
+                                    <label for="chk4">Música escolhida;</label><br>
                                 </div>
     
                                 <div class="chk">
                                     <input type="checkbox" class="in_chk" id="chk5">
     
-                                    <label for="chk5">Ainda não sei o que escrever aqui.</label><br>
+                                    <label for="chk5">Meus objetivos foram recordados.</label><br>
                                 </div>
-    
                             </div>
                         </div>
                 
@@ -184,10 +184,6 @@
                                     <div class="smalltext">s</div>
                                 </div>
                             </div>
-
-                            <!-- <div class="contador-relogio">
-                                <span id="counter_Temporizador">00 : 00 : 00</span>
-                            </div> -->
 
                             <div class="campo-temporizador">
                                 <label for="in_temporizador">Insira o tempo de foco:</label>
@@ -245,12 +241,20 @@
                     </div>
                   </div>
                   
+                  <!-- XMLns é um parâmetro da linguagem XML (Extensible Markup Language), o qual diz que o elemento 'svg' e seus elementos aninhados pertencem a qualquer dialeto do XML, neste caso na versão 1.1 -->
                   <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                     <defs>
                       <filter id="goo">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-                        <feBlend in="SourceGraphic" in2="goo" />
+                        <!-- Cria um Desfoque Gaussiano, suavizando o valor de pixels no SVG -->
+                        <!-- 'in' e 'in2' são propriedades que identificam a entrada de filtros SVGs -->
+                        <!-- 'SourceGraphic' representa os elementos gráficos (as bolhas) que serão as entradas do filtro de id = 'goo' -->
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+
+                        <!-- Utiliza uma matriz para transformar as cores em RGBA de cada pixel do SVG em outro set de cores RGBAs -->
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
+
+                        <!-- Faz a combinação de pixels de duas imagens (junção das bolhas quando se encostam) -->
+                        <feBlend in="SourceGraphic" in2="goo"/>
                       </filter>
                     </defs>
                   </svg>
@@ -261,7 +265,6 @@
                 </div>
             </div>
         </div>
-
     </div>       
     
 </body>

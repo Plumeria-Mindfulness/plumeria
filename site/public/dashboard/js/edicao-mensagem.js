@@ -1,3 +1,7 @@
+function alternarMenu() {
+    subMenu.classList.toggle("open-menu")
+}
+
 function eventoNaoEditar() {
     alert(`Este campo não pode ser editado.`)
 }
