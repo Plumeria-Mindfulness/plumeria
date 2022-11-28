@@ -24,12 +24,93 @@ function obterDadosGrafico(idUsuarioDash) {
         clearTimeout(proximaAtualizacao);
     }
 
+    var medidasDash1 = []
+    var somaMedidasDash1 = 0
+    var largestMedidasDash1
+    
     fetch(`/medidas/ultimas/${idUsuarioDash}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta
-                // .reverse();
+
+                for (var i = 0; i < resposta.length; i++) {
+                    medidasDash1.push(Number(resposta[i].duracao))
+                    somaMedidasDash1 += Number(resposta[i].duracao)
+                }
+                console.log(`APENAS AS DURAÇÕES: ${medidasDash1}`)
+                console.log(`Somatória da duração da semana: ${somaMedidasDash1}`)
+                
+
+                largestMedidasDash1 = Math.max.apply(null, medidasDash1);
+                console.log(`A maior duração foi: ${largestMedidasDash1}`)
+                    
+                if (somaMedidasDash1 == 0) {
+                    var mensagem = document.getElementById(dash_mensagem) 
+                    mensagem.style.display == "none";
+                } else if (somaMedidasDash1 < 50) {
+                    h2_mensagem.innerHTML = `
+                        Parabéns! A somatória da duração semanal de suas sessões foi de <span>${somaMedidasDash1}</span>min. 
+                        <br> 
+                        E a duração máxima de sessão dessa semana foi de <span>${largestMedidasDash1}</span> min. 👏
+                    `
+
+                    p_mensagem.innerHTML = `
+                        "Conhecer a si mesmo é o começo de toda a sabedoria" (como já dizia Aristóteles). Então, continue nessa jornada. Sua Plumeria sempre estará aqui!
+                    `
+                } else if (somaMedidasDash1 < 100) {
+                    h2_mensagem.innerHTML = `
+                        Uau! O total da duração semanal de suas sessões foi de <span>${somaMedidasDash1}</span>min. 
+                        <br>
+                        E a duração máxima de sessão dessa semana foi de <span>${largestMedidasDash1}</span>min. Parabéns 👏
+                    `
+
+                    p_mensagem.innerHTML = `
+                        "Tudo o que um sonho precisa para ser realizado é alguém que acredite que ele possa ser realizado" (já dizia Roberto Shinyashiki). <br> Então continue acreditando, pois nós acreditamos em ti!
+                    `
+                } else if (somaMedidasDash1 < 150) {
+                    h2_mensagem.innerHTML = `
+                        Uhuul! 🎉 A somatória da duração semanal de suas sessões foi de <span>${somaMedidasDash1}</span>min. 
+                        <br>  
+                        E a duração máxima de sessão dessa semana foi de <span>${largestMedidasDash1}</span>min! Parabéns 👏
+                    `
+
+                    p_mensagem.innerHTML = `
+                        Mesmo que pareça difícil, tente continuar caminhando! Qualquer coisa, você sempre poderá contar com a sua Plumeria para te ajudar!
+                    `
+                } else if (somaMedidasDash1 < 200) {
+                    h2_mensagem.innerHTML = `
+                        Muito orgulho de você!🎉 Sabia que nessa semana você fez <span>${somaMedidasDash1}</span>min de sessão? 
+                        <br>  
+                        E nessa semana a maior duração de sessão foi de <span>${largestMedidasDash1}</span>min. Uma grande conquista merece comemorações. 👏
+                    `
+
+                    p_mensagem.innerHTML = `
+                        "O otimismo é a fé daquele que conduz à realização; nada pode ser feito sem esperança" - Helen Keller!
+                    `
+                } else if (somaMedidasDash1 < 250) {
+                    h2_mensagem.innerHTML = `
+                        Temos quase um(a) guru aqui! 🎉 A somatória da duração semanal de suas sessões foi de <span>${somaMedidasDash1}</span>min. 
+                        <br> 
+                        Parabéns 👏! E nessa semana a maior duração de sessão foi de <span>${largestMedidasDash1}</span>min.
+                    `
+
+                    p_mensagem.innerHTML = `
+                        "Nossa maior fraqueza está em desistir. O caminho mais certo de vencer é tentar mais uma vez." - Thomas Edison
+                    `
+                } else {
+                    h2_mensagem.innerHTML = `
+                        Opa! Já está se tornando um(a) mestre no mindfulness! 🏳️ 
+                        <br>
+                        A somatória da duração semanal de suas sessões foi de <span>${somaMedidasDash1}</span>min.
+                        <br> 
+                        Continue assim! E nessa semana a maior duração de sessão foi de <span>${largestMedidasDash1}</span>min.
+                    `
+
+                    p_mensagem.innerHTML = `
+                        "Cada segundo é tempo para mudar tudo para sempre." - Charles Chaplin
+                    `
+                } 
+
 
                 plotarGrafico(resposta, idUsuarioDash);
             });
@@ -41,22 +122,20 @@ function obterDadosGrafico(idUsuarioDash) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-        fetch(`/medidas/ultimas2/${idUsuarioDash}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta
-                    // .reverse();
-    
-                    plotarGrafico2(resposta,idUsuarioDash);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    fetch(`/medidas/ultimas2/${idUsuarioDash}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                plotarGrafico2(resposta,idUsuarioDash);
             });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
 }
 
 function plotarGrafico(resposta, idUsuarioDash) {

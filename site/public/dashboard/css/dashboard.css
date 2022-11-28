@@ -40,7 +40,7 @@
 
 .dash-mensagem {
     margin: 1em auto;
-    width: 60%;
+    width: 77%;
     padding: 1.2em;
     display: flex;
     flex-direction: column;
@@ -54,6 +54,11 @@
 .dash-mensagem .h2-mensagem {
     font-size: 1em;
     margin-bottom: 8px;
+}
+
+.dash-mensagem .h2-mensagem span {
+    font-size: 1.3em;
+    color: #635c02;
 }
 
 .dash-mensagem .p-mensagem {
