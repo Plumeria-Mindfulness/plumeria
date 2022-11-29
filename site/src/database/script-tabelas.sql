@@ -27,18 +27,6 @@ create table sessao (
 	primary key (idSessao, fkUsuario)
 );
 
--- Tabela inicial de mensagem para integração com API
-create table mensagem (
-    idMensagem int,
-    titulo varchar(100),
-    descricao varchar(1200),
-    avaliacao varchar(10) not null, 
-		constraint chkAvaliacao check (avaliacao = 'excelente' or avaliacao = 'muito bom' or avaliacao ='bom' or avaliacao ='ruim' or avaliacao ='muito ruim'),
-	fkUsuario int not null, constraint fkUsuarioMensagem foreign key (fkUsuario)
-		references usuario(idUsuario)
-);
-
--- Tabela completa de mensagem
 create table mensagem (
     idMensagem int,
     titulo varchar(100),
