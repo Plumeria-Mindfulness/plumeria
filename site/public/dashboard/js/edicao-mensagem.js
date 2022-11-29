@@ -6,10 +6,6 @@ function eventoNaoEditar() {
     alert(`Este campo não pode ser editado.`)
 }
 
-function listarInfosDeUm() {
-    console.log("Criar função de trazer informações de post escolhido");
-}
-
 function editar() {
     fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
         method: "PUT",
