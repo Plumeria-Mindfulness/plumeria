@@ -1,7 +1,7 @@
 # Plumeria (em desenvolvimento)
 <img align='right' src="https://cdn-icons-png.flaticon.com/512/8116/8116918.png" width="150px">
 
-Projeto individual que está sendo desenvolvido durante o 1º semestre do curso de Análise e Desenvolvimento de Sistemas da faculdade São Paulo Tech School (SPTech).
+Projeto individual desenvolvido durante o 1º semestre do curso de Análise e Desenvolvimento de Sistemas da faculdade São Paulo Tech School (SPTech).
 
 ## Regras para a condução do projeto
 1. Estar no **aqui e agora desfrutando do processo** e fazendo dele o melhor lugar para se desenvolver, tanto referente à hard skills quanto à soft skills;
@@ -36,14 +36,25 @@ Projeto individual que está sendo desenvolvido durante o 1º semestre do curso 
   cd Plumeria
 ```
 
+### Entre do subdiretório site
+
+```bash
+  cd site
+```
+
 ### Instale as dependências com NPM
 
 ```bash
-  npm install
+  npm i
 ```
 
 ### Inicie o servidor local
 
 ```bash
   npm start
+```
+#### Ou para ver as mudanças ativamente utilize:
+
+```bash
+  npm run dev
 ```
