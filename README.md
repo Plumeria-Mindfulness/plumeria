@@ -1,4 +1,4 @@
-# Plumeria (em desenvolvimento)
+# Plumeria
 <img align='right' src="https://cdn-icons-png.flaticon.com/512/8116/8116918.png" width="150px">
 
 Projeto individual desenvolvido durante o 1º semestre do curso de Análise e Desenvolvimento de Sistemas da faculdade São Paulo Tech School (SPTech).
